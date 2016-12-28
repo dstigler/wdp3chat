@@ -27,7 +27,7 @@ app.get('/setup', function(req, res) {
   // create a sample user
   var nick = new User({
     name: 'Nick Cerminara',
-    email: 'test@test.at'
+    email: 'test@test.at',
     password: 'password',
     admin: true
   });
