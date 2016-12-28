@@ -22,6 +22,11 @@ app.get('/', function(req, res){
 });
 
 //API ROUTES
+
+app.get('/login', function(req, res){
+    var data = fs.readFileSync('./login/login.html').toString();
+    res.send(data);
+});
 app.get('/setup', function(req, res) {
 
   // create a sample user
@@ -40,6 +45,23 @@ app.get('/setup', function(req, res) {
     res.json({ success: true });
   });
 });
+
+var apiRoutes = express.Router();
+
+apiRoutes.get('/', function(req, res){
+    res.json({message: 'Welcome to first version of wdp3chat-api'});
+});
+
+apiRoutes.get('/users', function(req, res){
+    User.find({}, function(err, users){
+        res.json(users);
+    });
+});
+
+app.use('/api', apiRoutes);
+apiRoutes.get('/')
+
+
 
 //start the server
 app.listen(port);
