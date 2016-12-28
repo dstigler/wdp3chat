@@ -22,7 +22,24 @@ app.get('/', function(req, res){
 });
 
 //API ROUTES
+app.get('/setup', function(req, res) {
 
+  // create a sample user
+  var nick = new User({
+    name: 'Nick Cerminara',
+    email: 'test@test.at'
+    password: 'password',
+    admin: true
+  });
+
+  // save the sample user
+  nick.save(function(err) {
+    if (err) throw err;
+
+    console.log('User saved successfully');
+    res.json({ success: true });
+  });
+});
 
 //start the server
 app.listen(port);
