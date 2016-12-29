@@ -20,4 +20,4 @@ function validate() {
 
 }
 
-document.getElementById("loginBtb").onclick = validate;
+document.getElementById("loginBtn").onclick = validate;
