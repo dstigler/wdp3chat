@@ -29,6 +29,6 @@ function validate() {
          alert('success');
      });
     });
-        console.log(ra, rag)
+    console.log(ra, rag)
 
-    };
+};
