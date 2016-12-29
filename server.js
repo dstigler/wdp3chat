@@ -71,6 +71,7 @@ app.route('/login')
             }
           }
           console.log(req.body.username);
+          console.log(token);
         });
     });
 
