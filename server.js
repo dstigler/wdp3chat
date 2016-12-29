@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var fs = require('fs');
 var mongoose = require('mongoose');
+var path = require('path');
 
 var jwt = require('jsonwebtoken');
 var config = require('./config');
@@ -23,11 +24,16 @@ app.get('/', function(req, res){
 });
 
 //API ROUTES
-
+/*
 app.get('/login', function(req, res){
     var data = fs.readFileSync('./login/login.html').toString();
     res.send(data);
 });
+*/
+app.get('/login', function(req, res) {
+    res.sendFile(path.join(__dirname + '/login/login.html'));
+});
+
 app.get('/setup', function(req, res) {
 
   // create a sample user
