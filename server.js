@@ -34,12 +34,34 @@ app.get('/login', function(req, res){
 });
 */
 app.route('/login')
-    .get(function(req, res) {
-        res.sendFile(path.join(__dirname, 'views/login.html' ));
-    })
     .post(function(req, res){
+        var newUser = new User({
+          name: req.body.username,
+          email: req.body.email,
+          password: req.body.password,
+          admin: false
+        });
+
+        User.findOne({name: req.body.username}, function(err, user) {
+
+            if (err) throw err;
+
+            if (!user) {
+                res.json({ success: false, message: 'Authentication failed. User already exists.' });
+            } else {
+                newUser.save(function(err) {
+                  if (err) throw err;
+        
+                  res.json({ success: true, message: 'User saved successfully' });
+                });
+            }
+        });
+        // save the sample user
+
+
+    })
+    .get(function(req, res){
         // find the user
-        console.log("got POST request");
         var post_data = req.body;
         console.log(post_data);
 
@@ -63,11 +85,11 @@ app.route('/login')
               });
 
               // return the information including token as JSON
-              res.json({
+              res.send(JSON.stringify({
                 success: true,
                 message: 'Enjoy your token!',
                 token: token
-              });
+              }));
             }
           }
           console.log(req.body.username);
@@ -160,11 +182,14 @@ apiRoutes.post('/authenticate', function(req, res) {
     }
   });
 });*/
-
-apiRoutes.get('/', function(req, res){
+app.route('/')
+    .get(function(req, res) {
+        res.sendFile(path.join(__dirname, 'views/login.html' ));
+    });
+/*apiRoutes.get('/', function(req, res){
     res.json({message: 'Welcome to first version of wdp3chat-api'});
 });
-
+*/
 apiRoutes.get('/users', function(req, res){
     User.find({}, function(err, users){
         res.json(users);

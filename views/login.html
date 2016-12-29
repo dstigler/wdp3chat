@@ -47,21 +47,19 @@
           <form action="/" method="post">
 
             <div class="field-wrap">
-              <input type="text" placeholder="Username" required autocomplete="off" />
+              <input id="newname" type="text" placeholder="Username" required autocomplete="off" />
             </div>
 
+            <div class="field-wrap">
+              <input id="newmail" type="email" placeholder="Email Adress" required autocomplete="off"/>
+            </div>
 
+            <div class="field-wrap">
+              <input id="newpwd" type="password" placeholder="Password" required autocomplete="off"/>
+            </div>
 
-          <div class="field-wrap">
-            <input type="email" placeholder="Email Adress" required autocomplete="off"/>
-          </div>
-
-          <div class="field-wrap">
-            <input type="password" placeholder="Password" required autocomplete="off"/>
-          </div>
-
-          <button type="submit" class="button button-block"/>Start Chatting</button>
-
+          <!--button type="submit" class="button button-block"/>Start Chatting</button-->
+            <input type="button" value="Sign Up" id="createBtn">
           </form>
 
         </div>

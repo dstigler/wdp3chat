@@ -1,16 +1,16 @@
-var hash = require('./pass').hash;
-
 function validate() {
-    var ra = document.getElementById("uname").value;
-    var rag = document.getElementById("pwd").value;
+    var nu = document.getElementById("newname").value;
+    var np = document.getElementById("newmail").value;
+    var np = document.getElementById("newpwd").value;
     $.ajax({
-       type: "GET",
+       type: "POST",
         url: "/login",
         contentType: "application/json",
         dataType: 'json',
        data:JSON.stringify({
-           "username":ra,
-           "password":rag
+           "username":nu,
+           "email": ne,
+           "password":np
        })
     }).
     success( function(req, res) {
@@ -21,8 +21,8 @@ function validate() {
       console.log(localStorage.getItem('token'));
       */
     });
-    console.log(ra, rag);
+    console.log(nu, ne, np);
 
 }
 
-document.getElementById("loginBtn").onclick = validate;
+document.getElementById("createBtn").onclick = validate;
