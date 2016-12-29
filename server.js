@@ -75,31 +75,33 @@ app.route('/login')
         });
     });
 
+var apiRoutes = express.Router();
+
     // route middleware to verify a token
-    apiRoutes.use(function(req, res, next) {
-      // check header or url parameters or post parameters for token
-      var token = req.body.token || req.query.token || req.headers['x-access-token'];
-      // decode token
-      if (token) {
-        // verifies secret and checks exp
-        jwt.verify(token, app.get('superSecret'), function(err, decoded) {
-          if (err) {
-            return res.json({ success: false, message: 'Failed to authenticate token.' });
-          } else {
-            // if everything is good, save to request for use in other routes
-            req.decoded = decoded;
-            next();
-          }
-        });
+apiRoutes.use(function(req, res, next) {
+  // check header or url parameters or post parameters for token
+  var token = req.body.token || req.query.token || req.headers['x-access-token'];
+  // decode token
+  if (token) {
+    // verifies secret and checks exp
+    jwt.verify(token, app.get('superSecret'), function(err, decoded) {
+      if (err) {
+        return res.json({ success: false, message: 'Failed to authenticate token.' });
       } else {
-        // if there is no token
-        // return an error
-        return res.status(403).send({
-            success: false,
-            message: 'No token provided.'
-        });
+        // if everything is good, save to request for use in other routes
+        req.decoded = decoded;
+        next();
       }
     });
+  } else {
+    // if there is no token
+    // return an error
+    return res.status(403).send({
+        success: false,
+        message: 'No token provided.'
+    });
+  }
+});
 
 
 
@@ -122,8 +124,8 @@ app.get('/signup', function(req, res) {
   });
 });
 
-var apiRoutes = express.Router();
 
+/*
 apiRoutes.post('/authenticate', function(req, res) {
 
   // find the user
@@ -157,7 +159,7 @@ apiRoutes.post('/authenticate', function(req, res) {
       }
     }
   });
-});
+});*/
 
 apiRoutes.get('/', function(req, res){
     res.json({message: 'Welcome to first version of wdp3chat-api'});
