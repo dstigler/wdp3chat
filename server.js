@@ -36,7 +36,7 @@ app.get('/login', function(req, res){
 app.route('/login')
   .get(function(req, res) {
 
-    res.sendFile(path.join('./views/login.html'));
+    res.sendFile(path.join(__dirname, 'views/login.html' ));
 });
 
 app.get('/setup', function(req, res) {
