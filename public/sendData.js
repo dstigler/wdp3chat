@@ -18,6 +18,6 @@ function validate() {
     });
     console.log(ra, rag);
 
-};
+}
 
 document.getElementById("loginBtb").onclick = validate;
