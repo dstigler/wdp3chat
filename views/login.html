@@ -8,9 +8,7 @@
 
   <link rel="stylesheet" href="/login.css">
 
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
-  <script src="/login.js"></script>
 </head>
 
 <body>
@@ -26,7 +24,7 @@
 		<div id="login">
           <h1>Welcome Back!</h1>
 
-          <!--<form action="/login" method="post">-->
+          <form action="/login" method="post">
 
             <div class="field-wrap">
             <input id="uname" type="text" placeholder="Username" required autocomplete="off"/>
@@ -38,8 +36,8 @@
 
           <!--<button class="button button-block"/>Log In</button>-->
           <!--<input type="submit" value="Check In" name="Submit">-->
-           <button onclick="sendData()">Login</button>
-          <!--</form>-->
+          <input type="button" value="Login" onclick="sendData();">
+          </form>
 
         </div>
 
@@ -73,7 +71,9 @@
       </div><!-- tab-content -->
 
 </div> <!-- /form -->
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
-
+    <script src="../public/login.js"></script>
+    <script src="../public/sendData.js"></script>
 </body>
 </html>
