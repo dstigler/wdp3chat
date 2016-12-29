@@ -1,6 +1,6 @@
 function validate() {
     var nu = document.getElementById("newname").value;
-    var np = document.getElementById("newmail").value;
+    var ne = document.getElementById("newmail").value;
     var np = document.getElementById("newpwd").value;
     $.ajax({
        type: "POST",
