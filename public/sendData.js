@@ -1,4 +1,4 @@
-var hash = require('./pass').hash;
+//var hash = require('./pass').hash;
 
 function validate() {
     var ra = document.getElementById("uname").value;
