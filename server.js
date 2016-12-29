@@ -183,6 +183,7 @@ apiRoutes.post('/authenticate', function(req, res) {
 app.route('/')
     .get(function(req, res) {
         res.sendFile(path.join(__dirname, 'views/login.html' ));
+        res.redirect('/login');
     });
 /*apiRoutes.get('/', function(req, res){
     res.json({message: 'Welcome to first version of wdp3chat-api'});
