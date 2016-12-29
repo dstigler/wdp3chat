@@ -38,10 +38,8 @@ app.route('/login')
         res.sendFile(path.join(__dirname, 'views/login.html' ));
     })
     .post(function(req, res){
-        var ra = document.getElementById("uname").value;
-        var rag = document.getElementById("pwd").value;
         // find the user
-        User.findOne({name: ra}, function(err, user) {
+        User.findOne({name: req.body.uname}, function(err, user) {
 
           if (err) throw err;
 
@@ -50,7 +48,7 @@ app.route('/login')
           } else if (user) {
 
             // check if password matches
-            if (user.password != rag) {
+            if (user.password != req.body.pwd) {
               res.json({ success: false, message: 'Authentication failed. Wrong password.' });
             } else {
 
