@@ -8,8 +8,8 @@ function validate() {
         contentType: "application/json",
         dataType: 'json',
        data:JSON.stringify({
-           username:ra,
-           password:rag
+           "username":ra,
+           "password":rag
        })
     }).
     success( function() {
