@@ -30,8 +30,10 @@ app.get('/login', function(req, res){
     res.send(data);
 });
 */
-app.get('/login', function(req, res) {
-    res.sendFile(path.join(__dirname + '/login/login.html'));
+app.route('/login')
+  .get(function(req, res) {
+    res.render("login/login")
+    //res.sendFile(path.join(__dirname + '/login/login.html'));
 });
 
 app.get('/setup', function(req, res) {
