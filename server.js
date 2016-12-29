@@ -14,6 +14,9 @@ var port = process.env.PORT || 8080;
 mongoose.connect(config.database);
 app.set('superSecret', config.secret);
 
+app.set("views", "./views")
+app.set('view engine', 'html');
+
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
@@ -32,7 +35,7 @@ app.get('/login', function(req, res){
 */
 app.route('/login')
   .get(function(req, res) {
-    res.render("login/login")
+    res.render("views/login")
     //res.sendFile(path.join(__dirname + '/login/login.html'));
 });
 
