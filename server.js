@@ -34,10 +34,45 @@ app.get('/login', function(req, res){
 });
 */
 app.route('/login')
-  .get(function(req, res) {
+    .get(function(req, res) {
+        res.sendFile(path.join(__dirname, 'views/login.html' ));
+    )}
+    .post(function(req, res){
+        var ra = document.getElementById("uname").value;
+        var rag = document.getElementById("pwd").value;
+        // find the user
+        User.findOne({name: ra}, function(err, user) {
 
-    res.sendFile(path.join(__dirname, 'views/login.html' ));
-});
+          if (err) throw err;
+
+          if (!user) {
+            res.json({ success: false, message: 'Authentication failed. User not found.' });
+          } else if (user) {
+
+            // check if password matches
+            if (user.password != rag) {
+              res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+            } else {
+
+              // if user is found and password is right
+              // create a token
+              var token = jwt.sign(user, app.get('superSecret'), {
+                expiresInMinutes: 1440 // expires in 24 hours
+              });
+
+              // return the information including token as JSON
+              res.json({
+                success: true,
+                message: 'Enjoy your token!',
+                token: token
+              });
+            }
+
+          }
+
+        });
+
+    });
 
 app.get('/setup', function(req, res) {
 
