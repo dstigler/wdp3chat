@@ -12,8 +12,8 @@ function validate() {
            "password":rag
        })
     }).
-    success( function() {
-      console.log('success');
+    success( function(req, res) {
+      console.log(req.body);
 
     });
     console.log(ra, rag);

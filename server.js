@@ -43,7 +43,7 @@ app.route('/login')
         var post_data = req.body;
         console.log(post_data);
 
-        User.findOne({name: req.query.username}, function(err, user) {
+        User.findOne({name: req.body.username}, function(err, user) {
 
           if (err) throw err;
 
@@ -52,7 +52,7 @@ app.route('/login')
           } else if (user) {
 
             // check if password matches
-            if (user.password != req.query.password) {
+            if (user.password != req.body.password) {
               res.json({ success: false, message: 'Authentication failed. Wrong password.' });
             } else {
 
@@ -70,7 +70,7 @@ app.route('/login')
               });
             }
           }
-          console.log(req.query.username);
+          console.log(req.body.username);
         });
     });
 
