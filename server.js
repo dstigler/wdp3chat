@@ -66,6 +66,7 @@ app.route('/login')
               });
             }
           }
+          console.log(req.body.uname);
         });
     });
 
@@ -73,9 +74,9 @@ app.get('/setup', function(req, res) {
 
   // create a sample user
   var nick = new User({
-    name: 'Nick Cerminara',
+    name: 'test',
     email: 'test@test.at',
-    password: 'password',
+    password: 'test',
     admin: true
   });
 
