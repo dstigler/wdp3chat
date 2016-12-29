@@ -36,7 +36,7 @@ app.get('/login', function(req, res){
 app.route('/login')
     .get(function(req, res) {
         res.sendFile(path.join(__dirname, 'views/login.html' ));
-    )}
+    })
     .post(function(req, res){
         var ra = document.getElementById("uname").value;
         var rag = document.getElementById("pwd").value;
@@ -67,11 +67,8 @@ app.route('/login')
                 token: token
               });
             }
-
           }
-
         });
-
     });
 
 app.get('/setup', function(req, res) {
