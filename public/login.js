@@ -24,11 +24,12 @@ function validate() {
        data:JSON.stringify({
            username:ra,
            password:rag
-       }).
-       success( function() {
-         alert('success');
-     });
+       });
+    }).
+    success( function() {
+      alert('success');
+
     });
-    console.log(ra, rag)
+    console.log(ra, rag);
 
 };
