@@ -15,7 +15,7 @@ mongoose.connect(config.database);
 app.set('superSecret', config.secret);
 
 app.set("views", "./views")
-app.set('view engine', 'html');
+app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
