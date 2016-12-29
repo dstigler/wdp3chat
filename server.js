@@ -35,14 +35,14 @@ app.get('/login', function(req, res){
 */
 app.route('/login')
     .post(function(req, res){
-        var newUser = new User({
-          name: req.body.username,
-          email: req.body.email,
-          password: req.body.password,
-          admin: false
-        });
 
         User.findOne({name: req.body.username}, function(err, user) {
+            var newUser = new User({
+              name: req.body.username,
+              email: req.body.email,
+              password: req.body.password,
+              admin: false
+            });
 
             if (err) throw err;
 
@@ -56,8 +56,6 @@ app.route('/login')
                 });
             }
         });
-        // save the sample user
-
 
     })
     .get(function(req, res){
