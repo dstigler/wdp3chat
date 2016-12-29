@@ -19,16 +19,16 @@ function validate() {
     $.ajax({
        type: "POST",
         url: "/login",
-            contentType: "application/json",
-         dataType: 'json',
+        contentType: "application/json",
+        dataType: 'json',
        data:JSON.stringify({
            username:ra,
            password:rag
-       }),
-       success: function() {
+       }).
+       success( function() {
          alert('success');
-       }
+     });
     });
         console.log(ra, rag)
 
-    }
+    };
