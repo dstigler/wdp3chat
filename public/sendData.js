@@ -14,7 +14,11 @@ function validate() {
     }).
     success( function(req, res) {
       console.log(req.body);
-
+      console.log(res.body);
+      /*
+      localStorage.setItem('token', 'asY-x34SfYPk'); // write
+      console.log(localStorage.getItem('token'));
+      */
     });
     console.log(ra, rag);
 
