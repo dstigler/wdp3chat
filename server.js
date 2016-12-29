@@ -22,10 +22,10 @@ app.use(bodyParser.json());
 
 app.use(morgan('dev'));
 
-app.get('/', function(req, res){
+/*app.get('/', function(req, res){
     res.send('Hello! The API is at http://127.0.0.1:' + port + '/api');
 });
-
+*/
 //API ROUTES
 /*
 app.get('/login', function(req, res){
@@ -51,7 +51,7 @@ app.route('/login')
             } else {
                 newUser.save(function(err) {
                   if (err) throw err;
-        
+
                   res.json({ success: true, message: 'User saved successfully' });
                 });
             }
