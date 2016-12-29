@@ -13,7 +13,7 @@ function validate() {
        })
     }).
     success( function() {
-      alert('success');
+      console.log('success');
 
     });
     console.log(ra, rag);

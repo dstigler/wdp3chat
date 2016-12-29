@@ -39,7 +39,7 @@ app.route('/login')
     })
     .post(function(req, res){
         // find the user
-        User.findOne({name: req.query.uname}, function(err, user) {
+        User.findOne({name: req.query.username}, function(err, user) {
 
           if (err) throw err;
 
@@ -48,7 +48,7 @@ app.route('/login')
           } else if (user) {
 
             // check if password matches
-            if (user.password != req.body.pwd) {
+            if (user.password != req.body.password) {
               res.json({ success: false, message: 'Authentication failed. Wrong password.' });
             } else {
 
