@@ -37,7 +37,7 @@ app.route('/login')
     .get(function(req, res) {
         res.sendFile(path.join(__dirname, 'views/login.html' ));
     })
-    .post(function(req, res, ){
+    .post(function(req, res){
         // find the user
         User.findOne({name: req.query.uname}, function(err, user) {
 
