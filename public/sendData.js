@@ -10,7 +10,7 @@ function validate() {
        data:JSON.stringify({
            username:ra,
            password:rag
-       });
+       })
     }).
     success( function() {
       alert('success');
