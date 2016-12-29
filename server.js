@@ -39,7 +39,7 @@ app.route('/login')
     })
     .post(function(req, res){
         // find the user
-        User.findOne({name: req.query.username}, function(err, user) {
+        User.findOne({name: req.body.username}, function(err, user) {
 
           if (err) throw err;
 
@@ -66,7 +66,7 @@ app.route('/login')
               });
             }
           }
-          console.log(req.query.uname);
+          console.log(req.query.username);
         });
     });
 
