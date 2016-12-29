@@ -35,7 +35,7 @@ app.get('/login', function(req, res){
 */
 app.route('/login')
   .get(function(req, res) {
-    res.render("views/login")
+    res.render("views/login.html")
     //res.sendFile(path.join(__dirname + '/login/login.html'));
 });
 
