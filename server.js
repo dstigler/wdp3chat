@@ -65,6 +65,7 @@ app.route('/login')
           var token = jwt.sign(user, app.get('superSecret'), {
             expiresIn: '1440m' // expires in 24 hours
           });
+          reg.body.token = token;
           console.log(token);
           //var decoded = jwt.decode(token);
           //console.log(decoded);
@@ -75,7 +76,7 @@ app.route('/login')
             message: 'Enjoy your token!',
             token: token
         }));*/
-        res.send(token);
+        res.send(req.body);
       });
         console.log(req.body.username);
 

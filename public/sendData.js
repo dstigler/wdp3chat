@@ -14,9 +14,11 @@ function validate() {
            "token":"empty"
        }),
        success: function(data){
+           console.log('success');
            console.log(data);
        },
        error: function(data){
+           console.log('error');
            console.log(data);
        }
    });
