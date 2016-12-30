@@ -35,7 +35,7 @@ app.get('/login', function(req, res){
 */
 app.route('/login')
     .post(function(req, res){
-
+        console.log(req.body);
         User.findOne({name: req.body.username}, function(err, user) {
             var newUser = new User({
               name: req.body.username,
@@ -126,7 +126,7 @@ apiRoutes.use(function(req, res, next) {
 
 
 app.get('/signup', function(req, res) {
-
+    console.log(req.body);
   // create a sample user
   var nick = new User({
     name: 'test',
