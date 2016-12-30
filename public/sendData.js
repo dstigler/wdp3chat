@@ -10,7 +10,7 @@ function validate() {
         dataType: 'json',
        data:JSON.stringify({
            "username":ra,
-           "password":rag
+           "password":rag,
            "token":"empty"
        }),
        success: function(data){
