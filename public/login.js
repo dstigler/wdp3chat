@@ -28,14 +28,17 @@ function createUser() {
            "password":np
        })
    }),
-    function(data) {
-      console.log(data.body);
+    success: function(data) {
+      console.log('Added User');
+    error: function(data){
+        console.log('Invalid input');
+    }
       /*
       localStorage.setItem('token', 'asY-x34SfYPk'); // write
       console.log(localStorage.getItem('token'));
       */
     };
-    console.log(nu, ne, np);
+    //console.log(nu, ne, np);
 };
 
 //var hash = require('./pass').hash;
@@ -70,7 +73,7 @@ function validateUser() {
       console.log(localStorage.getItem('token'));
       */
     //};
-    console.log(ra, rag);
+    //console.log(ra, rag);
 
 }
 
