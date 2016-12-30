@@ -26,18 +26,31 @@ function createUser() {
            "username":nu,
            "email": ne,
            "password":np
-       })
-   }),
-    success: function(data) {
-      console.log('Added User');
-    error: function(data){
-        console.log('Invalid input');
-    }
-      /*
+       }),
+
+        success: function(data) {
+          console.log('Added User');
+        }
+         /* e.preventDefault();
+
+          $(this).parent().addClass('active');
+          $(this).parent().siblings().removeClass('active');
+
+          target = $(this).attr('href');
+
+          $('.tab-content > div').not(target).hide();
+
+          $(target).fadeIn(600);*/
+
+          //TODO: set content of login
+        error: function(data){
+            console.log('Invalid input');
+        }
+          /*
       localStorage.setItem('token', 'asY-x34SfYPk'); // write
       console.log(localStorage.getItem('token'));
       */
-    };
+    });
     //console.log(nu, ne, np);
 };
 
@@ -53,16 +66,16 @@ function validateUser() {
         dataType: 'json',
        data:JSON.stringify({
            "username":ra,
-           "password":rag,
-           "token":"empty"
+           "password":rag
+          // "token":"empty"
        }),
        success: function(data){
            console.log('success');
-           console.log(data.token);
+           //console.log(data.token);
        },
        error: function(data){
            console.log('error');
-           console.log(data);
+           //console.log(data);
        }
    });
 
@@ -75,7 +88,7 @@ function validateUser() {
     //};
     //console.log(ra, rag);
 
-}
+};
 
 
 document.getElementById("loginBtn").onclick = validateUser;
