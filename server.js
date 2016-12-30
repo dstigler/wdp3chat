@@ -34,30 +34,6 @@ app.get('/login', function(req, res){
 });
 */
 app.route('/login')
-    .post(function(req, res){
-        console.log(req.body);
-        User.findOne({name: req.body.username}, function(err, user) {
-            var newUser = new User({
-              name: req.body.username,
-              email: req.body.email,
-              password: req.body.password,
-              admin: false
-            });
-
-            if (err) throw err;
-
-            if (!user) {
-                res.json({ success: false, message: 'Authentication failed. User already exists.' });
-            } else {
-                newUser.save(function(err) {
-                  if (err) throw err;
-
-                  res.json({ success: true, message: 'User saved successfully' });
-                });
-            }
-        });
-
-    })
     .get(function(req, res){
         // find the user
         var post_data = req.body;
@@ -81,7 +57,7 @@ app.route('/login')
               var token = jwt.sign(user, app.get('superSecret'), {
                 expiresIn: '1440m' // expires in 24 hours
               });
-
+              console.log(token);
               // return the information including token as JSON
               res.send(JSON.stringify({
                 success: true,
@@ -91,8 +67,32 @@ app.route('/login')
             }
           }
           console.log(req.body.username);
-          console.log(token);
+
         });
+    })
+    .post(function(req, res){
+        console.log(req.body);
+        User.findOne({name: req.body.username}, function(err, user) {
+            var newUser = new User({
+              name: req.body.username,
+              email: req.body.email,
+              password: req.body.password,
+              admin: false
+            });
+
+            if (err) throw err;
+
+            if (!user) {
+                res.json({ success: false, message: 'Authentication failed. User already exists.' });
+            } else {
+                newUser.save(function(err) {
+                  if (err) throw err;
+
+                  res.json({ success: true, message: 'User saved successfully' });
+                });
+            }
+        });
+
     });
 
 var apiRoutes = express.Router();
