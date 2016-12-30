@@ -11,9 +11,13 @@ function validate() {
        data:JSON.stringify({
            "username":ra,
            "password":rag
+           "token":"empty"
        }),
-       success: function(result){
-           console.log(result);
+       success: function(data){
+           console.log(data);
+       },
+       error: function(data){
+           console.log(data);
        }
    });
 
