@@ -23,5 +23,5 @@ function validate() {
     console.log(ra, rag);
 
 }
-
+$.get('/login').done(function(data){ alert(data); });
 document.getElementById("loginBtn").onclick = validate;
