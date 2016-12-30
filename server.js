@@ -62,10 +62,10 @@ app.route('/login')
           //res.sendStatus(200);
               // if user is found and password is right
               // create a token
-          var token = jwt.sign(user, app.get('superSecret'), {
+          var token = jwt.sign(user, app.get('secret'), {
             expiresIn: '1440m' // expires in 24 hours
           });
-          req.body.token = token;
+          //req.body.token = token;
           console.log(token);
           //var decoded = jwt.decode(token);
           //console.log(decoded);
@@ -76,7 +76,9 @@ app.route('/login')
             message: 'Enjoy your token!',
             token: token
         }));*/
-        res.send(req.body);
+        res.cookie('auth',token);
+        res.send('ok');
+        //res.send(req.body);
       });
         console.log(req.body.username);
 
@@ -111,11 +113,12 @@ var apiRoutes = express.Router();
     // route middleware to verify a token
 apiRoutes.use(function(req, res, next) {
   // check header or url parameters or post parameters for token
-  var token = req.body.token || req.query.token || req.headers['x-access-token'];
+  //var token = req.body.token || req.query.token || req.headers['x-access-token'];
   // decode token
+  var token = req.cookies.auth;
   if (token) {
     // verifies secret and checks exp
-    jwt.verify(token, app.get('superSecret'), function(err, decoded) {
+    jwt.verify(token, app.get('secret'), function(err, decoded) {
       if (err) {
         return res.json({ success: false, message: 'Failed to authenticate token.' });
       } else {
