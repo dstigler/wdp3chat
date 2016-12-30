@@ -13,7 +13,7 @@ function validate() {
            "password":rag
        })
    }),
-    $.get('/login').done(function(data){ alert(data); });
+    $.put('/login').done(function(data){ alert(data); });
     /*function(data) {
       console.log(data.body);
       /*
