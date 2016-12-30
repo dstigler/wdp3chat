@@ -62,6 +62,7 @@ app.route('/login')
           //res.sendStatus(200);
               // if user is found and password is right
               // create a token
+          console.log(user);
           var token = jwt.sign(user, app.get('superSecret'), {
             expiresIn: '1440m' // expires in 24 hours
           });
