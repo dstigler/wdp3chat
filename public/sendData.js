@@ -13,16 +13,17 @@ function validate() {
            "password":rag
        })
    }),
-    function(data) {
+    $.get('/login').done(function(data){ alert(data); });
+    /*function(data) {
       console.log(data.body);
       /*
       localStorage.setItem('token', 'asY-x34SfYPk'); // write
       console.log(localStorage.getItem('token'));
       */
-    };
+    //};
     console.log(ra, rag);
 
 }
-$.get('/login').done(function(data){ alert(data); });
+
 
 document.getElementById("loginBtn").onclick = validate;
