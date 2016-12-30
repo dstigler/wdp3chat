@@ -39,8 +39,7 @@ app.route('/login')
     })
     .put(function(req, res){
         // find the user
-        var post_data = req.body;
-        console.log(post_data);
+        console.log('PUT: ' + req.body.username);
 
         User.findOne({name: req.body.username}, function(err, user) {
 
@@ -74,8 +73,10 @@ app.route('/login')
         });
     })
     .post(function(req, res){
-        console.log(req.body);
-        User.findOne({name: req.body.username}, function(err, user) {
+        console.log('POST: ' + req.body.username);
+        User.findOne({'name': req.body.username}, function(err, user) {
+            if (err) throw err;
+
             var newUser = new User({
               name: req.body.username,
               email: req.body.email,
@@ -83,9 +84,7 @@ app.route('/login')
               admin: false
             });
 
-            if (err) throw err;
-
-            if (!user) {
+            if (user) {
                 res.json({ success: false, message: 'Authentication failed. User already exists.' });
             } else {
                 newUser.save(function(err) {
