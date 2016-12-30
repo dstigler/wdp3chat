@@ -135,27 +135,6 @@ apiRoutes.use(function(req, res, next) {
 });
 
 
-
-app.get('/signup', function(req, res) {
-    console.log(req.body);
-  // create a sample user
-  var nick = new User({
-    name: 'test',
-    email: 'test@test.at',
-    password: 'test',
-    admin: true
-  });
-
-  // save the sample user
-  nick.save(function(err) {
-    if (err) throw err;
-
-    console.log('User saved successfully');
-    res.json({ success: true });
-  });
-});
-
-
 /*
 apiRoutes.post('/authenticate', function(req, res) {
 
@@ -206,8 +185,13 @@ apiRoutes.get('/users', function(req, res){
     });
 });
 
+apiRoutes.route('/home')
+    .get(function(req, res){
+        res.send('Here is the main-page')
+    });
+
 app.use('/api', apiRoutes);
-apiRoutes.get('/')
+
 
 
 
