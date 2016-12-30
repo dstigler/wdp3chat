@@ -12,10 +12,9 @@ function validate() {
            "email": ne,
            "password":np
        })
-    }).
-    success( function(req, res) {
-      console.log(req.body);
-      console.log(res.body);
+   }),
+    success( function(data) {
+      console.log(data.body);
       /*
       localStorage.setItem('token', 'asY-x34SfYPk'); // write
       console.log(localStorage.getItem('token'));
