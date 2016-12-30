@@ -35,6 +35,9 @@ app.get('/login', function(req, res){
 */
 app.route('/login')
     .get(function(req, res){
+        res.sendFile(path.join(__dirname, 'views/login.html' ));
+    })
+    .put(function(req, res){
         // find the user
         var post_data = req.body;
         console.log(post_data);
