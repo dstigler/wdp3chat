@@ -4,7 +4,7 @@ function validate() {
     var ra = document.getElementById("uname").value;
     var rag = document.getElementById("pwd").value;
     $.ajax({
-       type: "GET",
+       type: "PUT",
         url: "/login",
         contentType: "application/json",
         dataType: 'json',
