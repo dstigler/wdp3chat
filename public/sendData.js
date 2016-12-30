@@ -15,7 +15,7 @@ function validate() {
        }),
        success: function(data){
            console.log('success');
-           console.log(data);
+           console.log(data.token);
        },
        error: function(data){
            console.log('error');
