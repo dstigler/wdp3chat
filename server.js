@@ -66,7 +66,7 @@ app.route('/login')
             expiresIn: '1440m' // expires in 24 hours
           });
           console.log(token);
-          var decoded = jwt_decode(token);
+          var decoded = jwt.decode(token);
           console.log(decoded);
           // return the information including token as JSON
           res.send(JSON.stringify({
