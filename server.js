@@ -43,34 +43,38 @@ app.route('/login')
 
         User.findOne({name: req.body.username}, function(err, user) {
 
-          if (err) throw err;
+          if (err) {
+              //user not found
+              return res.sent(401);
+          }
 
           if (!user) {
-            res.json({ success: false, message: 'Authentication failed. User not found.' });
-          } else if (user) {
-
+            //incorrect username
+            return res.send(401);
+            //res.json({ success: false, message: 'Authentication failed. User not found.' });
+          }
+          if (user.password != req.body.password) {
+            //incorrect password
+            return res.send(401);
             // check if password matches
-            if (user.password != req.body.password) {
-              res.json({ success: false, message: 'Authentication failed. Wrong password.' });
-            } else {
-
+            //  res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+          }
+          res.send(200);
               // if user is found and password is right
               // create a token
-              var token = jwt.sign(user, app.get('superSecret'), {
-                expiresIn: '1440m' // expires in 24 hours
-              });
-              console.log(token);
-              // return the information including token as JSON
-              res.send(JSON.stringify({
-                success: true,
-                message: 'Enjoy your token!',
-                token: token
-              }));
-            }
-          }
-          console.log(req.body.username);
-
+          var token = jwt.sign(user, app.get('superSecret'), {
+            expiresIn: '1440m' // expires in 24 hours
+          });
+          console.log(token);
+          // return the information including token as JSON
+          res.send(JSON.stringify({
+            success: true,
+            message: 'Enjoy your token!',
+            token: token
+          }));
         });
+        console.log(req.body.username);
+
     })
     .post(function(req, res){
         console.log('POST: ' + req.body.username);
@@ -184,8 +188,8 @@ apiRoutes.post('/authenticate', function(req, res) {
 });*/
 app.route('/')
     .get(function(req, res) {
-        res.sendFile(path.join(__dirname, 'views/login.html' ));
-        //res.redirect('/login');
+        //res.sendFile(path.join(__dirname, 'views/login.html' ));
+        res.redirect('/login');
     });
 /*apiRoutes.get('/', function(req, res){
     res.json({message: 'Welcome to first version of wdp3chat-api'});
