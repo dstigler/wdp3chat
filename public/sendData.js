@@ -15,7 +15,7 @@ function validate() {
        success: function(result){
            console.log(result);
        }
-   }),
+   });
 
     /*function(data) {
       console.log(data.body);
