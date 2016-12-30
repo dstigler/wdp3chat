@@ -13,7 +13,7 @@ function validate() {
            "password":rag
        })
    }),
-    $.put('/login').done(function(data){ alert(data); });
+
     /*function(data) {
       console.log(data.body);
       /*
@@ -24,6 +24,6 @@ function validate() {
     console.log(ra, rag);
 
 }
-
+$.put('/login',function(data){ alert(data); });
 
 document.getElementById("loginBtn").onclick = validate;

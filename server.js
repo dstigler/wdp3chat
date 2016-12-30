@@ -66,14 +66,16 @@ app.route('/login')
             expiresIn: '1440m' // expires in 24 hours
           });
           console.log(token);
-          var decoded = jwt.decode(token);
-          console.log(decoded);
+          //var decoded = jwt.decode(token);
+          //console.log(decoded);
+
           // return the information including token as JSON
-          res.send(JSON.stringify({
+          /*res.send(JSON.stringify({
             success: true,
             message: 'Enjoy your token!',
             token: token
-          }));
+        }));*/
+        res.send(token);
       });
         console.log(req.body.username);
 
