@@ -50,19 +50,19 @@ app.route('/login')
 
           if (!user) {
             //incorrect username
-            return res.send(401);
+            return res.sendStatus(401);
             //res.json({ success: false, message: 'Authentication failed. User not found.' });
           }
           if (user.password != req.body.password) {
             //incorrect password
-            return res.send(401);
+            return res.sendStatus(401);
             // check if password matches
             //  res.json({ success: false, message: 'Authentication failed. Wrong password.' });
           }
-          res.send(200);
+          res.sendStatus(200);
               // if user is found and password is right
               // create a token
-          var token = jwt.sign(user, app.get('superSecret'), {
+          /*var token = jwt.sign(user, app.get('superSecret'), {
             expiresIn: '1440m' // expires in 24 hours
           });
           console.log(token);
@@ -71,8 +71,8 @@ app.route('/login')
             success: true,
             message: 'Enjoy your token!',
             token: token
-          }));
-        });
+        }));*/
+      });
         console.log(req.body.username);
 
     })
