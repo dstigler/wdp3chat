@@ -13,13 +13,13 @@ function validate() {
            "password":rag
        })
    }),
-    success( function(data) {
+    function(data) {
       console.log(data.body);
       /*
       localStorage.setItem('token', 'asY-x34SfYPk'); // write
       console.log(localStorage.getItem('token'));
       */
-    });
+    };
     console.log(ra, rag);
 
 }
