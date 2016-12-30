@@ -11,7 +11,10 @@ function validate() {
        data:JSON.stringify({
            "username":ra,
            "password":rag
-       })
+       }),
+       success: function(result){
+           console.log(result);
+       }
    }),
 
     /*function(data) {
@@ -24,6 +27,6 @@ function validate() {
     console.log(ra, rag);
 
 }
-$.put('/login',function(data){ alert(data); });
+
 
 document.getElementById("loginBtn").onclick = validate;
