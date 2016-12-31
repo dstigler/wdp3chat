@@ -79,7 +79,7 @@ app.route('/login')
             token: token
         }));*/
         res.cookie('auth',token);
-        res.send('ok');
+        res.send(req.user);
         //res.send(req.body);
       });
 
