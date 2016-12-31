@@ -5,6 +5,8 @@ var morgan = require('morgan');
 var fs = require('fs');
 var mongoose = require('mongoose');
 var path = require('path');
+var cookieParser = require('cookie-parser')
+app.use(cookieParser())
 
 var jwt = require('jsonwebtoken');
 var config = require('./config');
@@ -80,7 +82,7 @@ app.route('/login')
         res.send('ok');
         //res.send(req.body);
       });
-        console.log(req.body.username);
+
 
     })
     .post(function(req, res){
@@ -118,12 +120,12 @@ apiRoutes.use(function(req, res, next) {
   var token = req.cookies.auth;
   if (token) {
     // verifies secret and checks exp
-    jwt.verify(token, app.get('superSecret'), function(err, decoded) {
+    jwt.verify(token, app.get('superSecret'), function(err, token_data) {
       if (err) {
         return res.json({ success: false, message: 'Failed to authenticate token.' });
       } else {
         // if everything is good, save to request for use in other routes
-        req.decoded = decoded;
+        req.user_data = token_data;
         next();
       }
     });

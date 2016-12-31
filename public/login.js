@@ -70,11 +70,11 @@ function validateUser() {
            "password":rag
           // "token":"empty"
        }),
-       success: function(data){
+       success: function(){
            console.log('success');
            //console.log(data.token);
        },
-       error: function(data){
+       error: function(){
            console.log('error');
            //console.log(data);
        }
