@@ -30,7 +30,7 @@ function createUser() {
 
         success: function(data) {
           console.log('Added User');
-        }
+
          /* e.preventDefault();
 
           $(this).parent().addClass('active');
@@ -43,6 +43,7 @@ function createUser() {
           $(target).fadeIn(600);*/
 
           //TODO: set content of login
+        },
         error: function(data){
             console.log('Invalid input');
         }
