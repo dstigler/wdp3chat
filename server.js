@@ -117,7 +117,7 @@ apiRoutes.use(function(req, res, next) {
   // check header or url parameters or post parameters for token
   //var token = req.body.token || req.query.token || req.headers['x-access-token'];
   // decode token
-  var token = req.cookie.auth;
+  var token = req.cookies.auth;
   if (token) {
     // verifies secret and checks exp
     jwt.verify(token, app.get('superSecret'), function(err, token_data) {
@@ -192,9 +192,9 @@ apiRoutes.get('/users', function(req, res){
 
 apiRoutes.route('/home')
     .get(function(req, res){
-        res.send('Here is the main-page'+(jwt.decode(req.cookie)).name);
+        res.send('Here is the main-page'+(jwt.decode(req.cookies.auth)).name);
         //console.log(jwt.decode(req.cookie));
-        console.log((jwt.decode(req.cookie)).name);
+        console.log((jwt.decode(req.cookies.auth)).name);
     });
 
 app.use('/api', apiRoutes);
