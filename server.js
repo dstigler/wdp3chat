@@ -192,7 +192,7 @@ apiRoutes.get('/users', function(req, res){
 
 apiRoutes.route('/home')
     .get(function(req, res){
-        res.send('Here is the main-page')
+        res.send('Here is the main-page'+req.body);
     });
 
 app.use('/api', apiRoutes);
