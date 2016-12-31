@@ -70,8 +70,8 @@ function validateUser() {
            "password":rag
           // "token":"empty"
        }),
-       success: function(){
-           console.log('success');
+       success: function(data){
+           console.log(data.message);
            //console.log(data.token);
        },
        error: function(){
