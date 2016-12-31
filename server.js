@@ -62,7 +62,7 @@ app.route('/login')
           //res.sendStatus(200);
               // if user is found and password is right
               // create a token
-          var token = jwt.sign(user, app.get('secret'), {
+          var token = jwt.sign(user, app.get('superSecret'), {
             expiresIn: '1440m' // expires in 24 hours
           });
           //req.body.token = token;
@@ -118,7 +118,7 @@ apiRoutes.use(function(req, res, next) {
   var token = req.cookies.auth;
   if (token) {
     // verifies secret and checks exp
-    jwt.verify(token, app.get('secret'), function(err, decoded) {
+    jwt.verify(token, app.get('superSecret'), function(err, decoded) {
       if (err) {
         return res.json({ success: false, message: 'Failed to authenticate token.' });
       } else {
