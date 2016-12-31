@@ -192,8 +192,8 @@ apiRoutes.get('/users', function(req, res){
 
 apiRoutes.route('/home')
     .get(function(req, res){
-        res.send('Here is the main-page'+(jwt.decode(req.cookie.auth)).name);
-        console.log(jwt.decode(req.cookie.auth));
+        res.send('Here is the main-page'+(jwt.decode(req.cookie)).name);
+        //console.log(jwt.decode(req.cookie));
         console.log((jwt.decode(req.cookie)).name);
     });
 
