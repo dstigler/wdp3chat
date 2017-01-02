@@ -19,8 +19,8 @@ app.set('superSecret', config.secret);
 app.set("views", "./views")
 app.use(express.static("public"));
 
-var apiRouter = require("./api");
-app.use("/api", apiRouter);
+//var apiRouter = require("./api");
+//app.use("/api", apiRouter);
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
