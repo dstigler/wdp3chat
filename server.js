@@ -151,7 +151,7 @@ apiRoutes.get('/users', function(req, res){
     });
 });
 
-apiRoutes.route('/home')
+apiRoutes.route('/chat')
     .get(function(req, res){
         res.send('Here is the main-page'+jwt.decode(req.cookies.auth));
         //console.log(jwt.decode(req.cookie));
