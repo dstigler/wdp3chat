@@ -178,11 +178,11 @@ app.use('/api', apiRoutes);
 apiRoutes.route('/logout')
     .get(function(req, res){ //.get muss wieder gelöscht werden
         res.clearCookie("auth");
-        res.redirect('/');
+        //res.redirect('/');
     })
     .delete(function(req, res){
         res.clearCookie("auth");
-        res.redirect('/');
+        //res.redirect('/');
     });
 
 
