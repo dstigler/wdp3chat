@@ -63,7 +63,7 @@ function validateUser() {
     $.ajax({
        type: "PUT",
         url: "/login",
-        contentType: "application/json",
+        contentType: "application/json", //text/html
         dataType: 'json',
        data:JSON.stringify({
            "username":ra,
@@ -73,10 +73,13 @@ function validateUser() {
        success: function(data){
            console.log('login success');
            //console.log(data.token);
-           $.get('chat.html')
-             .success(function(data){
-                 $(window).html(data);
-             });
+           $.ajax({
+               url: '/api/chat',
+                success: function(file){ 
+                     $(window).html(file);
+                },
+                dataType: 'html'
+            });
        },
        error: function(){
            console.log('error');
