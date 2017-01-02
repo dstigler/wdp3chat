@@ -1,3 +1,5 @@
+var express = require('express');
+
 var apiRoutes = express.Router();
 
 var mongoose = require('mongoose');
