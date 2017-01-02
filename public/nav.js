@@ -45,7 +45,7 @@ $("#roomsBtn").click(function() {
 
 $("#logoutBtn").click(function logoutUser() {
     $.ajax({
-       type: "DELETE",
+       type: "GET",
         url: "/api/logout",
        success: function(){
            console.log('Logout');
