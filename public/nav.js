@@ -60,6 +60,7 @@ $("#logoutBtn").click(function logoutUser() {
                   console.log('error');
                   //console.log(data);
               }
+          });
        },
        error: function(){
            console.log('error');
