@@ -71,12 +71,12 @@ function validateUser() {
           // "token":"empty"
        }),
        success: function(data){
-           console.log(data.message);
+           console.log('login success');
            //console.log(data.token);
-           $.get('/api/chat')
+          /* $.get('/api/chat')
              .success(function(data){
                  $(window).html(data);
-             });
+             });*/
        },
        error: function(){
            console.log('error');
