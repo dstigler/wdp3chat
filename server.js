@@ -63,7 +63,7 @@ app.route('/login')
 
         res.cookie('auth',token);
         //res.send({message: 'ok'});
-        res.redirect('/api/chat');
+        //res.redirect('/api/chat');
         //res.send(req.body);
       });
 
