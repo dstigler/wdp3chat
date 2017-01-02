@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial scale=1">
+	<link rel="stylesheet" href="/nav.css">
+	<link rel="stylesheet" href="/index.css">
+	<style type="text/css">
+		  #rooms-sortable .ui-selected { background-color: #333; color: white; }
+	</style>
+</head>
+<body>
+	<ul class="nav">
+		<li id="active"><a href="index.html">Home</a></li>
+		<li><a href="rooms.html">Chat Rooms</a></li>
+		<li><a href="users.html">Users</a></li>
+	</ul>
+	<div id="chat-room">
+		<div id="rooms">
+		<h2>Rooms</h2>
+			<ul id="rooms-sortable">
+				<li class="state-default">Groupchat</li>
+				<li class="state-default">Republicans</li>
+				<li class="state-default">Democrats</li>
+				<li class="state-default">independents</li>
+				<li class="state-default">No politics</li>
+			</ul>
+		</div>
+
+
+		<form id="chat-area">
+			<textarea id="chat-textarea" readonly=""></textarea>
+			<button id="delete-messages-button" type="submit">Delete All Messages</button>
+		</form>
+	</div>
+
+
+	<div id="post-area">
+		<div id="empty"></div>
+		<div id="post-area-right">
+			<h2>Post A Message</h2>
+			<form id="message-form">
+				<textarea id="post-messages-area" rows="5" placeholder="Type your message!" required="true"></textarea>
+				<button id="post-messages-button" type="submit">Post</button>
+			</form>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script type="text/javascript">
+		$( function () {
+			$("#rooms-sortable").selectable({
+				stop: function() {
+					$(".ui-selected", this).each(function() {
+						var index = $("#rooms-sortable li").index(this);
+						console.log(index+1);
+					});
+				}
+			});
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "Helvetica",  "Arial", "Times New Roman";
+	box-sizing: border-box;
+}
+
+body {
+
+}
+
+h2 {
+	size: 200em;
+	
+}
+
+.nav {
+	background-color: #333;
+	width: 100%;
+	min-height: 50%;
+	flex-direction: row;
+	display: flex;
+}
+
+.nav li {
+	padding: 5%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	list-style-type: none;
+}
+
+.nav li a {
+	text-decoration: none;
+	color: #666;
+	font-size: 1.2em;
+}
+
+#active {
+	background-color: #000;
+}
+
+#active a {
+	color: #FFF;
+}
+
+.nav li:hover a {
+	color: #FFF;
+}
