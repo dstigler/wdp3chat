@@ -145,11 +145,11 @@ app.route('/')
     res.json({message: 'Welcome to first version of wdp3chat-api'});
 });
 */
-apiRoutes.get('/users', function(req, res){
+/*apiRoutes.get('/users', function(req, res){
     User.find({}, function(err, users){
         res.json(users);
     });
-});
+});*/
 
 apiRoutes.route('/chat')
     .get(function(req, res){
