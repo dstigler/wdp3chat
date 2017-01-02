@@ -94,7 +94,7 @@ app.route('/login')
     });
 
 var apiRoutes = express.Router();
-
+apiRoutes.use(express.static("public"));
     // route middleware to verify a token
 apiRoutes.use(function(req, res, next) {
   // check header or url parameters or post parameters for token
