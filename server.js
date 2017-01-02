@@ -155,7 +155,21 @@ apiRoutes.route('/chat')
     .get(function(req, res){
         res.sendFile(path.join(__dirname, 'views/index.html' ));
         //console.log(jwt.decode(req.cookie));
-        console.log(jwt.decode(req.cookies.auth));
+        //console.log(jwt.decode(req.cookies.auth));
+    });
+
+apiRoutes.route('/rooms')
+    .get(function(req, res){
+        res.sendFile(path.join(__dirname, 'views/rooms.html' ));
+        //console.log(jwt.decode(req.cookie));
+        //console.log(jwt.decode(req.cookies.auth));
+    });
+
+apiRoutes.route('/users')
+    .get(function(req, res){
+        res.sendFile(path.join(__dirname, 'views/users.html' ));
+        //console.log(jwt.decode(req.cookie));
+        //console.log(jwt.decode(req.cookies.auth));
     });
 
 app.use('/api', apiRoutes);
