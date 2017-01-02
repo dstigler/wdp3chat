@@ -79,7 +79,8 @@ function validateUser() {
                 success: function(file){
                      $(window).html(file);
                 },
-                dataType: 'html'
+                dataType: 'html',
+                contentType: 'text/html'
             });
        },
        error: function(){
