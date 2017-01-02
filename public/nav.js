@@ -49,7 +49,7 @@ $("#logoutBtn").click(function logoutUser() {
         url: "/api/logout",
        success: function(){
            console.log('Logout');
-           $.ajax({
+          /* $.ajax({
               type: "GET",
                url: "/",
               success: function(){
@@ -60,7 +60,11 @@ $("#logoutBtn").click(function logoutUser() {
                   console.log('error');
                   //console.log(data);
               }
-          });
+          });*/
+          $.get('login.html')
+            .success(function(data){
+                $(window).html(data);
+            });
        },
        error: function(){
            console.log('error');
