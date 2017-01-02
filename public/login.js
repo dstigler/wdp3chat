@@ -74,8 +74,9 @@ function validateUser() {
            console.log('login success');
            //console.log(data.token);
            $.ajax({
+               type: "GET",
                url: '/api/chat',
-                success: function(file){ 
+                success: function(file){
                      $(window).html(file);
                 },
                 dataType: 'html'
