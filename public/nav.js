@@ -61,14 +61,15 @@ $("#logoutBtn").click(function logoutUser() {
                   //console.log(data);
               }
           });*/
-          $.get('login.html')
-            .success(function(data){
-                $(window).html(data);
-            });
+
        },
        error: function(){
            console.log('error');
            //console.log(data);
        }
    });
+   $.get('login.html')
+     .success(function(data){
+         $(window).html(data);
+     });
 });
