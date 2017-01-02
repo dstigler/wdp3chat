@@ -56,4 +56,4 @@ apiRoutes.route('/chat')
         console.log(jwt.decode(req.cookies.auth));
     });
 
-app.use('/api', apiRoutes);
+//app.use('/api', apiRoutes);
