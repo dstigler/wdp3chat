@@ -73,10 +73,10 @@ function validateUser() {
        success: function(data){
            console.log('login success');
            //console.log(data.token);
-          /* $.get('/api/chat')
+           $.get('chat.html')
              .success(function(data){
                  $(window).html(data);
-             });*/
+             });
        },
        error: function(){
            console.log('error');
