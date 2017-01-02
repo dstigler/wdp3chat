@@ -69,7 +69,7 @@ function validateUser() {
            "username":ra,
            "password":rag
           // "token":"empty"
-       }),
+      })/*,
        success: function(data){
            console.log('login success');
            //console.log(data.token);
@@ -77,11 +77,11 @@ function validateUser() {
              .success(function(data){
                  $(window).html(data);
              });*/
-       },
+      /* },
        error: function(){
            console.log('error');
            //console.log(data);
-       }
+       }*/
    });
 
     /*function(data) {
