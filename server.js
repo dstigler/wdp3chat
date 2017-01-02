@@ -133,7 +133,7 @@ app.route('/')
               } else {
                 // if everything is good, save to request for use in other routes
                 req.user_data = token_data;
-                redirect('/chat');
+                res.redirect('/chat');
               }
             });
         }else{
