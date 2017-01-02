@@ -161,6 +161,11 @@ apiRoutes.route('/home')
 app.use('/api', apiRoutes);
 
 
+apiRoutes.route('/logout')
+    .delete(function(req, res){
+        res.clearCookie("auth");
+        res.redirect('/login');
+    });
 
 
 //start the server
