@@ -1,7 +1,7 @@
 function logoutUser() {
     $.ajax({
        type: "DELETE",
-        url: "api/logout",
+        url: "/api/logout",
        success: function(){
            console.log('Logout');
            //console.log(data.token);
