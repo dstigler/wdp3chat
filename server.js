@@ -162,10 +162,10 @@ app.use('/api', apiRoutes);
 
 
 apiRoutes.route('/logout')
-    .get(function(req, res){
+/*    .get(function(req, res){
         res.clearCookie("auth");
         res.redirect('/login');
-    })
+    })*/
     .delete(function(req, res){
         res.clearCookie("auth");
         res.redirect('/login');
