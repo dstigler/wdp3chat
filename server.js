@@ -153,7 +153,7 @@ apiRoutes.get('/users', function(req, res){
 
 apiRoutes.route('/chat')
     .get(function(req, res){
-        res.send('Here is the main-page'+jwt.decode(req.cookies.auth));
+        res.sendFile(path.join(__dirname, 'views/index.html' ));
         //console.log(jwt.decode(req.cookie));
         console.log(jwt.decode(req.cookies.auth));
     });
