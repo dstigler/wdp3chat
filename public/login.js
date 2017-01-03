@@ -1,24 +1,35 @@
-$('.tab a').on('click', changeTab);
+$('.tab a').on('click', function (e) {
+//function changeTab(){
+  e.preventDefault();
 
+  $(this).parent().addClass('active');
+  $(this).parent().siblings().removeClass('active');
 
-function changeTab(){
-
-  $('.tab a').parent().addClass('active');
-  $('.tab active a').parent().siblings().removeClass('active');
-
-  target = $('.tab active a').attr('href');
+  target = $(this).attr('href');
 
   $('.tab-content > div').not(target).hide();
 
   $(target).fadeIn(600);
 
-};
+});
+
+function changeSignupToLogin(){
+
+    $('#login').parent().addClass('active');
+    $('#signup').parent().siblings().removeClass('active');
+
+    target = $('#login').attr('href');
+
+    $('.tab-content > div').not(target).hide();
+
+    $(target).fadeIn(600);
+
+}
 
 function createUser() {
     var nu = document.getElementById("newname").value;
     var ne = document.getElementById("newmail").value;
     var np = document.getElementById("newpwd").value;
-    //var bla = $('#txt_name').val();
     $.ajax({
        type: "POST",
         url: "/login",
@@ -32,10 +43,22 @@ function createUser() {
 
         success: function(data) {
           console.log('Added User');
-          changeTab();
+
           $('#uname').val(nu);
           $('#pwd').val(np);
+         changeSignupToLogin();
+         /* e.preventDefault();
 
+          $(this).parent().addClass('active');
+          $(this).parent().siblings().removeClass('active');
+
+          target = $(this).attr('href');
+
+          $('.tab-content > div').not(target).hide();
+
+          $(target).fadeIn(600);*/
+
+          //TODO: set content of login
         },
         error: function(data){
             console.log('Invalid input');
