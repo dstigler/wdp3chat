@@ -16,9 +16,9 @@ $('.tab a').on('click', function (e) {
 function changeSignupToLogin(){
 
     $('#logintab').parent().addClass('active');
-    $('#signuptab').parent().siblings().removeClass('active');
+    $('#signuptab').parent().removeClass('active');
 
-    target = $('#logintab').attr('href');
+    target = $('#login').attr('href');
 
     $('.tab-content > div').not(target).hide();
 
