@@ -4,9 +4,9 @@ $('.tab a').on('click', changeTab);
 function changeTab(){
 
   $('.tab a').parent().addClass('active');
-  $('.tab a').parent().siblings().removeClass('active');
+  $('.tab active a').parent().siblings().removeClass('active');
 
-  target = $('.tab a').attr('href');
+  target = $('.tab active a').attr('href');
 
   $('.tab-content > div').not(target).hide();
 
