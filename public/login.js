@@ -18,11 +18,11 @@ function changeSignupToLogin(){
     $('#logintab').addClass('active');
     $('#signuptab').removeClass('active');
 
-    target = $('#login').attr('href');
+    //target = $('#logintab').attr('href');
 
-    $('.tab-content > div').not(target).hide();
+    $('#signup').hide();
 
-    $(target).fadeIn(600);
+    $('#login').fadeIn(600);
 
 }
 
