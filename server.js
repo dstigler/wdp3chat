@@ -170,11 +170,15 @@ apiRoutes.route('/rooms')
     });
 apiRoutes.route('/room')
     .get(function(req, res){
-        config.database
-         .then(db => db.collection("rooms").find().toArray())
-         .then(rooms => res.json(rooms));
+        Rooms.find({}, function(err, rooms){
+         if(err){
+             res.sent('401');
+         }else {
+             res.json(rooms.toArray());
+         }
         // .catch(next);
-    })
+    });
+};
 
 apiRoutes.route('/users')
     .get(function(req, res){
