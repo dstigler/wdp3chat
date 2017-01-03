@@ -8,7 +8,7 @@ $(function () {
         type: "GET",
         url: "/api/roomlist"
     }).success(function (rooms) {
-        roomId = rooms[0].id;
+        roomId = rooms[0]._id;
         //getMessages();
         console.log(rooms);
         $.each(rooms, function (key, room) {
