@@ -72,19 +72,6 @@ function validateUser() {
        }),
        success: function(data){
            console.log('login success');
-           //console.log(data.token);
-           /*$.ajax({
-               type: "GET",
-               url: '/api/chat',
-                success: function(file){
-                    //$(window).load("views/index.html");
-                    window.location.href = file;
-                    //console.log(file);
-                    // $(window).html(file);
-                },
-                dataType: 'html',
-                contentType: 'text/html'
-            });*/
             window.location.href = "/api/chat";
        },
        error: function(){

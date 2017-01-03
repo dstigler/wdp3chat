@@ -1,46 +1,50 @@
 $("#homeBtn").click(function() {
-    $.ajax({
+    /*$.ajax({
        type: "GET",
         url: "/api/chat",
        success: function(){
            console.log('Chat');
+           window.location.href = "/api/chat";
            //console.log(data.token);
        },
        error: function(){
            console.log('error');
            //console.log(data);
        }
-   });
+   });*/
+   window.location.href = "/api/chat";
 });
 
 $("#usersBtn").click(function() {
-    $.ajax({
+    /*$.ajax({
        type: "GET",
         url: "/api/users",
        success: function(){
-           console.log('Chat');
+           console.log('users');
            //console.log(data.token);
        },
        error: function(){
            console.log('error');
            //console.log(data);
        }
-   });
+   });*/
+   window.location.href = "/api/users";
 });
 
 $("#roomsBtn").click(function() {
-    $.ajax({
+    /*$.ajax({
        type: "GET",
         url: "/api/rooms",
        success: function(){
-           console.log('Chat');
+           console.log('rooms');
            //console.log(data.token);
        },
        error: function(){
            console.log('error');
            //console.log(data);
        }
-   });
+   });*/
+   window.location.href = "/api/rooms";
 });
 
 $("#logoutBtn").click(function logoutUser() {
@@ -49,6 +53,7 @@ $("#logoutBtn").click(function logoutUser() {
         url: "/api/logout",
        success: function(){
            console.log('Logout');
+           window.location.href = "/";
           /* $.ajax({
               type: "GET",
                url: "/",
