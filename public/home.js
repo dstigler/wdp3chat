@@ -25,6 +25,7 @@ $(function () {
 
     $('body').on('click', 'a.room', function (event) {
         roomId = $(event.target).attr("data-room-id");
+        console.log(roomId);
         //getMessages();
     });
 
