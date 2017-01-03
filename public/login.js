@@ -73,7 +73,7 @@ function validateUser() {
        success: function(data){
            console.log('login success');
            //console.log(data.token);
-           $.ajax({
+           /*$.ajax({
                type: "GET",
                url: '/api/chat',
                 success: function(file){
@@ -84,7 +84,8 @@ function validateUser() {
                 },
                 dataType: 'html',
                 contentType: 'text/html'
-            });
+            });*/
+            window.location.href = "/api/chat";
        },
        error: function(){
            console.log('error');
