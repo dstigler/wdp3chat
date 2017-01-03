@@ -53,11 +53,14 @@
 	<script type="text/javascript">
 		$( function () {
 			$("#rooms-sortable").selectable({
-				selected: function() {
-					$(".ui-selected", this).addClass("ui-selected").siblings().removeClass("ui-selected");
-				};
+				stop: function() {
+					$(".ui-selected", this).each(function() {
+						var index = $("#rooms-sortable li").index(this);
+						console.log(index+1);
+					});
+				}
 			});
-		});
+		})
 	</script>
 </body>
 </html>
