@@ -34,7 +34,7 @@ $(function () {
         console.log("post-button pressed");
         $.ajax({
             type: "POST",
-            url: "/api/roomlist/" + roomId + "/messages",
+            url: "/api/messages/" + roomId,
             data: JSON.stringify(message),
             contentType : "application/json"
         }).success(function () {
