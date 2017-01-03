@@ -52,13 +52,8 @@
 
 	<script type="text/javascript">
 		$( function () {
-			$("#rooms-sortable").selectable({
-				stop: function() {
-					$(".ui-selected", this).each(function() {
-						var index = $("#rooms-sortable li").index(this);
-						console.log(index+1);
-					});
-				}
+			$("#rooms-sortable li").click(function() {
+  				$(this).addClass("ui-selected").siblings().removeClass("ui-selected");
 			});
 		})
 	</script>
