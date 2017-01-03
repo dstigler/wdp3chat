@@ -107,6 +107,12 @@ function validateUser() {
 
 };
 
+document.getElementById("pwd").addEventListener('keypress', function(e){
+    var key = e.which || e.keyCode;
+    if (key == 13){
+        validateUser();
+    }
+});
 
 document.getElementById("loginBtn").onclick = validateUser;
 
