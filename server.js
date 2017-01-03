@@ -169,7 +169,8 @@ apiRoutes.route('/rooms')
         //console.log(jwt.decode(req.cookie));
         //console.log(jwt.decode(req.cookies.auth));
     });
-apiRoutes.route('/room')
+    
+apiRoutes.route('/roomlist')
     .get(function(req, res){
         Rooms.find({}, function(err, rooms){
          if(err){

@@ -4,7 +4,7 @@ $(function () {
 
     $.ajax({
         type: "GET",
-        url: "/api/room-list"
+        url: "/api/roomlist"
     }).success(function (rooms) {
         roomId = rooms[0].id;
         //getMessages();
