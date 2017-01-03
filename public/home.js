@@ -81,4 +81,4 @@ function postMessage() {
 
 
 */
-document.getElementById("post-messages-button").onclick = postMessage;
+document.getElementById("postMsgButton").onclick = postMessage;
