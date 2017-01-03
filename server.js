@@ -187,7 +187,29 @@ apiRoutes.route('/roomlist')
     });
 });
 
-apiRoutes.route("/messages/:roomId")
+apiRoutes.route("/roomlist/:roomId/messages")
+    .get(function (req, res) {
+        var roomId = req.params.roomId;
+
+        var roomMessages = messages
+          .filter(m => m.roomId === roomId)
+          .map(m => {
+            var user = _.find(users, u => u.id === m.userId);
+            var userName = user ? user.alias : "unknown";
+            return {text: `${userName}: ${m.text}`};
+          });
+
+        var room = _.find(room, r => r.id === roomId);
+        if (!room) {
+          res.sendStatus(404);
+          return;
+        }
+
+        res.json({
+          room: room,
+          messages: roomMessages
+        })
+    })
     .post(function (req, res) {
         var roomId = req.params.roomId;
         console.log(req.body);
