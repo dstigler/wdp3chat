@@ -51,10 +51,12 @@
 
 
 	<script type="text/javascript">
-		$("#rooms-sortable li").click(function() {
-			console.log("selected item");
-  			$(this).addClass("ui-selected").siblings().removeClass("ui-selected");
-		});
+	$('#rooms-sortable li').on('click', function (e) {
+	  e.preventDefault();
+
+	  $(this).addClass('ui-selected');
+	  $(this).siblings().removeClass('ui-selected');
+  	});
 
 	</script>
 </body>
