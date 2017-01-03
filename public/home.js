@@ -39,8 +39,9 @@ function changeRoomId(){
     console.log(roomId);
 };
 
-$("li.state-default").on("click",function() {
-  console.log('testing');
+
+$('#rooms-sortable').on('click','li.state-default',function() {
+    console.log('testing');
 });
 
     $("#post-messages-button").click(function () {
