@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var ObjectID = require("mongodb").ObjectID;
 var Schema = mongoose.Schema;
 
 module.exports = mongoose.model('Message', new Schema({
