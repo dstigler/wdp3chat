@@ -175,7 +175,7 @@ apiRoutes.route('/room')
          if(err){
              res.sent('401');
          }else {
-             res.json(rooms.toArray());
+             res.json(rooms);
          }
         // .catch(next);
     });
