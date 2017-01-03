@@ -58,7 +58,7 @@ function postMessage() {
         $("#post-messages-area").val("");
         //getMessages();
     });
-});
+};//);
 
 /*    $('body').on('click', 'a.room', function (event) {
         roomId = $(event.target).attr("data-room-id");
