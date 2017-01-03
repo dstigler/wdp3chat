@@ -39,6 +39,10 @@ function changeRoomId(){
     console.log(roomId);
 };
 
+$("li.state-default").on("click",function() {
+  console.log('testing');
+});
+
     $("#post-messages-button").click(function () {
         console.log($("#post-messages-area").val());
         var message = {text: $("#post-messages-area").val()};
