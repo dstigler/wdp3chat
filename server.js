@@ -16,7 +16,7 @@ var port = process.env.PORT || 8080;
 mongoose.connect(config.database);
 app.set('superSecret', config.secret);
 
-app.set("views", "./views")
+app.set("views", "./views");
 app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -62,8 +62,8 @@ app.route('/login')
           //console.log(decoded);
 
         res.cookie('auth',token);
-        res.send({message: 'ok'});
-        //res.redirect('/api/chat');
+        //res.send({message: 'ok'});
+        res.redirect('/');
         //res.send(req.body);
       });
 
