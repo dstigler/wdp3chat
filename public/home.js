@@ -29,6 +29,7 @@ $(function () {
     });
 
     $("#post-messages-button").click(function () {
+        console.log($(#post-messages-area).val());
         var message = {text: $("#post-messages-area").val()};
         console.log("post-button pressed");
         $.ajax({
