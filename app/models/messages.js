@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
 var ObjectID = require('mongodb').ObjectID;
+Rooms = require('./room');
+User = require('./user');
 var Schema = mongoose.Schema;
 
 module.exports = mongoose.model('Message', new Schema({
