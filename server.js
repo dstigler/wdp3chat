@@ -187,7 +187,7 @@ apiRoutes.route('/roomlist')
     });
 });
 
-apiRoutes.route("/chat/:roomId/messages")
+apiRoutes.route("/:roomId/messages")
     .get(function (req, res) {
         var roomId = req.params.roomId;
 
