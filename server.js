@@ -55,7 +55,7 @@ app.route('/login')
               // if user is found and password is right
               // create a token
           var token = jwt.sign(user, app.get('superSecret'), {
-            expiresIn: '5m' // expires in 24 hours
+            expiresIn: '60m' // expires in 24 hours
           });
           console.log(token);
           //var decoded = jwt.decode(token);
@@ -168,6 +168,13 @@ apiRoutes.route('/rooms')
         //console.log(jwt.decode(req.cookie));
         //console.log(jwt.decode(req.cookies.auth));
     });
+apiRoutes.route('/room')
+    .get(function(req, res){
+        config.database
+         .then(db => db.collection("rooms").find().toArray())
+         .then(rooms => res.json(rooms));
+        // .catch(next);
+    })
 
 apiRoutes.route('/users')
     .get(function(req, res){
