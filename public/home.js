@@ -14,7 +14,7 @@ $(function () {
         $.each(rooms, function (key, room) {
 
             if(room.chat_name == "Mainchat"){
-                var a = '<li class="state-default ui-selected"><a id="active" data-room-id="' + room._id +
+                var a = '<li class="state-default ui-selected"><a data-room-id="' + room._id +
                         '" class="room list-group-item">' + room.chat_name + '</a></li>';
                 roomId = room._id;
                 console.log(roomId);
