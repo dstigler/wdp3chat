@@ -171,8 +171,8 @@ apiRoutes.route('/rooms')
     });
 
 apiRoutes.route('/roomlist')
-    .get(function(req, res){
-        Rooms.find({}, function(err, rooms, next){
+    .get(function(req, res, next){
+        Rooms.find({}, function(err, rooms){
          if(err){
              res.sent('401');
          }else {
