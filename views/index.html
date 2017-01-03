@@ -56,10 +56,10 @@
 				selecting: function(event, ui){
 					if ($(".ui-selected, .ui-selecting" ).length > 1){
 						$(ui.selecting).removeClass("ui-selecting");
-						roomId = $('li.ui-selected').next('a').find('data-room-id').val();
-						console.log(roomId);
 					}
 				}
+				var roomId = $('li.ui-selected').next('a').find('data-room-id').val();
+				console.log(roomId);
 			});
 		});
 	</script>
