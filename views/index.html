@@ -51,13 +51,16 @@
 
 
 	<script type="text/javascript">
-	$('#rooms-sortable li').on('click', function (e) {
-	  e.preventDefault();
-
-	  $(this).addClass('ui-selected');
-	  $(this).siblings().removeClass('ui-selected');
-  	});
-
+		$( function () {
+			$("#rooms-sortable").selectable({
+				selected: function() {
+					$(".ui-selected", this).each(function() {
+						var index = $("#rooms-sortable li").index(this);
+						console.log(index+1);
+					});
+				}
+			});
+		})
 	</script>
 </body>
 </html>
