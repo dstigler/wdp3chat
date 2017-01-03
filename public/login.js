@@ -77,7 +77,8 @@ function validateUser() {
                type: "GET",
                url: '/api/chat',
                 success: function(file){
-                     $(window).html(file);
+                    console.log(file);
+                    // $(window).html(file);
                 },
                 dataType: 'html',
                 contentType: 'text/html'
