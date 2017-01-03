@@ -178,7 +178,7 @@ apiRoutes.route('/room')
          }
         // .catch(next);
     });
-};
+});
 
 apiRoutes.route('/users')
     .get(function(req, res){
