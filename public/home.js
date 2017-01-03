@@ -1,6 +1,8 @@
+var roomId;
+
 $(function () {
 
-    var roomId;
+
 
     $.ajax({
         type: "GET",
@@ -13,6 +15,7 @@ $(function () {
             if(room.chat_name == "Mainchat"){
                 var a = '<li class="state-default ui-selected"><a data-room-id="' + room._id +
                         '" class="room list-group-item">' + room.chat_name + '</a></li>';
+                roomId = room._id;
             }else{
                 var a = '<li class="state-default"><a data-room-id="' + room._id +
                         '" class="room list-group-item">' + room.chat_name + '</a></li>';
@@ -22,6 +25,7 @@ $(function () {
         });
 
     });
+});
 
     $('body').on('click', 'a.room', function (event) {
         roomId = $(event.target).attr("data-room-id");
@@ -65,4 +69,3 @@ $(function () {
 
 
 */
-});
