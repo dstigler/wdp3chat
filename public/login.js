@@ -3,10 +3,10 @@ $('.tab a').on('click', changeTab);
 
 function changeTab(){
 
-  $(this).parent().addClass('active');
-  $(this).parent().siblings().removeClass('active');
+  $('.tab a').parent().addClass('active');
+  $('.tab a').parent().siblings().removeClass('active');
 
-  target = $(this).attr('href');
+  target = $('.tab a').attr('href');
 
   $('.tab-content > div').not(target).hide();
 
@@ -33,8 +33,8 @@ function createUser() {
         success: function(data) {
           console.log('Added User');
           changeTab();
-          $('#uname').val('nu');
-          $('#pwd').val('np');
+          $('#uname').val(nu);
+          $('#pwd').val(np);
 
         },
         error: function(data){
