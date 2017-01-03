@@ -44,7 +44,8 @@ $('ul#rooms-sortable').on('click','li.state-default',function() {
     console.log('testing');
 });
 */
-$("#post-messages-button").click(function () {
+//$("#post-messages-button").click(
+function postMessage() {
     console.log($("#post-messages-area").val());
     var message = {text: $("#post-messages-area").val()};
     console.log("post-button pressed");
@@ -80,3 +81,4 @@ $("#post-messages-button").click(function () {
 
 
 */
+document.getElementById("post-messages-button").onclick = postMessage;
