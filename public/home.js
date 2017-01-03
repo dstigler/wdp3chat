@@ -8,14 +8,16 @@ $(function () {
         type: "GET",
         url: "/api/roomlist"
     }).success(function (rooms) {
-        roomId = rooms[0].id;
+        //roomId = rooms[0].id;
         //getMessages();
+        console.log(rooms);
         $.each(rooms, function (key, room) {
-            console.log(rooms);
+
             if(room.chat_name == "Mainchat"){
                 var a = '<li class="state-default ui-selected"><a data-room-id="' + room._id +
                         '" class="room list-group-item">' + room.chat_name + '</a></li>';
                 roomId = room._id;
+                console.log(roomId);
             }else{
                 var a = '<li class="state-default"><a data-room-id="' + room._id +
                         '" class="room list-group-item">' + room.chat_name + '</a></li>';
@@ -27,11 +29,11 @@ $(function () {
     });
 });
 
-    $('body').on('click', 'a.room', function (event) {
+/*    $(document).on('click', 'a.room', function (event) {
         roomId = $(event.target).attr("data-room-id");
         console.log(roomId);
         //getMessages();
-    });
+    });*/
 
     $("#post-messages-button").click(function () {
         console.log($("#post-messages-area").val());

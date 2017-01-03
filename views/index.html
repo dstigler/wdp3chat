@@ -56,6 +56,8 @@
 				selecting: function(event, ui){
 					if ($(".ui-selected, .ui-selecting" ).length > 1){
 						$(ui.selecting).removeClass("ui-selecting");
+						roomId = $(".ui-selected a").data-room-id.val();
+						console.log(roomId);
 					}
 				}
 			});
