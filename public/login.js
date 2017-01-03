@@ -15,10 +15,10 @@ $('.tab a').on('click', function (e) {
 
 function changeSignupToLogin(){
 
-    $('#login').parent().addClass('active');
-    $('#signup').parent().siblings().removeClass('active');
+    $('#logintab').parent().addClass('active');
+    $('#signuptab').parent().siblings().removeClass('active');
 
-    target = $('#login').attr('href');
+    target = $('#logintab').attr('href');
 
     $('.tab-content > div').not(target).hide();
 
