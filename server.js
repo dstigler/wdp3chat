@@ -15,7 +15,7 @@ var config = require('./config');
 
 var User = require('./app/models/user');
 var Rooms = require('./app/models/room');
-var Messages = require('./app/models/messages')
+var Message = require('./app/models/messages')
 
 var port = process.env.PORT || 8080;
 mongoose.connect(config.database);
@@ -191,14 +191,14 @@ apiRoutes.route("/roomlist/:roomId/messages")
     .post(function (req, res) {
         var roomId = req.params.roomId;
         console.log(req.body);
-        var message = {
+        var msg = {
             msg_datetime: Date.now(),
             msg_text: req.body.text,
             msg_chat_id: roomId,
             msg_user_id: 'jfdkslj3kj4'
         };
 
-        Messages.push(message);
+        Message.push(msg);
 
         res.sendStatus(200);
   });
