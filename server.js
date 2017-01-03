@@ -11,6 +11,7 @@ app.use(cookieParser())
 var jwt = require('jsonwebtoken');
 var config = require('./config');
 var User = require('./app/models/user');
+var Rooms = require('./app/models/room');
 
 var port = process.env.PORT || 8080;
 mongoose.connect(config.database);
