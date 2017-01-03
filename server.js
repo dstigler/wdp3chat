@@ -62,8 +62,8 @@ app.route('/login')
           //console.log(decoded);
 
         res.cookie('auth',token);
-        //res.send({message: 'ok'});
-        res.redirect('/');
+        res.send({message: 'ok'});
+        //res.redirect('/');
         //res.send(req.body);
       });
 
