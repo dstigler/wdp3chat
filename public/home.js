@@ -30,7 +30,7 @@ $(function () {
 
     $("#post-messages-button").click(function () {
         var message = {text: $("#post-messages-area").val()};
-
+        console.log("post-button pressed");
         $.ajax({
             type: "POST",
             url: "/api/roomlist/" + roomId + "/messages",
