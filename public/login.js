@@ -12,7 +12,7 @@ function changeTab(){
 
   $(target).fadeIn(600);
 
-});
+};
 
 function createUser() {
     var nu = document.getElementById("newname").value;
