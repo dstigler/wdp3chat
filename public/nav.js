@@ -47,7 +47,9 @@ $("#roomsBtn").click(function() {
    window.location.href = "/api/rooms";
 });
 
-$("#logoutBtn").click(function logoutUser() {
+$("#logoutBtn").click(logoutUser);
+
+function logoutUser() {
     $.ajax({
        type: "GET",
         url: "/api/logout",
@@ -77,4 +79,4 @@ $("#logoutBtn").click(function logoutUser() {
      .success(function(data){
          $(window).html(data);
      });
-});
+};
