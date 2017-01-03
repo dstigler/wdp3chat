@@ -23,6 +23,7 @@ function changeSignupToLogin(){
     $('#signup').hide();
 
     $('#login').fadeIn(600);
+    $('#loginBtn').focus();
 
 }
 
