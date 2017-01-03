@@ -22,22 +22,27 @@ $(function () {
         });
 
     });
-/*
-    $("#post").click(function () {
-        var message = {text: $("#message").val()};
+
+    $('body').on('click', 'a.room', function (event) {
+        roomId = $(event.target).attr("data-room-id");
+        //getMessages();
+    });
+
+    $("#post-messages-button").click(function () {
+        var message = {text: $("#post-messages-area").val()};
 
         $.ajax({
             type: "POST",
-            url: "/api/rooms/" + roomId + "/messages",
+            url: "/api/roomlist/" + roomId + "/messages",
             data: JSON.stringify(message),
             contentType : "application/json"
         }).success(function () {
-            $("#message").val("");
-            getMessages();
+            $("#post-messages-area").val("");
+            //getMessages();
         });
     });
 
-    $('body').on('click', 'a.room', function (event) {
+/*    $('body').on('click', 'a.room', function (event) {
         roomId = $(event.target).attr("data-room-id");
         getMessages();
     });

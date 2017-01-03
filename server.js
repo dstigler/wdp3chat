@@ -169,18 +169,35 @@ apiRoutes.route('/rooms')
         //console.log(jwt.decode(req.cookie));
         //console.log(jwt.decode(req.cookies.auth));
     });
-    
+
 apiRoutes.route('/roomlist')
     .get(function(req, res){
-        Rooms.find({}, function(err, rooms){
+        Rooms.find({}, function(err, rooms, next){
          if(err){
              res.sent('401');
          }else {
              res.json(rooms);
+             next();
          }
         // .catch(next);
     });
 });
+
+apiRoutes.route("/roomlist/:roomId/messages")
+    .post(function (req, res) {
+        var roomId = req.params.roomId;
+        console.log(req.body);
+        var message = {
+            msg_datetime: Date.now(),
+            msg_text: req.body.text,
+            msg_chat_id: roomId,
+            msg_user_id: 'jfdkslj3kj4'
+        };
+
+        Messages.push(message);
+
+        res.sendStatus(200);
+  });
 
 apiRoutes.route('/users')
     .get(function(req, res){
