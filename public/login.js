@@ -1,6 +1,7 @@
-$('.tab a').on('click', function (e) {
-//function changeTab(){
-//  e.preventDefault();
+$('.tab a').on('click', changeTab);
+
+
+function changeTab(){
 
   $(this).parent().addClass('active');
   $(this).parent().siblings().removeClass('active');
@@ -17,6 +18,7 @@ function createUser() {
     var nu = document.getElementById("newname").value;
     var ne = document.getElementById("newmail").value;
     var np = document.getElementById("newpwd").value;
+    //var bla = $('#txt_name').val();
     $.ajax({
        type: "POST",
         url: "/login",
@@ -30,19 +32,10 @@ function createUser() {
 
         success: function(data) {
           console.log('Added User');
+          changeTab();
+          $('#uname').val('nu');
+          $('#pwd').val('np');
 
-         /* e.preventDefault();
-
-          $(this).parent().addClass('active');
-          $(this).parent().siblings().removeClass('active');
-
-          target = $(this).attr('href');
-
-          $('.tab-content > div').not(target).hide();
-
-          $(target).fadeIn(600);*/
-
-          //TODO: set content of login
         },
         error: function(data){
             console.log('Invalid input');
