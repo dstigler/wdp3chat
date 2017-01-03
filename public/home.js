@@ -34,7 +34,10 @@ $(function () {
         console.log(roomId);
         //getMessages();
     });*/
-
+function changeRoomId(){
+    var roomId = $('li.ui-selected').next('a').find('data-room-id').val();
+    console.log(roomId);
+};
     $("#post-messages-button").click(function () {
         console.log($("#post-messages-area").val());
         var message = {text: $("#post-messages-area").val()};
