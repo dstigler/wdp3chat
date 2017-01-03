@@ -8,7 +8,7 @@ $(function () {
         type: "GET",
         url: "/api/roomlist"
     }).success(function (rooms) {
-        //roomId = rooms[0].id;
+        roomId = rooms[0].id;
         //getMessages();
         console.log(rooms);
         $.each(rooms, function (key, room) {
@@ -16,7 +16,7 @@ $(function () {
             if(room.chat_name == "Mainchat"){
                 var a = '<li class="state-default ui-selected"><a data-room-id="' + room._id +
                         '" class="room list-group-item">' + room.chat_name + '</a></li>';
-                roomId = room._id;
+                //roomId = room._id;
                 console.log(roomId);
             }else{
                 var a = '<li class="state-default"><a data-room-id="' + room._id +
@@ -34,30 +34,30 @@ $(function () {
         console.log(roomId);
         //getMessages();
     });*/
-function changeRoomId(){
+/*function changeRoomId(){
     roomId = $('li.ui-selected').next('a').find('data-room-id').val();
     console.log(roomId);
 };
 
 
-$('#rooms-sortable').on('click','li.state-default',function() {
+$('ul#rooms-sortable').on('click','li.state-default',function() {
     console.log('testing');
 });
-
-    $("#post-messages-button").click(function () {
-        console.log($("#post-messages-area").val());
-        var message = {text: $("#post-messages-area").val()};
-        console.log("post-button pressed");
-        $.ajax({
-            type: "POST",
-            url: "/api/messages/" + roomId,
-            data: JSON.stringify(message),
-            contentType : "application/json"
-        }).success(function () {
-            $("#post-messages-area").val("");
-            //getMessages();
-        });
+*/
+$("#post-messages-button").click(function () {
+    console.log($("#post-messages-area").val());
+    var message = {text: $("#post-messages-area").val()};
+    console.log("post-button pressed");
+    $.ajax({
+        type: "POST",
+        url: "/api/messages/" + roomId,
+        data: JSON.stringify(message),
+        contentType : "application/json"
+    }).success(function () {
+        $("#post-messages-area").val("");
+        //getMessages();
     });
+});
 
 /*    $('body').on('click', 'a.room', function (event) {
         roomId = $(event.target).attr("data-room-id");
