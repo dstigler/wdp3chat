@@ -1,6 +1,6 @@
 $('.tab a').on('click', function (e) {
-
-  e.preventDefault();
+//function changeTab(){
+//  e.preventDefault();
 
   $(this).parent().addClass('active');
   $(this).parent().siblings().removeClass('active');
