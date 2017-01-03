@@ -10,7 +10,7 @@ $(function () {
         //getMessages();
         $.each(rooms, function (key, room) {
             console.log(rooms);
-            var a = '<li class="state-default"><a href="#" data-room-id="' + room._id + '" class="room list-group-item">' + room.chat_name + '</a></li>';
+            var a = '<li class="state-default"><a data-room-id="' + room._id + '" class="room list-group-item">' + room.chat_name + '</a></li>';
             $("#rooms-sortable").append(a);
         });
 
