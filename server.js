@@ -119,9 +119,10 @@ apiRoutes.use(function(req, res, next) {
     // return an error
     /*return res.status(403).send({
         success: false,
-        message: 'No token provided.'*/
-        return res.redirect('/');
-    });
+        message: 'No token provided.'
+
+    });*/
+    return res.redirect('/');
   }
 });
 
