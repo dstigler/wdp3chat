@@ -165,3 +165,9 @@
  		margin-bottom: 30px;
  	}
  }
+
+ @media screen and (max-width: 480px){
+	 .nav{
+		 flex-direction: column;
+	 }
+ }
