@@ -187,7 +187,7 @@ apiRoutes.route('/roomlist')
     });
 });
 
-apiRoutes.route("/roomlist/{roomId}/messages")
+apiRoutes.route("/roomlist/messages")
     .get(function (req, res) {
         var roomId = req.params.roomId;
 
@@ -211,7 +211,7 @@ apiRoutes.route("/roomlist/{roomId}/messages")
         })
     })
     .post(function (req, res) {
-        var roomId = req.params.roomId;
+        var roomId = 586bc112852c8845a199456e;//req.params.roomId;
         console.log(req.body);
         var msg = {
             msg_datetime: Date.now(),
