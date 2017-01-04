@@ -82,7 +82,7 @@
 	padding-left: 5px;
 }
 
-#post-messages-button, #delete-messages-button {
+#postMsgButton, #delete-messages-button {
 	margin-top: 10px;
 	-moz-box-shadow:inset 0px 1px 3px 0px #91b8b3;
 	-webkit-box-shadow:inset 0px 1px 3px 0px #91b8b3;
@@ -119,12 +119,12 @@
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#6c7c7c', endColorstr='#768d87',GradientType=0);
 	background-color:#6c7c7c;
 }
-#post-messages-button:active, #delete-messages-button:active {
+#postMsgButton:active, #delete-messages-button:active {
 	position:relative;
 	top:1px;
 }
 
-#post-messages-button {
+#postMsgButton {
 	width: 20%;
 }
 
@@ -161,7 +161,7 @@
  		width: 95%;
  	}
 
- 	#post-messages-button {
+ 	#postMsgButton {
  		margin-bottom: 30px;
  	}
  }
