@@ -220,7 +220,12 @@ apiRoutes.route("/roomlist/messages")
             msg_user_id: 'jfdkslj3kj4'
         };
 
-        Message.push(msg);
+        //Message.push(msg);
+        newUser.save(function(err) {
+          if (err) throw err;
+
+          console.log("Message saved");
+        });
 
         res.sendStatus(200);
   });
