@@ -213,15 +213,15 @@ apiRoutes.route("/roomlist/messages")
     .post(function (req, res) {
         var roomId = "586bc112852c8845a199456e";//req.params.roomId;
         console.log(req.body);
-        var msg = {
+        var msg = new Message({
             msg_datetime: Date.now(),
             msg_text: req.body.text,
             msg_chat_id: roomId,
             msg_user_id: 'jfdkslj3kj4'
-        };
+        });
 
         //Message.push(msg);
-        newUser.save(function(err) {
+        msg.save(function(err) {
           if (err) throw err;
 
           console.log("Message saved");
