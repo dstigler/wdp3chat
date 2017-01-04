@@ -219,7 +219,7 @@ apiRoutes.route("/roomlist/messages")
             msg_chat_id: 'Mainchat',
             msg_user_id: 'test'
         });
-
+        console.log(req.body);
         //Message.push(msg);
         msg.save(function(err) {
           if (err) throw err;
