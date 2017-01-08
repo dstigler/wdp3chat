@@ -222,8 +222,8 @@ apiRoutes.route("/roomlist/messages")
         var msg = new Message({
             msg_datetime: Date.now(),
             msg_text: req.body.text,
-            msg_chat_id: 'Mainchat',
-            msg_user_id: decoded.name
+            msg_chat_name: req.body.roomId,
+            msg_user_name: decoded.name
         });
         console.log(req.body);
         //Message.push(msg);
