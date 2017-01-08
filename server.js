@@ -59,7 +59,10 @@ app.route('/login')
           //res.sendStatus(200);
               // if user is found and password is right
               // create a token
-          var token = jwt.sign(user, app.get('superSecret'), {
+          var userData = {
+              name : req.body.username
+          };
+          var token = jwt.sign(userData, app.get('superSecret'), {
             expiresIn: '60m' // expires in 24 hours
           });
           console.log(token);
@@ -212,7 +215,10 @@ apiRoutes.route("/roomlist/messages")
     })
     .post(function (req, res) {
         var roomId = "586bc112852c8845a199456e";//req.params.roomId;
-        console.log(req.body);
+        var token = req.cookies.auth;
+        var decoded = jwt.decode(token);
+        console.log(decoded);
+        //console.log(req.body);
         var msg = new Message({
             msg_datetime: Date.now(),
             msg_text: req.body.text,
