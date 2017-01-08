@@ -218,7 +218,7 @@ apiRoutes.route("/roomlist/messages")
         //var token = req.cookies.auth;
         //var decoded = jwt.decode(token);
         console.log(req.body);
-        console.log(decoded);
+        //console.log(decoded);
         //console.log(req.body);
         var msg = new Message({
             msg_datetime: Date.now(),
