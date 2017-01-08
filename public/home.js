@@ -44,7 +44,7 @@ $('ul#rooms-sortable').on('click','li.state-default',function() {
 function postMessage() {
     console.log(roomId);
     console.log($("#post-messages-area").val());
-    var message = {text: $("#post-messages-area").val()};
+    var message = $("#post-messages-area").val();
     console.log("post-button pressed");
     $.ajax({
         type: "POST",
