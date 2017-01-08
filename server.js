@@ -215,8 +215,8 @@ apiRoutes.route("/roomlist/messages")
     })
     .post(function (req, res) {
         var roomId = "586bc112852c8845a199456e";//req.params.roomId;
-        //var token = req.cookies.auth;
-        //var decoded = jwt.decode(token);
+        var token = req.cookies.auth;
+        var decoded = jwt.decode(token);
         console.log(req.body);
         //console.log(decoded);
         //console.log(req.body);
