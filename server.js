@@ -224,7 +224,7 @@ apiRoutes.route("/roomlist/messages")
                 });
             }
         });
-        console.log(roomMessages);
+        console.log(roomMessages[0]);
         res.json({
           room: roomId,
           messages: roomMessages
