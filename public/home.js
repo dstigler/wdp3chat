@@ -53,7 +53,7 @@ function postMessage() {
         contentType : "application/json"
     }).success(function () {
         $("#post-messages-area").val("");
-        //getMessages();
+        getMessages();
     });
 };//);
 

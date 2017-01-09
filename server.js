@@ -224,13 +224,13 @@ apiRoutes.route("/roomlist/messages:roomId")
                 //console.log(JSON.stringify(msgs.map(function(obj){text: `${obj.msg_user_name}: ${obj.msg_text}`})));
                 roomMessages = msgs.map(function(obj){
                     console.log('text: '+obj.msg_user_name+': '+obj.msg_text);
-                    return {text: `${obj.msg_user_name}: ${obj.msg_text}`}
+                    return {text: obj.msg_user_name+': '+obj.msg_text};
                 });
             }
         });
         console.log("Content: " + roomMessages);
         res.json({
-          //room: roomId,
+          room: roomId,
           messages: roomMessages
         })
     })
