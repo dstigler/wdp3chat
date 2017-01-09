@@ -202,14 +202,21 @@ apiRoutes.route("/roomlist/messages")
             //return {text: `${userName}: ${m.text}`};
             return {text: `${m.msg_user_name}:${m.msg_text}`}
         });*/
-        var room = Rooms.find(room, r => r.chat_name === roomId);
-        if (!room) {
-          res.sendStatus(404);
-          return;
-        }
+        Rooms.findOne({chat_name: roomId}, function(err, room) {
+          if (err) {
+              //room not found
+              return res.sent(401);
+          }
+          if(!room){
+              return res.sent(401);
+          }
+        });
         var roomMessages;
-        Message.find({"msg_chat_name":roomId}, function(msgs, err){
+        Message.find({msg_chat_name:roomId}, function(msgs, err){
             if(err){
+                res.sent(401);
+            }
+            if(!msgs){
                 return {text: `${roomId}: Chat is empty!`}
             }else{
                 roomMessages = msgs.map(function(obj){
