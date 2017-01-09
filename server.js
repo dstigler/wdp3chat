@@ -212,8 +212,9 @@ apiRoutes.route("/roomlist/messages:roomId")
               res.sendStatus(401);
           }
         });
+        //).sort('-msg_datetime').exec(function(err, msgs){
         var roomMessages;
-        Message.find({'msg_chat_name': roomId}).sort('-msg_datetime').exec(function(err, msgs){
+        Message.find({'msg_chat_name': roomId},function(err, msgs){
             if(err){
                 res.sendStatus(401);
             }
