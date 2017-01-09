@@ -49,7 +49,7 @@ function postMessage() {
     console.log("post-button pressed");
     $.ajax({
         type: "POST",
-        url: "/api/roomlist/messages",
+        url: "/api/roomlist/messages"+roomId,
         data: JSON.stringify({
             "msg": message,
             "room": roomId}),
