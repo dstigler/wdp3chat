@@ -230,7 +230,7 @@ apiRoutes.route("/roomlist/messages")
         });
         console.log(roomMessages);
         res.json({
-          room: roomId,
+          //room: roomId,
           messages: roomMessages
         })
     })
