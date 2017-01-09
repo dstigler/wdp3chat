@@ -205,16 +205,16 @@ apiRoutes.route("/roomlist/messages")
         Rooms.find({chat_name: roomId}, function(err, room) {
           if (err) {
               //room not found
-              res.sent(401);
+              res.sendStatus(401);
           }
           if(!room){
-              res.sent(401);
+              res.sendStatus(401);
           }
         });
         var roomMessages;
-        Message.find({msg_chat_name:roomId}, function(msgs, err){
+        Message.find({msg_chat_name:roomId}, function(err, msgs){
             if(err){
-                res.sent(401);
+                res.sendStatus(401);
             }
             if(!msgs){
                 return {text: `${roomId}: Chat is empty!`}
