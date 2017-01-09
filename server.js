@@ -218,7 +218,7 @@ apiRoutes.route("/roomlist/messages:roomId")
                 res.sendStatus(401);
             }
             if(!msgs){
-                return {text: `${roomId}: Chat is empty!`}
+                roomMessages = {text: `${roomId}: Chat is empty!`}
             }else{
                 //console.log(JSON.stringify(msgs.map(function(obj){text: `${obj.msg_user_name}: ${obj.msg_text}`})));
 
