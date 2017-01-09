@@ -226,7 +226,7 @@ apiRoutes.route("/roomlist/messages")
         });
         console.log(roomMessages);
         res.json({
-          room: room,
+          room: roomId,
           messages: roomMessages
         })
     })
