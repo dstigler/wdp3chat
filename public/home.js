@@ -49,10 +49,10 @@ function postMessage() {
     console.log("post-button pressed");
     $.ajax({
         type: "POST",
-        url: "/api/roomlist/messages/" + roomId,
-        /*data: JSON.stringify({
+        url: "/api/roomlist/messages",
+        data: JSON.stringify({
             "msg": message,
-            "room": roomId}),*/
+            "room": roomId}),
         contentType : "application/json"
     }).success(function () {
         $("#post-messages-area").val("");
@@ -68,10 +68,8 @@ function postMessage() {
     function getMessages() {
         $.ajax({
             type: "GET",
-            url: "/api/roomlist/messages",
-            data: {
-                room: roomId
-            },
+            url: "/api/roomlist/messages"+roomId,
+
             contentType : "application/json"
         }).success(function (data) {
             console.log(data);

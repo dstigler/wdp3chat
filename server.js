@@ -190,7 +190,7 @@ apiRoutes.route('/roomlist')
     });
 });
 
-apiRoutes.route("/roomlist/messages/:roomId")
+apiRoutes.route("/roomlist/messages:roomId")
     .get(function (req, res) {
         var roomId = 'Mainchat';//req.body.room;
         console.log("Body: "+req.Params["room"]);
