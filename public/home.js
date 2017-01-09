@@ -69,9 +69,9 @@ function postMessage() {
         $.ajax({
             type: "GET",
             url: "/api/roomlist/messages",
-            data: JSON.stringify({
+            data: {
                 room: roomId
-            }),
+            },
             contentType : "application/json"
         }).success(function (data) {
             console.log(data);
