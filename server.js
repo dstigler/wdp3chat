@@ -192,7 +192,7 @@ apiRoutes.route('/roomlist')
 
 apiRoutes.route("/roomlist/messages:roomId")
     .get(function (req, res) {
-        var roomId = 'Mainchat';//req.body.room;
+        var roomId = req.params.roomId;//req.body.room;
         console.log("Body: "+req.params.roomId);
         /*
         var roomMessages = Message
