@@ -202,7 +202,7 @@ apiRoutes.route("/roomlist/messages")
             //return {text: `${userName}: ${m.text}`};
             return {text: `${m.msg_user_name}:${m.msg_text}`}
         });*/
-        Rooms.find({chat_name: roomId}, function(err, room) {
+        Rooms.find({'chat_name': roomId}, function(err, room) {
           if (err) {
               //room not found
               res.sendStatus(401);
@@ -212,14 +212,14 @@ apiRoutes.route("/roomlist/messages")
           }
         });
         var roomMessages;
-        Message.find({msg_chat_name:roomId}, function(err, msgs){
+        Message.find({'msg_chat_name': roomId}, function(err, msgs){
             if(err){
                 res.sendStatus(401);
             }
             if(!msgs){
                 return {text: `${roomId}: Chat is empty!`}
             }else{
-                console.log(msgs.map(function(obj){text: `${obj.msg_user_name}: ${obj.msg_text}`}));
+                console.log(JSON.stringify(msgs.map(function(obj){text: `${obj.msg_user_name}: ${obj.msg_text}`})));
                 roomMessages = msgs.map(function(obj){
                     return {text: `${obj.msg_user_name}: ${obj.msg_text}`}
 
