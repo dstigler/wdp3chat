@@ -213,7 +213,7 @@ apiRoutes.route("/roomlist/messages")
           }
         });
         var roomMessages;
-        Message.find({'msg_chat_name': roomId}, function(err, msgs){
+        Message.find({'msg_chat_name': 'Mainchat'}, function(err, msgs){
             if(err){
                 res.sendStatus(401);
             }
