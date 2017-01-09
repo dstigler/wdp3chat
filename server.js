@@ -193,7 +193,7 @@ apiRoutes.route('/roomlist')
 apiRoutes.route("/roomlist/messages")
     .get(function (req, res) {
         var roomId = req.body.room;
-
+        /*
         var roomMessages = Message
           .filter(m => m.msg_chat_name === roomId)
           .map(m => {
@@ -201,13 +201,22 @@ apiRoutes.route("/roomlist/messages")
             //var userName = user ? user.alias : "unknown";
             //return {text: `${userName}: ${m.text}`};
             return {text: `${m.msg_user_name}:${m.msg_text}`}
-          });
-
+        });*/
         var room = Rooms.find(room, r => r.chat_name === roomId);
         if (!room) {
           res.sendStatus(404);
           return;
         }
+        var roomMessages;
+        Message.find({"msg_chat_name":roomId}, function(msgs, err){
+            if(err){
+                return {text: `${roomId}: Chat is empty!`}
+            }else{
+                roomMessages = msgs.map(function(obj){
+                    return {text: `${obj.msg_user_name}:${obj.msg_text}`}
+                });
+            }
+        });
 
         res.json({
           room: room,
