@@ -192,17 +192,18 @@ apiRoutes.route('/roomlist')
 
 apiRoutes.route("/roomlist/messages")
     .get(function (req, res) {
-        var roomId = req.params.roomId;
+        var roomId = req.body.room;
 
         var roomMessages = messages
-          .filter(m => m.roomId === roomId)
+          .filter(m => m.msg_chat_name === roomId)
           .map(m => {
-            var user = _.find(users, u => u.id === m.userId);
-            var userName = user ? user.alias : "unknown";
-            return {text: `${userName}: ${m.text}`};
+            //var user = _.find(users, u => u.id === m.userId);
+            //var userName = user ? user.alias : "unknown";
+            //return {text: `${userName}: ${m.text}`};
+            return {text: `${m.msg_user_name}:${m.msg_text}`}
           });
 
-        var room = _.find(room, r => r.id === roomId);
+        var room = Rooms.find(room, r => r.chat_name === roomId);
         if (!room) {
           res.sendStatus(404);
           return;
@@ -214,10 +215,10 @@ apiRoutes.route("/roomlist/messages")
         })
     })
     .post(function (req, res) {
-        var roomId = "586bc112852c8845a199456e";//req.params.roomId;
+        //var roomId = "586bc112852c8845a199456e";//req.params.roomId;
         var token = req.cookies.auth;
         var decoded = jwt.decode(token);
-        console.log(req.body);
+        //console.log(req.body);
         //console.log(decoded);
         //console.log(req.body);
         var msg = new Message({
@@ -226,7 +227,7 @@ apiRoutes.route("/roomlist/messages")
             msg_chat_name: req.body.room,
             msg_user_name: decoded.name
         });
-        console.log(req.body);
+        //console.log(req.body);
         //Message.push(msg);
         msg.save(function(err) {
           if (err) throw err;

@@ -14,6 +14,7 @@ $(function () {
                 var a = '<li class="state-default ui-selected"><a data-room-id="' + room._id +
                         '" class="room list-group-item">' + room.chat_name + '</a></li>';
                 roomId = room.chat_name;
+                getMessages();
                 console.log(roomId);
             }else{
                 var a = '<li class="state-default"><a data-room-id="' + room._id +
@@ -63,21 +64,22 @@ function postMessage() {
         roomId = $(event.target).attr("data-room-id");
         getMessages();
     });
-
+*/
     function getMessages() {
         $.ajax({
             type: "GET",
-            url: "/api/rooms/" + roomId + "/messages",
+            url: "/api/rooms/messages",
         }).success(function (data) {
-            $("#roomName").text("Messages for " + data.room.name);
+            console.log(data);
+            //$("#roomName").text("Messages for " + data.room.name);
             var messages = "";
             $.each(data.messages, function (key, message) {
                 messages += message.text + "\r";
             });
-            $("#messages").val(messages);
+            $("#chat-textarea").val(messages);
         });
     }
 
 
-*/
+
 document.getElementById("postMsgButton").onclick = postMessage;
