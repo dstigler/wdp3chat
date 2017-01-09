@@ -223,7 +223,7 @@ apiRoutes.route("/roomlist/messages")
                 //console.log(JSON.stringify(msgs.map(function(obj){text: `${obj.msg_user_name}: ${obj.msg_text}`})));
 
                 roomMessages = msgs.map(function(obj){
-                    console.log(obj);
+                    console.log(obj.msg_text);
                     return {text: `${obj.msg_user_name}: ${obj.msg_text}`}
                 });
             }
