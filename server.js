@@ -202,13 +202,13 @@ apiRoutes.route("/roomlist/messages")
             //return {text: `${userName}: ${m.text}`};
             return {text: `${m.msg_user_name}:${m.msg_text}`}
         });*/
-        Rooms.findOne({chat_name: roomId}, function(room, err) {
+        Rooms.find({chat_name: roomId}, function(err, room) {
           if (err) {
               //room not found
-              return res.sent(401);
+              res.sent(401);
           }
           if(!room){
-              return res.sent(401);
+              res.sent(401);
           }
         });
         var roomMessages;
