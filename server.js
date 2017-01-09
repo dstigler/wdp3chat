@@ -193,7 +193,7 @@ apiRoutes.route('/roomlist')
 apiRoutes.route("/roomlist/messages")
     .get(function (req, res) {
         var roomId = 'Mainchat';//req.body.room;
-        //console.log(req.body);
+        console.log("Body: "+req.body);
         /*
         var roomMessages = Message
           .filter(m => m.msg_chat_name === roomId)
@@ -213,7 +213,7 @@ apiRoutes.route("/roomlist/messages")
           }
         });
         var roomMessages;
-        Message.find({'msg_chat_name': roomId}, function(err, msgs){
+        Message.find({'msg_chat_name': roomId}).sort('-msg_datetime').exec(function(err, msgs){
             if(err){
                 res.sendStatus(401);
             }
@@ -228,7 +228,7 @@ apiRoutes.route("/roomlist/messages")
                 });
             }
         });
-        console.log(roomMessages);
+        console.log("Content: " + roomMessages);
         res.json({
           //room: roomId,
           messages: roomMessages
