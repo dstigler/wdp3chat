@@ -68,7 +68,7 @@ function postMessage() {
     function getMessages() {
         $.ajax({
             type: "GET",
-            url: "/api/rooms/messages",
+            url: "/api/roomlist/messages",
         }).success(function (data) {
             console.log(data);
             //$("#roomName").text("Messages for " + data.room.name);
