@@ -194,7 +194,7 @@ apiRoutes.route("/roomlist/messages")
     .get(function (req, res) {
         var roomId = req.body.room;
 
-        var roomMessages = messages
+        var roomMessages = Message
           .filter(m => m.msg_chat_name === roomId)
           .map(m => {
             //var user = _.find(users, u => u.id === m.userId);
