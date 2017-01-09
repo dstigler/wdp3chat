@@ -66,7 +66,7 @@ function postMessage() {
     });
 */
     function getMessages() {
-        console.log(roomId);
+        console.log("getMessages "+roomId);
         $.ajax({
             type: "GET",
             url: "/api/roomlist/messages",
