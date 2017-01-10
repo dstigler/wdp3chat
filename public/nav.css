@@ -46,3 +46,9 @@ h2 {
 .nav li:hover a {
 	color: #FFF;
 }
+
+@media screen and (max-width: 480px){
+	 .nav {
+		flex-direction: column;
+	 }
+}
