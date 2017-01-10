@@ -27,6 +27,7 @@ $(function () {
 });
 
 function setRoomId(){
+    console.log($('.ui-selected .room' ).val());
     roomId = $('.ui-selected .room' ).val();
 };
 
@@ -88,3 +89,4 @@ function postMessage() {
 
 setTimeout(getMessages, 750);
 document.getElementById("postMsgButton").onclick = postMessage;
+document.getElementById("rooms").onclick = setRoomId;
