@@ -25,8 +25,9 @@ $(function () {
         });
     });
 });
-
-function setRoomId(){
+$(".state-default").click(function (){
+    var index = $( ".ui-selected a" ).val();
+    console.log(index);
     console.log($('.ui-selected .room' ).val());
     roomId = $('.ui-selected .room' ).val();
 };
@@ -89,4 +90,4 @@ function postMessage() {
 
 //setTimeout(getMessages, 750);
 document.getElementById("postMsgButton").onclick = postMessage;
-document.getElementById("rooms-sortable").onclick = setRoomId;
+//document.getElementById("rooms-sortable").onclick = setRoomId;
