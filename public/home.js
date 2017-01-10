@@ -25,13 +25,13 @@ $(function () {
         });
     });
 });
-/*$(".state-default").click(function (){
+$("#rooms").click(function (){
     var index = $( ".ui-selected a" ).val();
     console.log(index);
     console.log($('.ui-selected .room' ).val());
     roomId = $('.ui-selected .room' ).val();
 };
-*/
+
 
 /*    $(document).on('click', 'a.room', function (event) {
         roomId = $(event.target).attr("data-room-id");
