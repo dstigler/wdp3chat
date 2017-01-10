@@ -226,14 +226,14 @@ apiRoutes.route("/roomlist/messages:roomId")
                     console.log('text: '+obj.msg_user_name+': '+obj.msg_text);
                     return {text: obj.msg_user_name+': '+obj.msg_text};
                 });*/
-                res.json(msgs);
+                res.json({messages: msgs});
             }
         });
-        console.log("Content: " + roomMessages);
-        res.json({
+        //console.log("Content: " + roomMessages);
+        /*res.json({
           room: roomId,
           messages: roomMessages
-        })
+      })*/
     })
     .post(function (req, res) {
         //var roomId = "586bc112852c8845a199456e";//req.params.roomId;
