@@ -26,6 +26,29 @@ $(function () {
     });
 });
 
+function createRoom() {
+    var nr = document.getElementById("newRoomName").value;
+
+    $.ajax({
+       type: "POST",
+        url: "/api/roomlist",
+        contentType: "application/json",
+        dataType: 'json',
+       data:JSON.stringify({
+           "roomName":nr,
+       }),
+
+        success: function(data) {
+          console.log(data);
+
+        },
+        error: function(data){
+            console.log(data);
+        }
+    });
+};
+
+
 /*    $(document).on('click', 'a.room', function (event) {
         roomId = $(event.target).attr("data-room-id");
         console.log(roomId);

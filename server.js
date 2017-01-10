@@ -187,7 +187,24 @@ apiRoutes.route('/roomlist')
              next();
          }
         // .catch(next);
-    });
+    })
+    .post(function(req, res){
+        Rooms.findOne({'name': req.body.roomName}, function(err, user) {
+            if (err) throw err;
+
+            if (user) {
+                res.json({ success: false, message: 'Room already exists.' });
+            } else {
+                var newRoom = new Room({
+                  chat_name: req.body.roomName,
+                  deleteable: false
+                });
+                newRoom.save(function(err) {
+                  if (err) throw err;
+                  res.json({ success: true, message: 'Room created successfully' });
+                });
+            }
+        });
 });
 
 apiRoutes.route("/roomlist/messages:roomId")
