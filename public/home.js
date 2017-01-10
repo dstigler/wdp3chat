@@ -29,7 +29,7 @@ $("#rooms-sortable").click(function (){
     console.log("clicked");
     var index = $( ".ui-selected a" ).index();
     console.log(index);
-    console.log($('.ui-selected a' ).val());
+    console.log($('.ui-selected .room' ).val());
 //    roomId = $('.ui-selected .room' ).val();
 });
 
