@@ -77,8 +77,8 @@ function postMessage() {
             });
             $("#chat-textarea").val(messages);
         });
-    }
+    };
 
 
-setTimeout(getMessages(), 500);
+setTimeout(getMessages, 500);
 document.getElementById("postMsgButton").onclick = postMessage;
