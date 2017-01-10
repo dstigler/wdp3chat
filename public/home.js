@@ -72,8 +72,8 @@ function postMessage() {
             console.log(data);
             //$("#roomName").text("Messages for " + data.room.name);
             var messages = "";
-            $.each(data.messages, function (key, message) {
-                messages += message.text + "\r";
+            $.each(data.msgs, function (key, message) {
+                messages += message.msg_user_name + ": " + message.msg_text + "\r";//message.text + "\r";
             });
             $("#chat-textarea").val(messages);
         });

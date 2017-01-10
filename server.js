@@ -222,10 +222,11 @@ apiRoutes.route("/roomlist/messages:roomId")
                 roomMessages = {text: `${roomId}: Chat is empty!`}
             }else{
                 //console.log(JSON.stringify(msgs.map(function(obj){text: `${obj.msg_user_name}: ${obj.msg_text}`})));
-                roomMessages = msgs.map(function(obj){
+                /*roomMessages = msgs.map(function(obj){
                     console.log('text: '+obj.msg_user_name+': '+obj.msg_text);
                     return {text: obj.msg_user_name+': '+obj.msg_text};
-                });
+                });*/
+                res.json(msgs);
             }
         });
         console.log("Content: " + roomMessages);
