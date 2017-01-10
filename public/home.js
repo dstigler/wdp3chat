@@ -26,7 +26,9 @@ $(function () {
     });
 });
 
-
+function setRoomId(){
+    roomId = $('.ui-selected .room' ).val();
+};
 
 
 /*    $(document).on('click', 'a.room', function (event) {
