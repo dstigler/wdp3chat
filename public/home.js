@@ -30,7 +30,7 @@ $("#rooms").click(function (){
     console.log(index);
     console.log($('.ui-selected .room' ).val());
     roomId = $('.ui-selected .room' ).val();
-};
+});
 
 
 /*    $(document).on('click', 'a.room', function (event) {
