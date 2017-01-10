@@ -81,5 +81,5 @@ function postMessage() {
     };
 
 
-setTimeout(getMessages, 500);
+setTimeout(getMessages, 750);
 document.getElementById("postMsgButton").onclick = postMessage;
