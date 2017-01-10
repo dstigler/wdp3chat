@@ -40,7 +40,7 @@ function createRoom() {
 
         success: function(data) {
           console.log(data);
-
+          $("#newRoomName").val("");
         },
         error: function(data){
             console.log(data);
@@ -105,4 +105,5 @@ function postMessage() {
 
 
 setTimeout(getMessages, 750);
+document.getElementById("postMsgButton").onclick = postMessage;
 document.getElementById("postMsgButton").onclick = postMessage;
