@@ -76,6 +76,7 @@ function postMessage() {
                 messages += message.msg_user_name + ": " + message.msg_text + "\r";//message.text + "\r";
             });
             $("#chat-textarea").val(messages);
+            setTimeout(getMessages, 500);
         });
     };
 
