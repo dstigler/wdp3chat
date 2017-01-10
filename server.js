@@ -190,13 +190,13 @@ apiRoutes.route('/roomlist')
         })
     })
     .post(function(req, res){
-        Rooms.findOne({'name': req.body.roomName}, function(err, user) {
+        Rooms.findOne({'name': req.body.roomName}, function(err, rooms) {
             if (err) throw err;
 
-            if (user) {
+            if (rooms) {
                 res.json({ success: false, message: 'Room already exists.' });
             } else {
-                var newRoom = new Room({
+                var newRoom = new Rooms({
                   chat_name: req.body.roomName,
                   deleteable: false
                 });
