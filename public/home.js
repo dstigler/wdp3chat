@@ -26,10 +26,11 @@ $(function () {
     });
 });
 $("#rooms").click(function (){
+    console.log("clicked");
     var index = $( ".ui-selected a" ).val();
     console.log(index);
     console.log($('.ui-selected .room' ).val());
-    roomId = $('.ui-selected .room' ).val();
+//    roomId = $('.ui-selected .room' ).val();
 });
 
 
