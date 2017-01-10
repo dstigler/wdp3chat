@@ -75,7 +75,7 @@ function postMessage() {
 
             contentType : "application/json"
         }).success(function (data) {
-            console.log(data);
+            //console.log(data);
             //$("#roomName").text("Messages for " + data.room.name);
             var messages = "";
             $.each(data.messages, function (key, message) {
