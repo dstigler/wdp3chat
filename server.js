@@ -180,13 +180,14 @@ apiRoutes.route('/rooms')
 apiRoutes.route('/roomlist')
     .get(function(req, res, next){
         Rooms.find({}, function(err, rooms){
-         if(err){
-             res.sent('401');
-         }else {
-             res.json(rooms);
-             next();
-         }
+            if(err){
+                res.sent('401');
+            }else {
+                res.json(rooms);
+                next();
+            }
         // .catch(next);
+        })
     })
     .post(function(req, res){
         Rooms.findOne({'name': req.body.roomName}, function(err, user) {
@@ -205,7 +206,7 @@ apiRoutes.route('/roomlist')
                 });
             }
         });
-});
+    });
 
 apiRoutes.route("/roomlist/messages:roomId")
     .get(function (req, res) {
