@@ -20,4 +20,4 @@ function createRoom() {
     });
 };
 
-document.getElementById("createRoomBtn").onclick = postMessage;
+document.getElementById("createRoomBtn").onclick = createRoom;
