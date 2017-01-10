@@ -87,6 +87,6 @@ function postMessage() {
     };
 
 
-setTimeout(getMessages, 750);
+//setTimeout(getMessages, 750);
 document.getElementById("postMsgButton").onclick = postMessage;
-document.getElementById("rooms").onclick = setRoomId;
+document.getElementById("rooms-sortable").onclick = setRoomId;
