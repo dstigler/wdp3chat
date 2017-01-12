@@ -13,7 +13,7 @@ $(function () {
             if(room.chat_name == "Mainchat"){
                 var a = '<li class="state-default ui-selected" id="'+room._id+'"><a data-room-id="' + room._id +
                         '" class="room list-group-item">' + room.chat_name + '</a></li>';
-                roomId = room.chat_name;
+                roomId = room._id;
                 getMessages();
                 console.log(roomId);
             }else{
@@ -28,7 +28,8 @@ $(function () {
 $("#rooms-sortable").click(function (){
     console.log("clicked");
     console.log("Value: "+$(this).children(".ui-selected").attr('id'));
-//    roomId = $('.ui-selected .room' ).val();
+    roomId = $(this).children(".ui-selected").attr('id');
+    getMessages();
 });
 
 
