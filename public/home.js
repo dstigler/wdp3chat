@@ -25,7 +25,8 @@ $(function () {
         });
     });
 });
-$("#rooms-sortable button").click(function (){
+
+$("#rooms-sortable").click(function (){
     console.log("clicked");
     var index = $( ".ui-selected a" ).index();
     console.log(index);
