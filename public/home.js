@@ -11,7 +11,7 @@ $(function () {
         $.each(rooms, function (key, room) {
 
             if(room.chat_name == "Mainchat"){
-                var a = '<button class="state-default ui-selected"><a data-room-id="' + room._id +
+                var a = '<button class="state-default ui-selected" ><a data-room-id="' + room._id +
                         '" class="room list-group-item">' + room.chat_name + '</a></button>';
                 roomId = room.chat_name;
                 getMessages();
@@ -25,11 +25,11 @@ $(function () {
         });
     });
 });
-$("#rooms-sortable").click(function (){
+$("#rooms-sortable button").click(function (){
     console.log("clicked");
-    var index = $( ".ui-selected a" ).index();
+    var index = $( ".ui-selected" ).index();
     console.log(index);
-    console.log($('.ui-selected .room' ).val());
+    console.log($('.ui-selected' ).val());
 //    roomId = $('.ui-selected .room' ).val();
 });
 
