@@ -28,9 +28,9 @@ $(function () {
 
 $("#rooms-sortable").click(function (){
     console.log("clicked");
-    var index = $( ".ui-selected a" ).index();
-    console.log(index);
-    console.log($('.ui-selected a' ).val());
+    var index = $( ".ui-selected" ).index();
+    console.log("Index: "+index);
+    console.log($('.ui-selected' ).val());
 //    roomId = $('.ui-selected .room' ).val();
 });
 
