@@ -11,14 +11,13 @@ $(function () {
         $.each(rooms, function (key, room) {
 
             if(room.chat_name == "Mainchat"){
-                var a = '<button class="state-default ui-selected" id="'+room._id+'"><a data-room-id="' + room._id +
-                        '" class="room list-group-item">' + room.chat_name + '</a></button>';
+                var a = '<li class="state-default ui-selected" id="'+room._id+'"><a data-room-id="' + room._id +
+                        '" class="room list-group-item">' + room.chat_name + '</a></li>';
                 roomId = room.chat_name;
                 getMessages();
                 console.log(roomId);
             }else{
-                var a = '<button class="state-default"><a data-room-id="' + room._id +
-                        '" class="room list-group-item">' + room.chat_name + '</a></button>';
+                var a = '<li class="state-default" id="'+room._id+'"><a class="room list-group-item">' + room.chat_name + '</a></li>';
             }
 
             $("#rooms-sortable").append(a);
@@ -26,12 +25,9 @@ $(function () {
     });
 });
 
-$("#rooms-sortable").click(function (){
+$("#rooms-sortable .ui-selected").click(function (){
     console.log("clicked");
-    var index = $( ".ui-selected" ).index();
-    console.log("Index: "+index);
-    var value = $('.ui-selected .room' ).val();
-    console.log("Value: "+value);
+    console.log("Value: "+this.attr('id'));
 //    roomId = $('.ui-selected .room' ).val();
 });
 

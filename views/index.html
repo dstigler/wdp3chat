@@ -24,9 +24,9 @@
 	<div id="chat-room">
 		<div id="rooms">
 		<h2>Rooms</h2>
-			<div id="rooms-sortable">
+			<ul id="rooms-sortable">
 			<!-- Get Rooms-List from database -->
-			</div>
+			</ul>
 		</div>
 
 
@@ -51,13 +51,15 @@
 	<script src="home.js"></script>
 	<script src="nav.js"></script>
 	<script type="text/javascript">
-
-		$("#rooms-sortable button").on('click', function(){
-			console.log($("change"));
-			$(this).siblings().removeClass('ui-selected');
-			$(this).addClass('ui-selected');
+		$( function () {
+			$("#rooms-sortable").selectable({
+				selecting: function(event, ui){
+					if ($(".ui-selected, .ui-selecting" ).length > 1){
+						$(ui.selecting).removeClass("ui-selecting");
+					}
+				}
+			});
 		});
-
 	</script>
 </body>
 </html>
