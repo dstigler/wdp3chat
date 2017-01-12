@@ -221,7 +221,7 @@ apiRoutes.route("/roomlist/messages:roomId")
             //return {text: `${userName}: ${m.text}`};
             return {text: `${m.msg_user_name}:${m.msg_text}`}
         });*/
-        Rooms.find({'chat_name': roomId}, function(err, room) {
+        Rooms.find({'_id': roomId}, function(err, room) {
           if (err) {
               //room not found
               res.sendStatus(401);
