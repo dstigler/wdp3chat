@@ -11,7 +11,7 @@ $(function () {
         $.each(rooms, function (key, room) {
 
             if(room.chat_name == "Mainchat"){
-                var a = '<button class="state-default ui-selected" ><a data-room-id="' + room._id +
+                var a = '<button class="state-default ui-selected" id="'+room._id+'"><a data-room-id="' + room._id +
                         '" class="room list-group-item">' + room.chat_name + '</a></button>';
                 roomId = room.chat_name;
                 getMessages();
@@ -30,7 +30,8 @@ $("#rooms-sortable").click(function (){
     console.log("clicked");
     var index = $( ".ui-selected" ).index();
     console.log("Index: "+index);
-    console.log($('.ui-selected .room' ).value());
+    var value = $('.ui-selected .room' ).val();
+    console.log("Value: "+value);
 //    roomId = $('.ui-selected .room' ).val();
 });
 

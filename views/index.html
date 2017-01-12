@@ -53,6 +53,7 @@
 	<script type="text/javascript">
 
 		$("#rooms-sortable button").on('click', function(){
+			console.log($("change"));
 			$(this).siblings().removeClass('ui-selected');
 			$(this).addClass('ui-selected');
 		});
