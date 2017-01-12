@@ -25,7 +25,7 @@ $(function () {
     });
 });
 
-$("#rooms-sortable .ui-selected").click(function (){
+$("#rooms-sortable .ui-selectee").click(function (){
     console.log("clicked");
     console.log("Value: "+this.attr('id'));
 //    roomId = $('.ui-selected .room' ).val();
