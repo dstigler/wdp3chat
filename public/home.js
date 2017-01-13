@@ -25,11 +25,13 @@ $(function () {
     });
 });
 
-$("#rooms-sortable .state-default").click(function (){
+$("#rooms-sortable").click(function (){
     console.log("clicked");
     console.log("Value: "+$(this).children(".ui-selected").attr('id'));
-    roomId = $(this).children(".ui-selected").attr('id');
-    getMessages();
+    if(this){
+        roomId = $(this).children(".ui-selected").attr('id');
+        getMessages();
+    }
 });
 
 
