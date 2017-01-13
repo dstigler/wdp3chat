@@ -28,7 +28,7 @@ $(function () {
 $("#rooms-sortable").click(function (){
     console.log("clicked");
     console.log("Value: "+$(this).children(".ui-selected").attr('id'));
-    if(this){
+    if (typeof $(this).children(".ui-selected").attr('id') != 'undefined'){
         roomId = $(this).children(".ui-selected").attr('id');
         getMessages();
     }
