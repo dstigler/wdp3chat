@@ -96,7 +96,7 @@ function postMessage() {
                     if(roomId == room._id){
                         var a = '<li class="state-default ui-selected" id="'+room._id+'"><a class="room list-group-item">' + room.chat_name + '</a></li>';
                         roomId = room._id;
-                        found = "ok";
+                        found = 1;
                     }else{
                         var a = '<li class="state-default" id="'+room._id+'"><a class="room list-group-item">' + room.chat_name + '</a></li>';
                     }
