@@ -226,7 +226,7 @@ apiRoutes.route("/roomlist/messages:roomId")
               //room not found
               res.sendStatus(401);
           }
-          if(!room){
+          else if(!room){
               res.sendStatus(401);
           }
         });
