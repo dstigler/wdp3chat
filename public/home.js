@@ -100,7 +100,9 @@ function postMessage() {
                     }else{
                         var a = '<li class="state-default" id="'+room._id+'"><a class="room list-group-item">' + room.chat_name + '</a></li>';
                     }
+
                 }
+                console.log(found);
                 if(found === undefined){
                     roomId = mainId;
                     $("#"+roomId).addClass("ui-selected");
