@@ -79,6 +79,7 @@ function postMessage() {
             console.log(rooms);
             var found;
             var mainId;
+            console.log("Selected RoomId: "+roomId);
             $("#rooms-sortable").empty();
             $.each(rooms, function (key, room) {
                 if(room.chat_name == "Mainchat"){
