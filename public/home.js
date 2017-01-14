@@ -86,7 +86,7 @@ function postMessage() {
                     mainId = room._id;
 
                 }
-                if(roomId == null && room.chat_name == "Mainchat"){
+                if(roomId === undefined && room.chat_name == "Mainchat"){
                     var a = '<li class="state-default ui-selected" id="'+room._id+'"><a class="room list-group-item">' + room.chat_name + '</a></li>';
                     roomId = room._id;
                     getMessages();
@@ -101,7 +101,7 @@ function postMessage() {
                         var a = '<li class="state-default" id="'+room._id+'"><a class="room list-group-item">' + room.chat_name + '</a></li>';
                     }
                 }
-                if(found == null){
+                if(found === undefined){
                     roomId = mainId;
                     $("#"+roomId).addClass("ui-selected");
                 }
