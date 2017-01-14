@@ -102,13 +102,13 @@ function postMessage() {
                     }
 
                 }
-                console.log(found);
-                if(found === undefined){
-                    roomId = mainId;
-                    $("#"+roomId).addClass("ui-selected");
-                }
-                $("#rooms-sortable").append(a);
             });
+            console.log(found);
+            if(found === undefined){
+                roomId = mainId;
+                $("#"+roomId).addClass("ui-selected");
+            }
+            $("#rooms-sortable").append(a);
         });
         console.log("Saved: "+roomId);
         setTimeout(getRooms, 10000);
