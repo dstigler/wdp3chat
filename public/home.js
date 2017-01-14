@@ -2,7 +2,7 @@ var roomId;
 
 $(function () {
     getRooms();
-    getMessages();
+    //getMessages();
 });
 
 $("#rooms-sortable").click(function (){
@@ -77,7 +77,7 @@ function postMessage() {
             //roomId = rooms[0].chat_name;
             //getMessages();
             console.log(rooms);
-            var found = false;
+            var found;
             var mainId;
             $("#rooms-sortable").empty();
             $.each(rooms, function (key, room) {
@@ -87,21 +87,21 @@ function postMessage() {
                 if(roomId == 'undefined' && room.chat_name == "Mainchat"){
                     var a = '<li class="state-default ui-selected" id="'+room._id+'"><a class="room list-group-item">' + room.chat_name + '</a></li>';
                     roomId = room._id;
-                    //getMessages();
+                    getMessages();
                     console.log(roomId);
-                    found = true;
+                    found = "ok";
                 }else{
                     if(roomId == room._id){
                         var a = '<li class="state-default ui-selected" id="'+room._id+'"><a class="room list-group-item">' + room.chat_name + '</a></li>';
                         roomId = room._id;
 
-                        console.log(roomId);
-                        found = true;
+                        console.log("Saved: "+roomId);
+                        found = "ok";
                     }else{
                         var a = '<li class="state-default" id="'+room._id+'"><a class="room list-group-item">' + room.chat_name + '</a></li>';
                     }
                 }
-                if(found == false){
+                if(!found){
                     roomId = mainId;
                     $("#"+roomId).addClass("ui-selected");
                 }
