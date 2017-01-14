@@ -83,8 +83,9 @@ function postMessage() {
             $.each(rooms, function (key, room) {
                 if(room.chat_name == "Mainchat"){
                     mainId = room._id;
+
                 }
-                if(roomId == 'undefined' && room.chat_name == "Mainchat"){
+                if(!roomId && room.chat_name == "Mainchat"){
                     var a = '<li class="state-default ui-selected" id="'+room._id+'"><a class="room list-group-item">' + room.chat_name + '</a></li>';
                     roomId = room._id;
                     getMessages();
@@ -101,7 +102,7 @@ function postMessage() {
                         var a = '<li class="state-default" id="'+room._id+'"><a class="room list-group-item">' + room.chat_name + '</a></li>';
                     }
                 }
-                if(!found){
+                if(found == 'undefined'){
                     roomId = mainId;
                     $("#"+roomId).addClass("ui-selected");
                 }
