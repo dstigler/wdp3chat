@@ -8,16 +8,31 @@ $(function () {
         //roomId = rooms[0].chat_name;
         //getMessages();
         console.log(rooms);
+        var found = false;
+        var mainId;
         $.each(rooms, function (key, room) {
-
             if(room.chat_name == "Mainchat"){
-                var a = '<li class="state-default ui-selected" id="'+room._id+'"><a data-room-id="' + room._id +
-                        '" class="room list-group-item">' + room.chat_name + '</a></li>';
+                mainId = room._id;
+            }
+            if(roomId == 'undefined' && room.chat_name == "Mainchat"){
+                var a = '<li class="state-default ui-selected" id="'+room._id+'"><a class="room list-group-item">' + room.chat_name + '</a></li>';
                 roomId = room._id;
                 getMessages();
                 console.log(roomId);
+                found = true;
             }else{
-                var a = '<li class="state-default" id="'+room._id+'"><a class="room list-group-item">' + room.chat_name + '</a></li>';
+                if(roomId == room._id){
+                    var a = '<li class="state-default ui-selected" id="'+room._id+'"><a class="room list-group-item">' + room.chat_name + '</a></li>';
+                    roomId = room._id;
+                    getMessages();
+                    console.log(roomId);
+                    found = true;
+                }else{
+                    var a = '<li class="state-default" id="'+room._id+'"><a class="room list-group-item">' + room.chat_name + '</a></li>';
+                }
+            }
+            if(found == false){
+                $("#"+roomId).addClass("ui-selected");
             }
 
             $("#rooms-sortable").append(a);
