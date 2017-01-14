@@ -17,14 +17,14 @@ $(function () {
             if(roomId == 'undefined' && room.chat_name == "Mainchat"){
                 var a = '<li class="state-default ui-selected" id="'+room._id+'"><a class="room list-group-item">' + room.chat_name + '</a></li>';
                 roomId = room._id;
-                getMessages();
+                //getMessages();
                 console.log(roomId);
                 found = true;
             }else{
                 if(roomId == room._id){
                     var a = '<li class="state-default ui-selected" id="'+room._id+'"><a class="room list-group-item">' + room.chat_name + '</a></li>';
                     roomId = room._id;
-                    getMessages();
+
                     console.log(roomId);
                     found = true;
                 }else{
@@ -32,9 +32,10 @@ $(function () {
                 }
             }
             if(found == false){
+                roomId = mainId;
                 $("#"+roomId).addClass("ui-selected");
             }
-
+            getMessages();
             $("#rooms-sortable").append(a);
         });
     });
