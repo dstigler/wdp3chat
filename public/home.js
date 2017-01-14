@@ -86,7 +86,7 @@ function postMessage() {
                     mainId = room._id;
 
                 }
-                if(!roomId && room.chat_name == "Mainchat"){
+                if(roomId == null && room.chat_name == "Mainchat"){
                     var a = '<li class="state-default ui-selected" id="'+room._id+'"><a class="room list-group-item">' + room.chat_name + '</a></li>';
                     roomId = room._id;
                     getMessages();
@@ -96,21 +96,19 @@ function postMessage() {
                     if(roomId == room._id){
                         var a = '<li class="state-default ui-selected" id="'+room._id+'"><a class="room list-group-item">' + room.chat_name + '</a></li>';
                         roomId = room._id;
-
-                        console.log("Saved: "+roomId);
                         found = "ok";
                     }else{
                         var a = '<li class="state-default" id="'+room._id+'"><a class="room list-group-item">' + room.chat_name + '</a></li>';
                     }
                 }
-                if(!found){
+                if(found == null){
                     roomId = mainId;
                     $("#"+roomId).addClass("ui-selected");
                 }
                 $("#rooms-sortable").append(a);
             });
         });
-        console.log(roomId);
+        console.log("Saved: "+roomId);
         setTimeout(getRooms, 10000);
     };
 
