@@ -45,7 +45,7 @@ $("#rooms-sortable").click(function (){
     console.log("Value: "+$(this).children(".ui-selected").attr('id'));
     if (typeof $(this).children(".ui-selected").attr('id') != 'undefined'){
         roomId = $(this).children(".ui-selected").attr('id');
-        getMessages();
+        //getMessages();
     }
 });
 
@@ -77,7 +77,7 @@ function postMessage() {
         contentType : "application/json"
     }).success(function () {
         $("#post-messages-area").val("");
-        getMessages();
+        //getMessages();
     });
 };//);
 
