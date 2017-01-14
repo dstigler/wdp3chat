@@ -102,13 +102,14 @@ function postMessage() {
                         var a = '<li class="state-default" id="'+room._id+'"><a class="room list-group-item">' + room.chat_name + '</a></li>';
                     }
                 }
-                if(found == 'undefined'){
+                if(!found){
                     roomId = mainId;
                     $("#"+roomId).addClass("ui-selected");
                 }
                 $("#rooms-sortable").append(a);
             });
         });
+        console.log(roomId);
         setTimeout(getRooms, 10000);
     };
 
