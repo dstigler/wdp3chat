@@ -77,7 +77,7 @@ function postMessage() {
             //roomId = rooms[0].chat_name;
             //getMessages();
             console.log(rooms);
-            var found;
+            var found = "nok";
             var mainId;
             console.log("Selected RoomId: "+roomId);
             $("#rooms-sortable").empty();
@@ -96,7 +96,7 @@ function postMessage() {
                     if(roomId == room._id){
                         var a = '<li class="state-default ui-selected" id="'+room._id+'"><a class="room list-group-item">' + room.chat_name + '</a></li>';
                         roomId = room._id;
-                        found = 1;
+                        found = "ok";
                     }else{
                         var a = '<li class="state-default" id="'+room._id+'"><a class="room list-group-item">' + room.chat_name + '</a></li>';
                     }
@@ -105,7 +105,7 @@ function postMessage() {
                 $("#rooms-sortable").append(a);
             });
             console.log(found);
-            if(found === undefined){
+            if(found == "nok"){
                 roomId = mainId;
                 $("#"+roomId).addClass("ui-selected");
             }
