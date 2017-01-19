@@ -4,7 +4,7 @@ $(function(){
         url: "/api/roomlist"
     }).success(function (rooms) {
         $.each(rooms, function (key, room) {
-            if(room.editable == 'true'){
+            if(room.deleteable == 'true'){
                 var a = '<li><a class="room">' + room.chat_name + '</a><input type="submit" id="' + room._id + '" onclick="deleteRoom()" value="Delete" ></li>';
             }else{
                 var a = '<li><a class="room">' + room.chat_name + '</a></li>';
@@ -57,4 +57,3 @@ function deleteRoom() {
     });
 };
 document.getElementById("createRoomBtn").onclick = createRoom;
-document.getElementById("deleteRoomBtn").onclick = deleteRoom;
