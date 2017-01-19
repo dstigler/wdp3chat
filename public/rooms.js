@@ -46,7 +46,7 @@ function deleteRoom() {
         contentType: "application/json",
         dataType: 'json',
        data:JSON.stringify({
-           "roomId":rId,
+           "roomId":rId
        }),
 
         success: function(data) {

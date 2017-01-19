@@ -214,7 +214,7 @@ apiRoutes.route('/roomlist')
             )
             .catch(res.send('Room not found'));
             res.send('Room deleted');*/
-        Rooms.findById({_id:req.body.roomName}, function(err, room){
+        Rooms.findById({_id:req.body.roomId}, function(err, room){
             if(err) throw err;
             if(!room){
                 res.json({success: false, message: 'Room not found'});
@@ -222,7 +222,7 @@ apiRoutes.route('/roomlist')
                 room.remove(function(err) {
                   if (err) throw err;
                 });
-                Message.remove({msg_chat_name:req.body.roomName}, function(err){
+                Message.remove({msg_chat_name:req.body.roomId}, function(err){
                     if(err) throw err;
                 });
                 res.json({success:true, message: 'Room delete'});
