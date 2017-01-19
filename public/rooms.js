@@ -11,6 +11,8 @@ $(function{
             }
             $("#roomList").append(a);
         });
+
+        
 });
 
 function createRoom() {
