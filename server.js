@@ -206,6 +206,14 @@ apiRoutes.route('/roomlist')
                 });
             }
         });
+    })
+    .delete(function(req, res){
+        Rooms.findOneAndRemove({_id:req.body.roomId})
+            .then(
+                Message.remove({msg_chat_name:req.body.roomId}).exec();
+                res.send('Room deleted');
+            )
+            .catch(res.send('Room not found'););
     });
 
 apiRoutes.route("/roomlist/messages:roomId")
