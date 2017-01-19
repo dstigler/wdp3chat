@@ -38,8 +38,8 @@ function createRoom() {
 };
 
 function deleteRoom() {
-    var rId = $(this).value();
-
+    var rId = $(this).attr("id");
+    console.log(rId);
     $.ajax({
        type: "DELETE",
         url: "/api/roomlist",
