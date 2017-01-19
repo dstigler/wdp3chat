@@ -7,7 +7,7 @@ $(function(){
             if(room.editable == 'true'){
                 var a = '<li><a class="room">' + room.chat_name + '</a><button id="deleteRoomBtn" value="'+room._id+'">Delete</button></li>';
             }else{
-                var a = '<li><a class="room">' + room.chat_name + '</a></li>';
+                var a = '<li><a class="room">' + room.chat_name + '</a><button id="deleteRoomBtn" value="'+room._id+'">Delete</button></li>';
             }
             $(".roomList").append(a);
         });
