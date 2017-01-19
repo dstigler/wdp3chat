@@ -38,7 +38,7 @@ function createRoom() {
 };
 
 function deleteRoom() {
-    var rId = $(this).attr("id");
+    var rId = document.activeElement.getAttribute('id')
     console.log(rId);
     $.ajax({
        type: "DELETE",
