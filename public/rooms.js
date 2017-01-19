@@ -1,4 +1,4 @@
-function getRooms(){
+$(function{
     $.ajax({
         type: "GET",
         url: "/api/roomlist"
@@ -11,7 +11,7 @@ function getRooms(){
             }
             $("#roomList").append(a);
         });
-};
+});
 
 function createRoom() {
     var nr = document.getElementById("newRoomName").value;
