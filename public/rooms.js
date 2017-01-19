@@ -55,7 +55,6 @@ function deleteRoom() {
        data:JSON.stringify({
            "roomId":rId
        }),
-       $("#"+ rId).remove();
         success: function(data) {
           console.log(data);
           getRooms();
