@@ -221,7 +221,7 @@ apiRoutes.route('/roomlist')
             }else{
                 room.remove(function(err) {
                   if (err) throw err;
-                )};
+                });
                 Message.remove({msg_chat_name:req.body.roomName}, function(err){
                     if(err) throw err;
                 });
