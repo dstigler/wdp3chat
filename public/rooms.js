@@ -9,7 +9,7 @@ $(function(){
             }else{
                 var a = '<li><a class="room">' + room.chat_name + '</a></li>';
             }
-            $("#roomList").append(a);
+            $(".roomList").append(a);
         });
     });
 });
