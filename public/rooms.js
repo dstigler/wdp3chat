@@ -1,4 +1,4 @@
-$(function{
+$(function(){
     $.ajax({
         type: "GET",
         url: "/api/roomlist"
@@ -12,7 +12,7 @@ $(function{
             $("#roomList").append(a);
         });
 
-        
+
 });
 
 function createRoom() {
