@@ -214,7 +214,7 @@ apiRoutes.route('/roomlist')
             )
             .catch(res.send('Room not found'));
             res.send('Room deleted');*/
-        Rooms.findOne({_id:req.body.roomName}, function(err, room){
+        Rooms.findById({_id:req.body.roomName}, function(err, room){
             if(err) throw err;
             if(!room){
                 res.json({success: false, message: 'Room not found'});
