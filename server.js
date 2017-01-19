@@ -198,7 +198,7 @@ apiRoutes.route('/roomlist')
             } else {
                 var newRoom = new Rooms({
                   chat_name: req.body.roomName,
-                  deleteable: false
+                  deleteable: true
                 });
                 newRoom.save(function(err) {
                   if (err) throw err;
@@ -216,7 +216,7 @@ apiRoutes.route('/roomlist')
             res.send('Room deleted');*/
         Rooms.findOne({_id:req.body.roomName}, function(err, room){
             if(err) throw err;
-            if(!rooms){
+            if(!room){
                 res.json({success: false, message: 'Room not found'});
             }else{
                 room.remove(function(err) {
