@@ -208,12 +208,26 @@ apiRoutes.route('/roomlist')
         });
     })
     .delete(function(req, res){
-        Rooms.findOneAndRemove({_id:req.body.roomId})
+        /*Rooms.findOneAndRemove({_id:req.body.roomId})
             .then(
                 Message.remove({msg_chat_name:req.body.roomId})
             )
             .catch(res.send('Room not found'));
-            res.send('Room deleted');
+            res.send('Room deleted');*/
+        Rooms.findOne({_id:req.body.roomName}, function(err, room){
+            if(err) throw err;
+            if(!rooms){
+                res.json({success: false, message: 'Room not found'});
+            }else{
+                room.remove(function(err) {
+                  if (err) throw err;
+                )};
+                Message.remove({msg_chat_name:req.body.roomName}, function(err){
+                    if(err) throw err;
+                });
+                res.json({success:true, message: 'Room delete'});
+            }
+        });
     });
 
 apiRoutes.route("/roomlist/messages:roomId")
