@@ -1,8 +1,14 @@
 $(function(){
+    getRooms();
+});
+
+
+function getRooms(){
     $.ajax({
         type: "GET",
         url: "/api/roomlist"
     }).success(function (rooms) {
+        $("#roomList").empty();
         $.each(rooms, function (key, room) {
             console.log(room.deleteable);
             if(room.deleteable == true){
@@ -13,8 +19,8 @@ $(function(){
             $(".roomList").append(a);
         });
     });
-});
 
+}
 function createRoom() {
     var nr = document.getElementById("newRoomName").value;
 
@@ -30,6 +36,7 @@ function createRoom() {
         success: function(data) {
           console.log(data);
           $("#newRoomName").val("");
+          getRooms();
         },
         error: function(data){
             console.log(data);
@@ -48,9 +55,10 @@ function deleteRoom() {
        data:JSON.stringify({
            "roomId":rId
        }),
-       $("#"+rId).remove();
+       $("#"+ rId).remove();
         success: function(data) {
           console.log(data);
+          getRooms();
         },
         error: function(data){
             console.log(data);
