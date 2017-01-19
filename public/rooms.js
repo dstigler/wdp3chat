@@ -8,7 +8,7 @@ function getRooms(){
         type: "GET",
         url: "/api/roomlist"
     }).success(function (rooms) {
-        $("#roomList").empty();
+        $(".roomList").empty();
         $.each(rooms, function (key, room) {
             console.log(room.deleteable);
             if(room.deleteable == true){
