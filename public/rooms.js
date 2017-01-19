@@ -5,9 +5,9 @@ $(function(){
     }).success(function (rooms) {
         $.each(rooms, function (key, room) {
             if(room.editable == 'true'){
-                var a = '<li><a class="room">' + room.chat_name + '</a><button id="deleteRoomBtn" value="'+room._id+'">Delete</button></li>';
+                var a = '<li><a class="room">' + room.chat_name + '</a><input type="submit" id="' + room._id + '" onclick="deleteRoom()" value="Delete" ></li>';
             }else{
-                var a = '<li><a class="room">' + room.chat_name + '</a><button id="deleteRoomBtn" value="'+room._id+'">Delete</button></li>';
+                var a = '<li><a class="room">' + room.chat_name + '</a></li>';
             }
             $(".roomList").append(a);
         });
