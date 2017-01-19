@@ -210,10 +210,10 @@ apiRoutes.route('/roomlist')
     .delete(function(req, res){
         Rooms.findOneAndRemove({_id:req.body.roomId})
             .then(
-                Message.remove({msg_chat_name:req.body.roomId});
-                res.send('Room deleted');
+                Message.remove({msg_chat_name:req.body.roomId})
             )
-            .catch(res.send('Room not found'););
+            .catch(res.send('Room not found'));
+            res.send('Room deleted');
     });
 
 apiRoutes.route("/roomlist/messages:roomId")
