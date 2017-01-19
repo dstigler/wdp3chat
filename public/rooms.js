@@ -4,6 +4,7 @@ $(function(){
         url: "/api/roomlist"
     }).success(function (rooms) {
         $.each(rooms, function (key, room) {
+            console.log(room.deleteable);
             if(room.deleteable == 'true'){
                 var a = '<li><a class="room">' + room.chat_name + '</a><input type="submit" id="' + room._id + '" onclick="deleteRoom()" value="Delete" ></li>';
             }else{
