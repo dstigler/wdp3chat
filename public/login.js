@@ -34,7 +34,7 @@ function createUser() {
     var nu = document.getElementById("newname").value;
     var ne = document.getElementById("newmail").value;
     var np = document.getElementById("newpwd").value;
-    var cryptedPwd = CryptoJS.SHA1(password, "supersafe");
+    var cryptedPwd = CryptoJS.SHA1(np, "supersafe");
     $.ajax({
        type: "POST",
         url: "/login",
@@ -81,7 +81,7 @@ function createUser() {
 function validateUser() {
     var ra = document.getElementById("uname").value;
     var rag = document.getElementById("pwd").value;
-    var cryptedPwd = CryptoJS.SHA1(password, "supersafe");
+    var cryptedPwd = CryptoJS.SHA1(rag, "supersafe");
     $.ajax({
        type: "PUT",
         url: "/login",
