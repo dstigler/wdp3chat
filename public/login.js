@@ -1,3 +1,5 @@
+
+
 $('.tab a').on('click', function (e) {
 //function changeTab(){
   e.preventDefault();
@@ -31,6 +33,7 @@ function createUser() {
     var nu = document.getElementById("newname").value;
     var ne = document.getElementById("newmail").value;
     var np = document.getElementById("newpwd").value;
+    var cryptedPwd = CryptoJS.SHA256(password);
     $.ajax({
        type: "POST",
         url: "/login",
@@ -39,7 +42,7 @@ function createUser() {
        data:JSON.stringify({
            "username":nu,
            "email": ne,
-           "password":np
+           "password":cryptedPwd
        }),
 
         success: function(data) {
@@ -77,6 +80,7 @@ function createUser() {
 function validateUser() {
     var ra = document.getElementById("uname").value;
     var rag = document.getElementById("pwd").value;
+    var cryptedPwd = CryptoJS.SHA256(password);
     $.ajax({
        type: "PUT",
         url: "/login",
@@ -84,7 +88,7 @@ function validateUser() {
         dataType: 'json',
        data:JSON.stringify({
            "username":ra,
-           "password":rag
+           "password":cryptedPwd
           // "token":"empty"
        }),
        success: function(data){
