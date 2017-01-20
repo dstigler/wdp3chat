@@ -190,7 +190,7 @@ apiRoutes.route('/roomlist')
         })
     })
     .post(function(req, res){
-        Rooms.findOne({'name': req.body.roomName}, function(err, rooms) {
+        Rooms.findOne({'chat_name': req.body.roomName}, function(err, rooms) {
             if (err) throw err;
 
             if (rooms) {
