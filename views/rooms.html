@@ -4,20 +4,37 @@
 	<title>Users</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial scale=1">
-	<link rel="stylesheet" href="nav.css">
 	<link rel="stylesheet" href="rooms.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script src="nav.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 </head>
 <body>
-	<ul class="nav">
-		<li			   ><a id="homeBtn" href='/api/chat'>Home</a></li>
-		<li	id="active"><a id="roomsBtn" href='/api/rooms'>Chat Rooms</a></li>
-		<li 		   ><a id="usersBtn" href='/api/users'>Users</a></li>
-		<li><a id="logoutBtn" onclick="logoutUser()">Logout</a></li>
-	</ul>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Chat</a>
+			</div>
+			<div class="collapse navbar-collapse" id="mynavbar">
+				<ul class="nav navbar-nav">
+					<li ><a id="homeBtn" href='/api/chat'>Home</a></li>
+					<li class="active"><a id="roomsBtn" href='/api/rooms'>Rooms</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a id="userAlias">signed in as: </a></li>
+					<li><a id="logoutBtn" onclick="logoutUser()" href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+				</ul>
+			</div>
 
+		</div>
+	</nav>
 	<h2>Chat Rooms</h2>
 	<input id="newRoomName" placeholder="Input room name" required="true"></input>
 	<button id="createRoomBtn">Create a new Chat Room</button>
@@ -28,7 +45,7 @@
 		<h4>Name</h4>
 	</div>
 	<ul class="roomList">
-		
+
 	</ul>
 	<script src="rooms.js"></script>
 </body>

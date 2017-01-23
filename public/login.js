@@ -95,6 +95,9 @@ function validateUser() {
        success: function(data){
            console.log('login success');
             window.location.href = "/api/chat";
+
+            localStorage.setItem("uname", ra);
+            console.log(localStorage.getItem("uname"));
        },
        error: function(){
            console.log('error');
@@ -117,6 +120,13 @@ document.getElementById("pwd").addEventListener('keypress', function(e){
     var key = e.which || e.keyCode;
     if (key == 13){
         validateUser();
+    }
+});
+
+document.getElementById("newpwd").addEventListener('keypress', function(e){
+    var key = e.which || e.keyCode;
+    if (key == 13){
+        createUser();
     }
 });
 

@@ -1,39 +1,45 @@
 
+
+.container-full {
+
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: space-around;
+}
+
+.chat {
+	text-decoration: none;
+	list-style-type: none;
+	padding-left: 0;
+}
+
+#panel-body {
+	height: 350px;
+	overflow: scroll;
+}
+
+.chatarea {
+	width: 100%;
+}
+
+
 #chat-room {
 	display: flex;
 	flex-direction: row;
 	margin-top: 50px;
 }
 
-#rooms, #chat-area {
+#rooms {
 	display: flex;
 	flex-direction: column;
-
-	padding-bottom: 20px;
-}
-
-#rooms {
 	margin-top: 50px;
-	flex: 1;
-	padding-left: 5%;
-}
 
-#chat-area {
-	flex: 2;
-	height: 300px;
-	margin-top: 15px;
-	padding-right: 10%;
-}
-
-#chat-textarea {
-	height: 100%;
-	width: 100%
 }
 
 
 #rooms-sortable {
-	margin-left: 10%;
-
 	list-style-type: none;
 	display:flex;
 	flex-direction: column;
@@ -55,114 +61,111 @@
 	display: inline-block;
 }
 
-#post-area {
-	display: flex;
+.left, .right {
+	display: block;
+	padding: 5px;
+	border-radius: 6px;
+	padding: 2px 15px;
+	margin: 10px;
+	text-decoration: none;
+	color: #ddf8c6;
+    font-size: 13px;
+    line-height: 14px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
-#empty {
-	flex: 1;
+.left:hover, .right:hover {
+	display: block;
+	padding: 5px;
+	border-radius: 6px;
+	padding: 2px 15px;
+	margin: 10px;
+	text-decoration: none;
+	color: #ddf8c6;
+    font-size: 13px;
+    line-height: 14px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
-#post-area-right {
-	flex: 2;
-	display: flex;
-	flex-direction: column;
+.left {
+	position: relative;
+	background: green;
+	border: 3px solid #c2e1f5;
+	text-align: left;
+}
+.left:after, .left:before {
+	right: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
 }
 
-#message-form {
-	display: flex;
-	flex-direction: column;
+.left:after {
+	border-color: rgba(92, 213, 11, 0);
+	border-right-color: green;
+	border-width: 10px;
+	margin-top: -10px;
+}
+.left:before {
+	border-color: rgba(194, 225, 245, 0);
+	border-right-color: #c2e1f5;
+	border-width: 14px;
+	margin-top: -14px;
 }
 
-#post-messages-area {
-	width: 50%;
-	margin-top: 10px;
-	padding-top: 5px;
-	resize: vertical;
-	min-height: 100px;
-	padding-left: 5px;
+.right {
+	position: relative;
+	background: blue;
+	border: 3px solid #c2e1f5;
+}
+.right:after, .right:before {
+	left: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
 }
 
-#postMsgButton, #delete-messages-button {
-	margin-top: 10px;
-	-moz-box-shadow:inset 0px 1px 3px 0px #91b8b3;
-	-webkit-box-shadow:inset 0px 1px 3px 0px #91b8b3;
-	box-shadow:inset 0px 1px 3px 0px #91b8b3;
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #768d87), color-stop(1, #6c7c7c));
-	background:-moz-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
-	background:-webkit-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
-	background:-o-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
-	background:-ms-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
-	background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#768d87', endColorstr='#6c7c7c',GradientType=0);
-	background-color:#768d87;
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px;
-	border-radius:5px;
-	border:1px solid #4a524f;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:10px 10px;
-	text-decoration:none;
-	text-shadow:0px -1px 0px #2b665e;
+.right:after {
+	border-color: rgba(92, 213, 11, 0);
+	border-left-color: blue;
+	border-width: 10px;
+	margin-top: -10px;
 }
-#post-messages-button:hover, #delete-messages-button:hover {
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #6c7c7c), color-stop(1, #768d87));
-	background:-moz-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
-	background:-webkit-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
-	background:-o-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
-	background:-ms-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
-	background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#6c7c7c', endColorstr='#768d87',GradientType=0);
-	background-color:#6c7c7c;
-}
-#postMsgButton:active, #delete-messages-button:active {
-	position:relative;
-	top:1px;
+.right:before {
+	border-color: rgba(194, 225, 245, 0);
+	border-left-color: #c2e1f5;
+	border-width: 14px;
+	margin-top: -14px;
 }
 
-#postMsgButton {
-	width: 20%;
+
+.unameFont {
+    color: #ddf8c6;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
- #delete-messages-button {
- 	width: 50%;
- }
+.right {
+	background: blue;
+	text-align: right;
+}
 
- @media screen and (max-width: 1024px){
- 	body {
 
- 	}
-
- 	#chat-room {
- 		margin: 0;
- 		padding: 0;
- 		flex-direction: column;
- 	}
-
- 	#chat-textarea {
- 		height: 500px;
- 		margin-left: 5%;
- 	}
-
- 	#delete-messages-button {
- 		margin-left: 5%;
- 	}
-
- 	#post-area {
- 		flex-direction: column;
- 		margin-left: 5%;
- 	}
-
- 	#post-messages-area {
- 		width: 95%;
- 	}
-
- 	#postMsgButton {
- 		margin-bottom: 30px;
- 	}
- }
+ @media screen and (max-width: 768px){
+	.container-full {
+	 		flex-direction: column-reverse;
+	 		justify-content: center;
+	 		align-items: center;
+	 		flex-wrap: wrap;
+	}
+}

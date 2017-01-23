@@ -4,49 +4,84 @@
 	<title>Home</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="/nav.css">
+	<!--<link rel="stylesheet" href="/nav.css">-->
 	<link rel="stylesheet" href="/index.css">
 	<style type="text/css">
 		  #rooms-sortable .ui-selected { background-color: #333; }
 		  #rooms-sortable .ui-selected a { color: #FFF; }
 	</style>
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 </head>
 <body>
-	<ul class="nav">
-		<li	id="active"><a id="homeBtn" href='/api/chat'>Home</a></li>
-		<li			   ><a id="roomsBtn" href='/api/rooms'>Chat Rooms</a></li>
-		<li 		   ><a id="usersBtn" href='/api/users'>Users</a></li>
-		<li><a id="logoutBtn" onclick="logoutUser()">Logout</a></li>
-	</ul>
-	<div id="chat-room">
-		<div id="rooms">
-		<h2>Rooms</h2>
-			<ul id="rooms-sortable">
-			<!-- Get Rooms-List from database -->
-			</ul>
-		</div>
 
-		<div id="post-area">
 
-			<div id="post-area-right">
-				<!--h2>Post A Message</h2-->
-				<!--form id="message-form"-->
-					<textarea id="chat-textarea" readonly=""></textarea>
-					<textarea id="post-messages-area" rows="5" placeholder="Type your message!" required="true"></textarea>
-					<button id="postMsgButton">Post</button>
-				<!--/form-->
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Chat</a>
 			</div>
+			<div class="collapse navbar-collapse" id="mynavbar">
+				<ul class="nav navbar-nav">
+					<li class="active"><a id="homeBtn" href='/api/chat'>Home</a></li>
+					<li ><a id="roomsBtn" href='/api/rooms'>Rooms</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a id="userAlias">signed in as: </a></li>
+					<li><a id="logoutBtn" onclick="logoutUser()" href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+				</ul>
+			</div>
+
 		</div>
-		<!--div id="chat-area">
-			<textarea id="chat-textarea" readonly=""></textarea>
-		</div-->
+	</nav>
+
+
+
+
+
+
+
+<div class="container-full">
+	<div id="rooms col-md-2 col-lg-2 col-sm-2 col-xs-2">
+		<h2>Rooms</h2>
+		<ul id="rooms-sortable">
+
+		</ul>
 	</div>
+	<div class="row col-md-8 col-lg-8 col-sm-8 col-xs-12">
+	        <div class="chatarea panel panel-primary">
+
+	            <div id="panel-body">
+
+	                <ul class="chat chat-textarea">
+
+	                </ul>
+
+	            </div>
+	            <div class="panel-footer">
+	                <div class="input-group">
+	                    <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+	                    <span class="input-group-btn">
+	                        <button class="btn btn-warning btn-sm" id="btn-chat">
+	                            Send</button>
+	                    </span>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>
 
 
 
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 	<script src="home.js"></script>
 	<script src="nav.js"></script>

@@ -2,7 +2,9 @@ var roomId;
 
 $(function () {
     getRooms();
+    document.getElementById("userAlias").innerHTML += localStorage.getItem("uname");
     //getMessages();
+
 });
 
 $("#rooms-sortable").click(function (){
@@ -32,7 +34,8 @@ $('ul#rooms-sortable').on('click','li.state-default',function() {
 */
 //$("#post-messages-button").click(
 function postMessage() {
-    var message = $("#post-messages-area").val();
+    var message = $("#btn-input").val();
+    console.log(message);
     $.ajax({
         type: "POST",
         url: "/api/roomlist/messages"+roomId,
@@ -41,7 +44,7 @@ function postMessage() {
             "room": roomId}),
         contentType : "application/json"
     }).success(function () {
-        $("#post-messages-area").val("");
+        $("#btn-input").val("");
         //getMessages();
     });
 };//);
@@ -51,23 +54,28 @@ function postMessage() {
         getMessages();
     });
 */
-    function getMessages() {
-        $.ajax({
-            type: "GET",
-            url: "/api/roomlist/messages"+roomId,
+function getMessages() {
+    $.ajax({
+        type: "GET",
+        url: "/api/roomlist/messages"+roomId,
 
-            contentType : "application/json"
-        }).success(function (data) {
-            //console.log(data);
-            //$("#roomName").text("Messages for " + data.room.name);
-            var messages = "";
-            $.each(data.messages, function (key, message) {
-                messages += message.msg_user_name + ": " + message.msg_text + "\r";//message.text + "\r";
-            });
-            $("#chat-textarea").val(messages);
-            setTimeout(getMessages, 1000);
+        contentType : "application/json"
+    }).success(function (data) {
+        //console.log(data);
+        //$("#roomName").text("Messages for " + data.room.name);
+        var messages = "";
+        $.each(data.messages, function (key, message) {
+            if (message.msg_user_name == localStorage.getItem("uname")){
+                messages = "<li style='clear:both; float: right;' ><a class='right pull-right'><div class='header'><strong class='unameFont'><xmp>" + message.msg_user_name + "</xmp></strong></div><p style='text-align: right;'><xmp>" + message.msg_text + "</xmp></p></a></li>" + messages;
+            } else {
+                messages = "<li style='clear:both; float: left;'><a class='left'><div class='header'><strong class='unameFont'><xmp>" + message.msg_user_name + "</xmp></strong></div><p><xmp>" + message.msg_text + "</xmp></p></a></li>" + messages;//message.text + "\r";
+            }
         });
-    };
+        $(".chat").empty();
+        $(".chat").append(messages);
+        setTimeout(getMessages, 500);
+    });
+};
 
     function getRooms(){
         $.ajax({
@@ -87,18 +95,18 @@ function postMessage() {
 
                 }
                 if(roomId === undefined && room.chat_name == "Mainchat"){
-                    var a = '<li class="state-default ui-selected" id="'+room._id+'"><a class="room list-group-item">' + room.chat_name + '</a></li>';
+                    var a = '<li class="ui-selected" id="'+room._id+'"><a class="room">' + room.chat_name + '</a></li>';
                     roomId = room._id;
                     getMessages();
                     console.log(roomId);
                     found = "ok";
                 }else{
                     if(roomId == room._id){
-                        var a = '<li class="state-default ui-selected" id="'+room._id+'"><a class="room list-group-item">' + room.chat_name + '</a></li>';
+                        var a = '<li class="ui-selected" id="'+room._id+'"><a class="room">' + room.chat_name + '</a></li>';
                         roomId = room._id;
                         found = "ok";
                     }else{
-                        var a = '<li class="state-default" id="'+room._id+'"><a class="room list-group-item">' + room.chat_name + '</a></li>';
+                        var a = '<li class="" id="'+room._id+'"><a class="room">' + room.chat_name + '</a></li>';
                     }
 
                 }
@@ -115,5 +123,13 @@ function postMessage() {
     };
 
 //setTimeout(getMessages, 750);
-document.getElementById("postMsgButton").onclick = postMessage;
+document.getElementById("btn-chat").onclick = postMessage;
 //document.getElementById("rooms-sortable").onclick = setRoomId;
+
+document.getElementById("btn-input").addEventListener("keypress", function(e) {
+        var key = e.which || e.keyCode;
+
+        if(key == 13){
+            postMessage();
+        }
+    });

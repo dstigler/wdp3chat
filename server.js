@@ -90,7 +90,7 @@ app.route('/login')
             });
 
             if (user) {
-                res.json({ success: false, message: 'Authentication failed. User already exists.' });
+                res.json({ success: false, message: 'Signup failed. User already exists.' });
             } else {
                 newUser.save(function(err) {
                   if (err) throw err;
