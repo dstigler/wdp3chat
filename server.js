@@ -197,7 +197,7 @@ apiRoutes.route('/roomlist')
             if (rooms) {
                 res.json({ success: false, message: 'Room already exists.' });
             } else {
-                var escText = escape(req.body.roomName);
+                var escName = escape(req.body.roomName);
                 var newRoom = new Rooms({
                   chat_name: escName,
                   deleteable: true
