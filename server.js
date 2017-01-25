@@ -80,10 +80,9 @@ app.route('/login')
     })
     .post(function(req, res){
         console.log('POST: ' + req.body.username);
-        var escName = escape(req.body.username);
-        User.findOne({'name':escName}, function(err, user) {
+        User.findOne({'name': req.body.username}, function(err, user) {
             if (err) throw err;
-
+            var escName = escape(req.body.username);
             var newUser = new User({
               name: escName,
               email: req.body.email,
