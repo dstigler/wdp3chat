@@ -82,9 +82,9 @@ app.route('/login')
         console.log('POST: ' + req.body.username);
         User.findOne({'name': req.body.username}, function(err, user) {
             if (err) throw err;
-
+            var escName = escape(req.body.username);
             var newUser = new User({
-              name: req.body.username,
+              name: escName,
               email: req.body.email,
               password: req.body.password,
               admin: false
@@ -197,8 +197,9 @@ apiRoutes.route('/roomlist')
             if (rooms) {
                 res.json({ success: false, message: 'Room already exists.' });
             } else {
+                var escText = escape(req.body.roomName);
                 var newRoom = new Rooms({
-                  chat_name: req.body.roomName,
+                  chat_name: escName,
                   deleteable: true
                 });
                 newRoom.save(function(err) {
