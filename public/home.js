@@ -66,9 +66,9 @@ function getMessages() {
         var messages = "";
         $.each(data.messages, function (key, message) {
             if (message.msg_user_name == localStorage.getItem("uname")){
-                messages = "<li style='clear:both; float: right;' ><a class='right pull-right'><div class='header'><strong class='unameFont'><xmp>" + message.msg_user_name + "</xmp></strong></div><p style='text-align: right;'><xmp>" + message.msg_text + "</xmp></p></a></li>" + messages;
-            } else {
-                messages = "<li style='clear:both; float: left;'><a class='left'><div class='header'><strong class='unameFont'><xmp>" + message.msg_user_name + "</xmp></strong></div><p><xmp>" + message.msg_text + "</xmp></p></a></li>" + messages;//message.text + "\r";
+                messages = "<li class='right'><a><h2><pre>" + message.msg_user_name + "</pre></h2><p><pre>" + message.msg_text + "</pre></p></a></li>" + messages;
+            } else {   // "<li style='clear:both; float: right;' ><a class='right pull-right'><div class='header'><strong class='unameFont'><xmp>" + message.msg_user_name + "</xmp></strong></div><p style='word-break: break-all; text-align: right;'><xmp>" + message.msg_text + "</xmp></p></a></li>" + messages;
+                messages = "<li class='left'><a><h2><pre>" + message.msg_user_name + "</pre></h2><p><pre>" + message.msg_text + "</pre></p></a></li>" + messages;
             }
         });
         $(".chat").empty();
