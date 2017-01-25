@@ -38,8 +38,8 @@ app.route('/login')
     .put(function(req, res){
         // find the user
         console.log('PUT: ' + req.body.username);
-
-        User.findOne({name: escape(req.body.username)}, function(err, user) {
+        var escName = escape(req.body.username)
+        User.findOne({name: escName}, function(err, user) {
 
           if (err) {
               //user not found
@@ -61,7 +61,7 @@ app.route('/login')
               // if user is found and password is right
               // create a token
           var userData = {
-              name : req.body.username
+              name : escName
           };
           var token = jwt.sign(userData, app.get('superSecret'), {
             expiresIn: '60m' // expires in 24 hours
