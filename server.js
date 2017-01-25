@@ -80,9 +80,10 @@ app.route('/login')
     })
     .post(function(req, res){
         console.log('POST: ' + req.body.username);
-        User.findOne({'name': req.body.username}, function(err, user) {
+        var escName = escape(req.body.username);
+        User.findOne({'name': escName}, function(err, user) {
             if (err) throw err;
-            var escName = escape(req.body.username);
+
             var newUser = new User({
               name: escName,
               email: req.body.email,
@@ -191,13 +192,14 @@ apiRoutes.route('/roomlist')
         })
     })
     .post(function(req, res){
-        Rooms.findOne({'chat_name': req.body.roomName}, function(err, rooms) {
+        var escName = escape(req.body.roomName);
+        Rooms.findOne({'chat_name': escName}, function(err, rooms) {
             if (err) throw err;
 
             if (rooms) {
                 res.json({ success: false, message: 'Room already exists.' });
             } else {
-                var escName = escape(req.body.roomName);
+
                 var newRoom = new Rooms({
                   chat_name: escName,
                   deleteable: true
