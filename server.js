@@ -71,7 +71,8 @@ app.route('/login')
           //console.log(decoded);
 
         res.cookie('auth',token);
-        res.send({message: 'ok'});
+        res.send({message: 'ok',
+                  username: escName});
         //res.redirect('/');
         //res.send(req.body);
       });
