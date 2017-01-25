@@ -39,7 +39,7 @@ app.route('/login')
         // find the user
         console.log('PUT: ' + req.body.username);
 
-        User.findOne({name: req.body.username}, function(err, user) {
+        User.findOne({name: escape(req.body.username)}, function(err, user) {
 
           if (err) {
               //user not found
