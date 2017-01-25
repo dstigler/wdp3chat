@@ -5,7 +5,8 @@ var morgan = require('morgan');
 var fs = require('fs');
 var mongoose = require('mongoose');
 var path = require('path');
-var cookieParser = require('cookie-parser')
+var cookieParser = require('cookie-parser');
+var escape = require('escape-html');
 
 
 app.use(cookieParser())
@@ -279,12 +280,13 @@ apiRoutes.route("/roomlist/messages:roomId")
         //var roomId = "586bc112852c8845a199456e";//req.params.roomId;
         var token = req.cookies.auth;
         var decoded = jwt.decode(token);
+        escText = escape(req.body.msg);
         //console.log(req.body);
         //console.log(decoded);
         //console.log(req.body);
         var msg = new Message({
             msg_datetime: Date.now(),
-            msg_text: req.body.msg,
+            msg_text: escText,
             msg_chat_name: req.body.room,
             msg_user_name: decoded.name
         });
