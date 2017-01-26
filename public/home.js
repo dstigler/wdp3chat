@@ -7,7 +7,7 @@ $(function () {
 
     //$(".chat-textarea").mCustomScrollbar("scrollTo","bottom",{scrollInertia:0});
     //getMessages();
-    console.log($("#panel-body").scrollTop());
+    console.log($(".chat-textarea").scrollTop());
     $("#panel-body").scrollTop(100);
 
 });
