@@ -4,6 +4,8 @@ $(function () {
     getRooms();
     document.getElementById("userAlias").innerHTML += localStorage.getItem("uname");
     $("#panel-body").mCustomScrollbar("scrollTo","bottom",{scrollInertia:0});
+
+    $(".chat-textarea").mCustomScrollbar("scrollTo","bottom",{scrollInertia:0});
     //getMessages();
 
 });
