@@ -3,10 +3,14 @@ var roomId;
 $(function () {
     getRooms();
     document.getElementById("userAlias").innerHTML += localStorage.getItem("uname");
-    $("#panel-body").mCustomScrollbar("scrollTo","bottom",{scrollInertia:0});
+    //$("#panel-body").mCustomScrollbar("scrollTo","bottom",{scrollInertia:0});
 
-    $(".chat-textarea").mCustomScrollbar("scrollTo","bottom",{scrollInertia:0});
+    //$(".chat-textarea").mCustomScrollbar("scrollTo","bottom",{scrollInertia:0});
     //getMessages();
+
+    var element = document.getElementById("panel-body");
+    //var element = document.getElementByClassName("yourDivID");
+    element.scrollTop = element.scrollHeight;
 
 });
 
