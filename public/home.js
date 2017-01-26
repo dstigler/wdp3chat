@@ -75,7 +75,9 @@ function getMessages() {
             //$("#panel-body").mCustomScrollbar("scrollTo","bottom",{scrollInertia:0});
             $(".chat").append(messages);
             //console.log($("#panel-body").scrollTop());
-            $("#panel-body").mCustomScrollbar("scrollTo","bottom",{scrollInertia:0});
+            //$("#panel-body").mCustomScrollbar("scrollTo","bottom",{scrollInertia:0});
+            var element = document.getElementById("panel-body");
+            element.scrollTop = element.scrollHeight;
         }else{
             $(".chat").empty();
             $(".chat").append(messages);
