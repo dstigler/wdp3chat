@@ -20,7 +20,7 @@
 	overflow: scroll;
 }
 
-$("#panel-body").mCustomScrollbar("scrollTo","bottom",{scrollInertia:0});
+
 
 .chatarea {
 	width: 100%;
