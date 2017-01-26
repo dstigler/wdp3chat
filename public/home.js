@@ -71,7 +71,7 @@ function getMessages() {
                 messages = messages + "<li class='left'><a><h2><pre>" + message.msg_user_name + "</pre></h2><p><pre>" + message.msg_text + "</pre></p></a></li>";
             }
         });
-        if ( ! $(".chat-textarea").length ){
+        if ( ! $(".chat-textarea li").length ){
             //$("#panel-body").mCustomScrollbar("scrollTo","bottom",{scrollInertia:0});
             console.log($("#panel-body").scrollTop());
         }
