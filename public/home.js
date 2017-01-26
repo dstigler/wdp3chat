@@ -7,10 +7,7 @@ $(function () {
 
     //$(".chat-textarea").mCustomScrollbar("scrollTo","bottom",{scrollInertia:0});
     //getMessages();
-
-    var element = document.getElementById("panel-body");
-    //var element = document.getElementByClassName("yourDivID");
-    element.scrollTop = element.scrollHeight;
+    $("#panel-body").scrollTop(100);
 
 });
 
