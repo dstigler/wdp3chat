@@ -73,11 +73,13 @@ function getMessages() {
         });
         if ( ! $(".chat-textarea li").length ){
             //$("#panel-body").mCustomScrollbar("scrollTo","bottom",{scrollInertia:0});
-            console.log($("#panel-body").scrollTop());
+            $(".chat").append(messages);
+            //console.log($("#panel-body").scrollTop());
+            $("#panel-body").mCustomScrollbar("scrollTo","bottom",{scrollInertia:0});
+        }else{
+            $(".chat").empty();
+            $(".chat").append(messages);
         }
-
-        $(".chat").empty();
-        $(".chat").append(messages);
         setTimeout(getMessages, 500);
     });
 };
