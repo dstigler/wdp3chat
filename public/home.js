@@ -76,6 +76,8 @@ function getMessages() {
                 messages = messages + "<li class='left'><a><h2><pre>" + message.msg_user_name + "</pre></h2><p><pre>" + message.msg_text + "</pre></p></a></li>";
             }
         });
+        console.log($(".chat-textarea").scrollTop());
+        console.log($("#panel-body").scrollTop());
         $(".chat").empty();
         $(".chat").append(messages);
         setTimeout(getMessages, 500);
