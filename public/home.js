@@ -45,6 +45,8 @@ function postMessage() {
         contentType : "application/json"
     }).success(function () {
         $("#btn-input").val("");
+        var element = document.getElementById("panel-body");
+        element.scrollTop = element.scrollHeight;
         //getMessages();
     });
 };//);
