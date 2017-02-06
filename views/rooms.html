@@ -35,14 +35,23 @@
 
 		</div>
 	</nav>
+
 	<h2>Chat Rooms</h2>
-	<input id="newRoomName" placeholder="Input room name" required="true"></input>
-	<button id="createRoomBtn">Create a new Chat Room</button>
+
+	<div class="input-group">
+        <input id="newRoomName" type="text" class="form-control input-sm" placeholder="Roomname..." />
+        <span class="input-group-btn">
+            <button class="btn btn-warning btn-sm" id="createRoomBtn">
+                Create New Room</button>
+        </span>
+    </div>
+
+	<!--<input id="newRoomName" placeholder="Input room name" required="true"></input>
+	<button id="createRoomBtn">Create a new Chat Room</button>-->
 
 
 	<div class="col-names">
-		<h4>Action</h4>
-		<h4>Name</h4>
+		<h4>Rooms</h4>
 	</div>
 	<ul class="roomList">
 

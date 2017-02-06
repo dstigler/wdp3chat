@@ -1,5 +1,6 @@
 $(function(){
     getRooms();
+     document.getElementById("userAlias").innerHTML += localStorage.getItem("uname");
 });
 
 
@@ -12,7 +13,7 @@ function getRooms(){
         $.each(rooms, function (key, room) {
             console.log(room.deleteable);
             if(room.deleteable == true){
-                var a = '<li><a class="room">' + room.chat_name + '</a><input type="submit" id="' + room._id + '" onclick="deleteRoom()" value="Delete" ></li>';
+                var a = '<li><a class="room">' + room.chat_name + '</a><input class="btn btn-danger btn-sm" type="submit" id="' + room._id + '" onclick="deleteRoom()" value="Delete" ></li>';
             }else{
                 var a = '<li><a class="room">' + room.chat_name + '</a></li>';
             }
@@ -65,3 +66,10 @@ function deleteRoom() {
     });
 };
 document.getElementById("createRoomBtn").onclick = createRoom;
+
+document.getElementById("newRoomName").addEventListener('keypress', function(e){
+    var key = e.which || e.keyCode;
+    if (key == 13){
+        createRoom();
+    }
+});

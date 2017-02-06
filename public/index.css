@@ -7,17 +7,21 @@
 	padding: 0;
 	display: flex;
 	justify-content: space-around;
+
 }
 
 .chat {
 	text-decoration: none;
 	list-style-type: none;
 	padding-left: 0;
+
 }
 
 #panel-body {
 	height: 350px;
 	overflow: auto;
+	resize: vertical;
+	min-height: 250px;
 }
 
 
@@ -173,7 +177,7 @@
 	 padding: 0;
 }
 
-.left h2, .right h2 {
+.left h4, .right h4 {
     color: #ddf8c6;
 
     font-weight: bold;
