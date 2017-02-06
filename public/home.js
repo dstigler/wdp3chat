@@ -3,7 +3,7 @@ var roomId;
 $(function () {
     getRooms();
     document.getElementById("userAlias").innerHTML += localStorage.getItem("uname");
-    //getMessages();
+
 
 });
 
@@ -45,6 +45,8 @@ function postMessage() {
         contentType : "application/json"
     }).success(function () {
         $("#btn-input").val("");
+        var element = document.getElementById("panel-body");
+        element.scrollTop = element.scrollHeight;
         //getMessages();
     });
 };//);
@@ -66,13 +68,28 @@ function getMessages() {
         var messages = "";
         $.each(data.messages, function (key, message) {
             if (message.msg_user_name == localStorage.getItem("uname")){
+<<<<<<< HEAD
                 messages = "<li class='right'><a><h2>" + message.msg_user_name + "</pre></h2><p>" + message.msg_text + "</p></a></li>" + messages;
             } else {   // "<li style='clear:both; float: right;' ><a class='right pull-right'><div class='header'><strong class='unameFont'><xmp>" + message.msg_user_name + "</xmp></strong></div><p style='word-break: break-all; text-align: right;'><xmp>" + message.msg_text + "</xmp></p></a></li>" + messages;
                 messages = "<li class='left'><a><h2>" + message.msg_user_name + "</h2><p>" + message.msg_text + "</p></a></li>" + messages;
+=======
+                messages = messages + "<li class='right'><a><h2><pre>" + message.msg_user_name + "</pre></h2><p><pre>" + message.msg_text + "</pre></p></a></li>";
+            } else {   // "<li style='clear:both; float: right;' ><a class='right pull-right'><div class='header'><strong class='unameFont'><xmp>" + message.msg_user_name + "</xmp></strong></div><p style='word-break: break-all; text-align: right;'><xmp>" + message.msg_text + "</xmp></p></a></li>" + messages;
+                messages = messages + "<li class='left'><a><h2><pre>" + message.msg_user_name + "</pre></h2><p><pre>" + message.msg_text + "</pre></p></a></li>";
+>>>>>>> origin/master
             }
         });
-        $(".chat").empty();
-        $(".chat").append(messages);
+        if ( ! $(".chat-textarea li").length ){
+            //$("#panel-body").mCustomScrollbar("scrollTo","bottom",{scrollInertia:0});
+            $(".chat").append(messages);
+            //console.log($("#panel-body").scrollTop());
+            //$("#panel-body").mCustomScrollbar("scrollTo","bottom",{scrollInertia:0});
+            var element = document.getElementById("panel-body");
+            element.scrollTop = element.scrollHeight;
+        }else{
+            $(".chat").empty();
+            $(".chat").append(messages);
+        }
         setTimeout(getMessages, 500);
     });
 };

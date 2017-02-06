@@ -96,7 +96,7 @@ function validateUser() {
            console.log('login success');
             window.location.href = "/api/chat";
 
-            localStorage.setItem("uname", ra);
+            localStorage.setItem("uname", data.username);
             console.log(localStorage.getItem("uname"));
        },
        error: function(){

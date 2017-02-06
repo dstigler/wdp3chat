@@ -17,8 +17,10 @@
 
 #panel-body {
 	height: 350px;
-	overflow: scroll;
+	overflow: auto;
 }
+
+
 
 .chatarea {
 	width: 100%;
@@ -173,9 +175,9 @@
 
 .left h2, .right h2 {
     color: #ddf8c6;
-    
+
     font-weight: bold;
-    text-transform: uppercase;
+    //text-transform: uppercase;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 

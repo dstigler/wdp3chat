@@ -5,7 +5,8 @@ var morgan = require('morgan');
 var fs = require('fs');
 var mongoose = require('mongoose');
 var path = require('path');
-var cookieParser = require('cookie-parser')
+var cookieParser = require('cookie-parser');
+var escape = require('escape-html');
 
 
 app.use(cookieParser())
@@ -37,8 +38,8 @@ app.route('/login')
     .put(function(req, res){
         // find the user
         console.log('PUT: ' + req.body.username);
-
-        User.findOne({name: req.body.username}, function(err, user) {
+        var escName = escape(req.body.username)
+        User.findOne({name: escName}, function(err, user) {
 
           if (err) {
               //user not found
@@ -60,7 +61,7 @@ app.route('/login')
               // if user is found and password is right
               // create a token
           var userData = {
-              name : req.body.username
+              name : escName
           };
           var token = jwt.sign(userData, app.get('superSecret'), {
             expiresIn: '60m' // expires in 24 hours
@@ -70,7 +71,8 @@ app.route('/login')
           //console.log(decoded);
 
         res.cookie('auth',token);
-        res.send({message: 'ok'});
+        res.send({message: 'ok',
+                  username: escName});
         //res.redirect('/');
         //res.send(req.body);
       });
@@ -79,11 +81,12 @@ app.route('/login')
     })
     .post(function(req, res){
         console.log('POST: ' + req.body.username);
-        User.findOne({'name': req.body.username}, function(err, user) {
+        var escName = escape(req.body.username);
+        User.findOne({'name': escName}, function(err, user) {
             if (err) throw err;
 
             var newUser = new User({
-              name: req.body.username,
+              name: escName,
               email: req.body.email,
               password: req.body.password,
               admin: false
@@ -190,14 +193,16 @@ apiRoutes.route('/roomlist')
         })
     })
     .post(function(req, res){
-        Rooms.findOne({'chat_name': req.body.roomName}, function(err, rooms) {
+        var escName = escape(req.body.roomName);
+        Rooms.findOne({'chat_name': escName}, function(err, rooms) {
             if (err) throw err;
 
             if (rooms) {
                 res.json({ success: false, message: 'Room already exists.' });
             } else {
+
                 var newRoom = new Rooms({
-                  chat_name: req.body.roomName,
+                  chat_name: escName,
                   deleteable: true
                 });
                 newRoom.save(function(err) {
@@ -279,12 +284,13 @@ apiRoutes.route("/roomlist/messages:roomId")
         //var roomId = "586bc112852c8845a199456e";//req.params.roomId;
         var token = req.cookies.auth;
         var decoded = jwt.decode(token);
+        escText = escape(req.body.msg);
         //console.log(req.body);
         //console.log(decoded);
         //console.log(req.body);
         var msg = new Message({
             msg_datetime: Date.now(),
-            msg_text: req.body.msg,
+            msg_text: escText,
             msg_chat_name: req.body.room,
             msg_user_name: decoded.name
         });

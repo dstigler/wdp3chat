@@ -1,4 +1,4 @@
-$("#homeBtn").click(function() {
+/*$("#homeBtn").click(function() {
    window.location.href = "/api/chat";
 });
 
@@ -11,7 +11,7 @@ $("#roomsBtn").click(function() {
 });
 
 $("#logoutBtn").click(logoutUser);
-
+*/
 function logoutUser() {
     $.ajax({
        type: "GET",
