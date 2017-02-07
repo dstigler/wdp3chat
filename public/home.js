@@ -71,9 +71,9 @@ function getMessages() {
         $.each(data.messages, function (key, message) {
             if (message.msg_user_name == localStorage.getItem("uname")){
 
-                messages = "<li class='right'><a><h4>" + message.msg_user_name + "</h4><p>" + message.msg_text + "</p></a></li>" + messages;
+                messages = messages + "<li class='right'><a><h4>" + message.msg_user_name + "</h4><p>" + message.msg_text + "</p></a></li>";
             } else {   // "<li style='clear:both; float: right;' ><a class='right pull-right'><div class='header'><strong class='unameFont'><xmp>" + message.msg_user_name + "</xmp></strong></div><p style='word-break: break-all; text-align: right;'><xmp>" + message.msg_text + "</xmp></p></a></li>" + messages;
-                messages = "<li class='left'><a><h4>" + message.msg_user_name + "</h4><p>" + message.msg_text + "</p></a></li>" + messages;
+                messages = "<li class='left'><a><h4>" + message.msg_user_name + "</h4><p>" + message.msg_text + "</p></a></li>";
             }
         });
         if ( ! $(".chat-textarea li").length ){
@@ -162,6 +162,6 @@ document.getElementById("btn-input").addEventListener("keypress", function(e) {
             var txt = $("btn-input");
             console.log("btn-input");
             txt.html( txt.val() + "<br/><br/><br/>");
-            
+
         //}
     });
