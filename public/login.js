@@ -84,6 +84,7 @@ function validateUser() {
            $('#uname').val('');
            $('#pwd').val('');
            $('#ErrorMsgLogin').text('Username or password incorrect');
+           console.log(data.message);
        }
    });
 
