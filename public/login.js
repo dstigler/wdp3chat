@@ -54,7 +54,7 @@ function createUser() {
             $('#newname').val('');
             $('#newpwd').val('');
             $('#ErrorMsgSignup').val('Username already exists');
-            console.log(data.message);
+            console.log(data);
         }
     });
 };
@@ -84,7 +84,7 @@ function validateUser() {
            $('#uname').val('');
            $('#pwd').val('');
            $('#ErrorMsgLogin').text('Username or password incorrect');
-           console.log(data.message);
+           console.log(data);
        }
    });
 
