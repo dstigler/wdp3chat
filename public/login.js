@@ -16,7 +16,8 @@ $('.tab a').on('click', function (e) {
 
 
 function changeSignupToLogin(){
-
+    $('#ErrorMsgSignup').text('');
+    $('#ErrorMsgLogin').text('');
     $('#logintab').addClass('active');
     $('#signuptab').removeClass('active');
 
@@ -53,7 +54,7 @@ function createUser() {
         error: function(data){
             $('#newname').val('');
             $('#newpwd').val('');
-            $('#ErrorMsgSignup').val('Username already exists');
+            $('#ErrorMsgSignup').text('Username already exists');
             console.log(data);
         }
     });
