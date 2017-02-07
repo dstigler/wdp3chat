@@ -36,45 +36,31 @@ app.route('/login')
         res.sendFile(path.join(__dirname, 'views/login.html' ));
     })
     .put(function(req, res){
-        // find the user
         console.log('PUT: ' + req.body.username);
         var escName = escape(req.body.username)
         User.findOne({name: escName}, function(err, user) {
 
           if (err) {
-              //user not found
               return res.sent(401);
           }
 
           if (!user) {
-            //incorrect username
             return res.sendStatus(401);
-            //res.json({ success: false, message: 'Authentication failed. User not found.' });
           }
           if (user.password != req.body.password) {
-            //incorrect password
             return res.sendStatus(401);
-            // check if password matches
-            //  res.json({ success: false, message: 'Authentication failed. Wrong password.' });
           }
-          //res.sendStatus(200);
-              // if user is found and password is right
-              // create a token
           var userData = {
               name : escName
           };
           var token = jwt.sign(userData, app.get('superSecret'), {
-            expiresIn: '60m' // expires in 24 hours
+            expiresIn: '60m'
           });
           console.log(token);
-          //var decoded = jwt.decode(token);
-          //console.log(decoded);
 
         res.cookie('auth',token);
         res.send({message: 'ok',
                   username: escName});
-        //res.redirect('/');
-        //res.send(req.body);
       });
 
 
@@ -107,32 +93,18 @@ app.route('/login')
 
 var apiRoutes = express.Router();
 apiRoutes.use(express.static("public"));
-    // route middleware to verify a token
 apiRoutes.use(function(req, res, next) {
-  // check header or url parameters or post parameters for token
-  //var token = req.body.token || req.query.token || req.headers['x-access-token'];
-  // decode token
   var token = req.cookies.auth;
   if (token) {
-    // verifies secret and checks exp
     jwt.verify(token, app.get('superSecret'), function(err, token_data) {
       if (err) {
-        //return res.json({ success: false, message: 'Failed to authenticate token.' });
         return res.redirect('/');
       } else {
-        // if everything is good, save to request for use in other routes
         req.user_data = token_data;
         next();
       }
     });
   } else {
-    // if there is no token
-    // return an error
-    /*return res.status(403).send({
-        success: false,
-        message: 'No token provided.'
-
-    });*/
     return res.redirect('/');
   }
 });
@@ -146,7 +118,6 @@ app.route('/')
               if (err) {
                 res.redirect('/login');
               } else {
-                // if everything is good, save to request for use in other routes
                 req.user_data = token_data;
                 res.redirect('/api/chat');
               }
@@ -156,21 +127,9 @@ app.route('/')
         }
 
     });
-/*apiRoutes.get('/', function(req, res){
-    res.json({message: 'Welcome to first version of wdp3chat-api'});
-});
-*/
-/*apiRoutes.get('/users', function(req, res){
-    User.find({}, function(err, users){
-        res.json(users);
-    });
-});*/
-
 apiRoutes.route('/chat')
     .get(function(req, res){
         res.sendFile(path.join(__dirname, 'views/index.html' ));
-        //console.log(jwt.decode(req.cookie));
-        //console.log(jwt.decode(req.cookies.auth));
     });
 
 apiRoutes.route('/rooms')
@@ -189,7 +148,6 @@ apiRoutes.route('/roomlist')
                 res.json(rooms);
                 next();
             }
-        // .catch(next);
         })
     })
     .post(function(req, res){
@@ -213,12 +171,6 @@ apiRoutes.route('/roomlist')
         });
     })
     .delete(function(req, res){
-        /*Rooms.findOneAndRemove({_id:req.body.roomId})
-            .then(
-                Message.remove({msg_chat_name:req.body.roomId})
-            )
-            .catch(res.send('Room not found'));
-            res.send('Room deleted');*/
         Rooms.findById({_id:req.body.roomId}, function(err, room){
             if(err) throw err;
             if(!room){
@@ -237,27 +189,17 @@ apiRoutes.route('/roomlist')
 
 apiRoutes.route("/roomlist/messages:roomId")
     .get(function (req, res) {
-        var roomId = req.params.roomId;//req.body.room;
+        var roomId = req.params.roomId;
         console.log("Body: "+req.params.roomId);
-        /*
-        var roomMessages = Message
-          .filter(m => m.msg_chat_name === roomId)
-          .map(m => {
-            //var user = _.find(users, u => u.id === m.userId);
-            //var userName = user ? user.alias : "unknown";
-            //return {text: `${userName}: ${m.text}`};
-            return {text: `${m.msg_user_name}:${m.msg_text}`}
-        });*/
+
         Rooms.find({'_id': roomId}, function(err, room) {
           if (err) {
-              //room not found
               res.sendStatus(401);
           }
           else if(!room){
               res.sendStatus(401);
           }
         });
-        //).sort('-msg_datetime').exec(function(err, msgs){
         var roomMessages;
         Message.find({'msg_chat_name': roomId},function(err, msgs){
             if(err){
@@ -266,36 +208,20 @@ apiRoutes.route("/roomlist/messages:roomId")
             if(!msgs){
                 roomMessages = {text: `${roomId}: Chat is empty!`}
             }else{
-                //console.log(JSON.stringify(msgs.map(function(obj){text: `${obj.msg_user_name}: ${obj.msg_text}`})));
-                /*roomMessages = msgs.map(function(obj){
-                    console.log('text: '+obj.msg_user_name+': '+obj.msg_text);
-                    return {text: obj.msg_user_name+': '+obj.msg_text};
-                });*/
                 res.json({messages: msgs});
             }
         });
-        //console.log("Content: " + roomMessages);
-        /*res.json({
-          room: roomId,
-          messages: roomMessages
-      })*/
     })
     .post(function (req, res) {
-        //var roomId = "586bc112852c8845a199456e";//req.params.roomId;
         var token = req.cookies.auth;
         var decoded = jwt.decode(token);
         escText = escape(req.body.msg);
-        //console.log(req.body);
-        //console.log(decoded);
-        //console.log(req.body);
         var msg = new Message({
             msg_datetime: Date.now(),
             msg_text: escText,
             msg_chat_name: req.body.room,
             msg_user_name: decoded.name
         });
-        //console.log(req.body);
-        //Message.push(msg);
         msg.save(function(err) {
           if (err) throw err;
 
@@ -307,18 +233,16 @@ apiRoutes.route("/roomlist/messages:roomId")
 apiRoutes.route('/users')
     .get(function(req, res){
         res.sendFile(path.join(__dirname, 'views/users.html' ));
-        //console.log(jwt.decode(req.cookie));
-        //console.log(jwt.decode(req.cookies.auth));
     });
 
 app.use('/api', apiRoutes);
 
 
 apiRoutes.route('/logout')
-    .get(function(req, res){ //.get muss wieder gelöscht werden
+    /*.get(function(req, res){
         res.clearCookie("auth");
         res.redirect('/');
-    })
+    })*/
     .delete(function(req, res){
         res.clearCookie("auth");
         res.redirect('/');
