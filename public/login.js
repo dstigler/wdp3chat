@@ -51,6 +51,9 @@ function createUser() {
          changeSignupToLogin();
         },
         error: function(data){
+            $('#newname').val('');
+            $('#newpwd').val('');
+            $('#ErrorMsg').val('Username already exists');
             console.log('Invalid input');
         }
     });
@@ -78,6 +81,9 @@ function validateUser() {
             console.log(localStorage.getItem("uname"));
        },
        error: function(){
+           $('#uname').val('');
+           $('#pwd').val('');
+           $('#ErrorMsg').val('Username or password incorrect');
            console.log('error');
        }
    });
