@@ -1,7 +1,6 @@
 
 
 $('.tab a').on('click', function (e) {
-//function changeTab(){
   e.preventDefault();
 
   $(this).parent().addClass('active');
@@ -20,8 +19,6 @@ function changeSignupToLogin(){
 
     $('#logintab').addClass('active');
     $('#signuptab').removeClass('active');
-
-    //target = $('#logintab').attr('href');
 
     $('#signup').hide();
 
@@ -52,31 +49,13 @@ function createUser() {
           $('#uname').val(nu);
           $('#pwd').val(np);
          changeSignupToLogin();
-         /* e.preventDefault();
-
-          $(this).parent().addClass('active');
-          $(this).parent().siblings().removeClass('active');
-
-          target = $(this).attr('href');
-
-          $('.tab-content > div').not(target).hide();
-
-          $(target).fadeIn(600);*/
-
-          //TODO: set content of login
         },
         error: function(data){
             console.log('Invalid input');
         }
-          /*
-      localStorage.setItem('token', 'asY-x34SfYPk'); // write
-      console.log(localStorage.getItem('token'));
-      */
     });
-    //console.log(nu, ne, np);
 };
 
-//var hash = require('./pass').hash;
 
 function validateUser() {
     var ra = document.getElementById("uname").value;
@@ -85,12 +64,11 @@ function validateUser() {
     $.ajax({
        type: "PUT",
         url: "/login",
-        contentType: "application/json", //text/html
+        contentType: "application/json",
         dataType: 'json',
        data:JSON.stringify({
            "username":ra,
            "password":cryptedPwd
-          // "token":"empty"
        }),
        success: function(data){
            console.log('login success');
@@ -101,18 +79,8 @@ function validateUser() {
        },
        error: function(){
            console.log('error');
-           //console.log(data);
        }
    });
-
-    /*function(data) {
-      console.log(data.body);
-      /*
-      localStorage.setItem('token', 'asY-x34SfYPk'); // write
-      console.log(localStorage.getItem('token'));
-      */
-    //};
-    //console.log(ra, rag);
 
 };
 

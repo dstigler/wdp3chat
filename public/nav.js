@@ -1,17 +1,4 @@
-/*$("#homeBtn").click(function() {
-   window.location.href = "/api/chat";
-});
 
-$("#usersBtn").click(function() {
-   window.location.href = "/api/users";
-});
-
-$("#roomsBtn").click(function() {
-   window.location.href = "/api/rooms";
-});
-
-$("#logoutBtn").click(logoutUser);
-*/
 function logoutUser() {
     $.ajax({
        type: "GET",

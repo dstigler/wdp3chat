@@ -13,27 +13,9 @@ $("#rooms-sortable").click(function (){
     console.log("Value: "+$(this).children(".ui-selected").attr('id'));
     if (typeof $(this).children(".ui-selected").attr('id') != 'undefined'){
         roomId = $(this).children(".ui-selected").attr('id');
-        //getMessages();
     }
 });
 
-
-/*    $(document).on('click', 'a.room', function (event) {
-        roomId = $(event.target).attr("data-room-id");
-        console.log(roomId);
-        //getMessages();
-    });*/
-/*function changeRoomId(){
-    roomId = $('li.ui-selected').next('a').find('data-room-id').val();
-    console.log(roomId);
-};
-
-
-$('ul#rooms-sortable').on('click','li.state-default',function() {
-    console.log('testing');
-});
-*/
-//$("#post-messages-button").click(
 function postMessage() {
     var message = $("#btn-input").val();
     console.log(message);
@@ -48,16 +30,10 @@ function postMessage() {
         $("#btn-input").val("");
         var element = document.getElementById("panel-body");
         element.scrollTop = element.scrollHeight;
-        //getMessages();
         newMessage = true;
     });
-};//);
+};
 
-/*    $('body').on('click', 'a.room', function (event) {
-        roomId = $(event.target).attr("data-room-id");
-        getMessages();
-    });
-*/
 function getMessages() {
     $.ajax({
         type: "GET",
@@ -65,24 +41,18 @@ function getMessages() {
 
         contentType : "application/json"
     }).success(function (data) {
-        //console.log(data);
-        //$("#roomName").text("Messages for " + data.room.name);
         var messages = "";
         $.each(data.messages, function (key, message) {
             if (message.msg_user_name == localStorage.getItem("uname")){
 
                 messages = messages + "<li class='right'><a><h4>" + message.msg_user_name + "</h4><p>" + message.msg_text + "</p></a></li>";
-            } else {   // "<li style='clear:both; float: right;' ><a class='right pull-right'><div class='header'><strong class='unameFont'><xmp>" + message.msg_user_name + "</xmp></strong></div><p style='word-break: break-all; text-align: right;'><xmp>" + message.msg_text + "</xmp></p></a></li>" + messages;
+            } else {
                 messages = "<li class='left'><a><h4>" + message.msg_user_name + "</h4><p>" + message.msg_text + "</p></a></li>";
             }
         });
         if ( ! $(".chat-textarea li").length ){
-            //$("#panel-body").mCustomScrollbar("scrollTo","bottom",{scrollInertia:0});
+
             $(".chat").append(messages);
-            //console.log($("#panel-body").scrollTop());
-            //$("#panel-body").mCustomScrollbar("scrollTo","bottom",{scrollInertia:0});
-            //ar element = document.getElementById("panel-body");
-            //element.scrollTop = element.scrollHeight;
             var element = document.getElementById("panel-body");
             element.scrollTop = element.scrollHeight;
         }else{
@@ -103,8 +73,6 @@ function getMessages() {
             type: "GET",
             url: "/api/roomlist"
         }).success(function (rooms) {
-            //roomId = rooms[0].chat_name;
-            //getMessages();
             console.log(rooms);
             var found = "nok";
             var mainId;
@@ -143,25 +111,12 @@ function getMessages() {
         setTimeout(getRooms, 10000);
     };
 
-//setTimeout(getMessages, 750);
 document.getElementById("btn-chat").onclick = postMessage;
-//document.getElementById("rooms-sortable").onclick = setRoomId;
-
-/*document.getElementById("btn-input").addEventListener("keypress", function(e) {
-        var key = e.which || e.keyCode;
-
-        if(key == 13 && key == 16){
-            postMessage();
-        }
-    });
-*/
 document.getElementById("btn-input").addEventListener("keypress", function(e) {
         var key = e.which || e.keyCode;
 
-       // if(key == 13 && key == 16){
             var txt = $("btn-input");
             console.log("btn-input");
             txt.html( txt.val() + "<br/><br/><br/>");
 
-        //}
     });
