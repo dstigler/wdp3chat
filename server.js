@@ -239,14 +239,14 @@ app.use('/api', apiRoutes);
 
 
 apiRoutes.route('/logout')
-    /*.get(function(req, res){
+    .get(function(req, res){
         res.clearCookie("auth");
         res.redirect('/');
-    })*/
-    .delete(function(req, res){
+    })
+    /*.delete(function(req, res){
         res.clearCookie("auth");
         res.redirect('/');
-    });
+    })*/;
 
 
 //start the server
