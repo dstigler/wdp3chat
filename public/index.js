@@ -43,6 +43,7 @@ function getMessages() {
     }).success(function (data) {
         var messages = "";
         $.each(data.messages, function (key, message) {
+            console.log(message);
             if (message.msg_user_name == localStorage.getItem("uname")){
 
                 messages = messages + "<li class='right'><a><h4>" + message.msg_user_name + "</h4><p>" + message.msg_text + "</p></a></li>";
