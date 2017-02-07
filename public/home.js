@@ -47,7 +47,7 @@ function getMessages() {
 
                 messages = messages + "<li class='right'><a><h4>" + message.msg_user_name + "</h4><p>" + message.msg_text + "</p></a></li>";
             } else {
-                messages = "<li class='left'><a><h4>" + message.msg_user_name + "</h4><p>" + message.msg_text + "</p></a></li>";
+                messages = messages + "<li class='left'><a><h4>" + message.msg_user_name + "</h4><p>" + message.msg_text + "</p></a></li>";
             }
         });
         if ( ! $(".chat-textarea li").length ){
