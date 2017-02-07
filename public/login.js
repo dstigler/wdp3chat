@@ -53,8 +53,8 @@ function createUser() {
         error: function(data){
             $('#newname').val('');
             $('#newpwd').val('');
-            $('#ErrorMsg').val('Username already exists');
-            console.log('Invalid input');
+            $('#ErrorMsgSignup').val('Username already exists');
+            console.log(data.message);
         }
     });
 };
@@ -80,11 +80,10 @@ function validateUser() {
             localStorage.setItem("uname", data.username);
             console.log(localStorage.getItem("uname"));
        },
-       error: function(){
+       error: function(data){
            $('#uname').val('');
            $('#pwd').val('');
-           $('#ErrorMsg').val('Username or password incorrect');
-           console.log('error');
+           $('#ErrorMsgLogin').text('Username or password incorrect');
        }
    });
 
