@@ -1,4 +1,5 @@
 var roomId;
+var newMessage = false;
 
 $(function () {
     getRooms();
@@ -48,6 +49,7 @@ function postMessage() {
         var element = document.getElementById("panel-body");
         element.scrollTop = element.scrollHeight;
         //getMessages();
+        newMessage = true;
     });
 };//);
 
@@ -79,11 +81,18 @@ function getMessages() {
             $(".chat").append(messages);
             //console.log($("#panel-body").scrollTop());
             //$("#panel-body").mCustomScrollbar("scrollTo","bottom",{scrollInertia:0});
+            //ar element = document.getElementById("panel-body");
+            //element.scrollTop = element.scrollHeight;
             var element = document.getElementById("panel-body");
             element.scrollTop = element.scrollHeight;
         }else{
             $(".chat").empty();
             $(".chat").append(messages);
+            if (newMessage){
+                var element = document.getElementById("panel-body");
+                element.scrollTop = element.scrollHeight;
+            }
+            newMessage = false;
         }
         setTimeout(getMessages, 500);
     });
@@ -138,10 +147,21 @@ function getMessages() {
 document.getElementById("btn-chat").onclick = postMessage;
 //document.getElementById("rooms-sortable").onclick = setRoomId;
 
+/*document.getElementById("btn-input").addEventListener("keypress", function(e) {
+        var key = e.which || e.keyCode;
+
+        if(key == 13 && key == 16){
+            postMessage();
+        }
+    });
+*/
 document.getElementById("btn-input").addEventListener("keypress", function(e) {
         var key = e.which || e.keyCode;
 
-        if(key == 13){
-            postMessage();
-        }
+       // if(key == 13 && key == 16){
+            var txt = $("btn-input");
+            console.log("btn-input");
+            txt.html( txt.val() + "<br/><br/><br/>");
+            
+        //}
     });
