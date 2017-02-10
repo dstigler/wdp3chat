@@ -20,3 +20,10 @@ Installationsanleitung:
 
 Wdp3chat ist ein Gruppenchat, auf Basis von NodeJS, Bootstrap, MongoDB.
 Funktionen: Signup, Login, Chaten, Räume erstellen.
+
+PS: sollte es aus welchen Gründen auch immer nicht zum laufen gebracht werden können,
+	würde ich Sie bitten mir eine E-Mail zu schreiben. Danach kann ich den Raspberry,
+	auf dem der Server läuft, starten. Sie können dann unter der URL 90.146.70.132
+	auf den Webserver zugreifen.
+	Email: stigler.daniel@gmail.com
+	
