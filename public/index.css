@@ -15,11 +15,7 @@
 	list-style-type: none;
 	padding-left: 0;
 
-	
-
 }
-
-
 
 #panel-body {
 	height: 350px;
@@ -191,7 +187,9 @@
 
 #btn-input {
 	resize: none;
-	height: 30px;
+	min-height: 20px;
+	overflow: auto;
+	line-height: 20px;
 }
 
  @media screen and (max-width: 768px){

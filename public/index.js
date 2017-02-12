@@ -1,6 +1,5 @@
 var roomId;
 var newMessage = false;
-//var escape = require('escape-html');
 
 $(function () {
     getRooms();
@@ -18,21 +17,22 @@ $("#rooms-sortable").click(function (){
 });
 
 function postMessage() {
-    var message = $("#btn-input").val();
-    console.log(message);
-    $.ajax({
-        type: "POST",
-        url: "/api/roomlist/messages"+roomId,
-        data: JSON.stringify({
-            "msg": message,
-            "room": roomId}),
-        contentType : "application/json"
-    }).success(function () {
-        $("#btn-input").val("");
-        var element = document.getElementById("panel-body");
-        element.scrollTop = element.scrollHeight;
-        newMessage = true;
-    });
+    var message = $("#btn-input").html();
+    if (message != ""){
+        $.ajax({
+            type: "POST",
+            url: "/api/roomlist/messages"+roomId,
+            data: JSON.stringify({
+                "msg": message,
+                "room": roomId}),
+            contentType : "application/json"
+        }).success(function () {
+            $("#btn-input").html("");
+            var element = document.getElementById("panel-body");
+            element.scrollTop = element.scrollHeight;
+            newMessage = true;
+        });
+    }
 };
 
 function getMessages() {
@@ -46,7 +46,6 @@ function getMessages() {
         $.each(data.messages, function (key, message) {
             console.log(message);
             if (message.msg_user_name == localStorage.getItem("uname")){
-
                 messages = messages + "<li class='right'><a><h4>" + message.msg_user_name + "</h4><p>" + message.msg_text + "</p></a></li>";
             } else {
                 messages = messages + "<li class='left'><a><h4>" + message.msg_user_name + "</h4><p>" + message.msg_text + "</p></a></li>";
@@ -57,8 +56,12 @@ function getMessages() {
             $(".chat").append(messages);
             var element = document.getElementById("panel-body");
             element.scrollTop = element.scrollHeight;
+
         }else{
+
             $(".chat").empty();
+            console.log("messages");
+            messages = messages.replace(/&lt;br&gt;/g, '<br>');
             $(".chat").append(messages);
             if (newMessage){
                 var element = document.getElementById("panel-body");
@@ -116,9 +119,14 @@ function getMessages() {
 document.getElementById("btn-chat").onclick = postMessage;
 document.getElementById("btn-input").addEventListener("keypress", function(e) {
         var key = e.which || e.keyCode;
-        if (key == 13){
-            postMessage();
+        if(key == 13){
+            if (e.shiftKey){
+               document.getElementById("btn-input").style.height = (document.getElementById("btn-input").offsetHeight + 20) + "px";
+            } else {
+                e.preventDefault();
+                postMessage();
+            }
+            
         }
 
     });
-

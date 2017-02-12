@@ -77,9 +77,10 @@ app.route('/login')
               password: req.body.password,
               admin: false
             });
-
+            console.log(user);
             if (user) {
-                res.json({ success: false, message: 'Signup failed. User already exists.' });
+                return res.sendStatus(401);
+                //res.json({ success: false, message: 'Signup failed. User already exists.' });
             } else {
                 newUser.save(function(err) {
                   if (err) throw err;

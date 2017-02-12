@@ -16,7 +16,8 @@ $('.tab a').on('click', function (e) {
 
 
 function changeSignupToLogin(){
-
+    $('#ErrorMsgSignup').text('');
+    $('#ErrorMsgLogin').text('');
     $('#logintab').addClass('active');
     $('#signuptab').removeClass('active');
 
@@ -51,7 +52,10 @@ function createUser() {
          changeSignupToLogin();
         },
         error: function(data){
-            console.log('Invalid input');
+            $('#newname').val('');
+            $('#newpwd').val('');
+            $('#ErrorMsgSignup').text('Username already exists');
+            console.log(data);
         }
     });
 };
@@ -77,8 +81,11 @@ function validateUser() {
             localStorage.setItem("uname", data.username);
             console.log(localStorage.getItem("uname"));
        },
-       error: function(){
-           console.log('error');
+       error: function(data){
+           $('#uname').val('');
+           $('#pwd').val('');
+           $('#ErrorMsgLogin').text('Username or password incorrect');
+           console.log(data);
        }
    });
 
