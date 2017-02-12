@@ -1,5 +1,6 @@
 var roomId;
 var newMessage = false;
+//var escape = require('escape-html');
 
 $(function () {
     getRooms();
@@ -115,9 +116,9 @@ function getMessages() {
 document.getElementById("btn-chat").onclick = postMessage;
 document.getElementById("btn-input").addEventListener("keypress", function(e) {
         var key = e.which || e.keyCode;
-
-            var txt = $("btn-input");
-            console.log("btn-input");
-            txt.html( txt.val() + "<br/><br/><br/>");
+        if (key == 13){
+            postMessage();
+        }
 
     });
+
