@@ -121,14 +121,15 @@ function getMessages() {
         $.ajax({
             type: "GET",
             url: "/api/userlist"
-        }).success(function (users) {/*
+        }).success(function (users) {
             $("#Userlist").empty();
             $.each(users, function (key, user) {
-
+                $("#Userlist").append('<li class="usr">'+user.name+'</li>');
             }
-            $("#Userlist").append(a);*/
-            $("#Userlist").val(users);
-            console.log(users);
+
+            $("#Userlist").append();
+            //$("#Userlist").val(users);
+            //console.log(users);
         });
         setTimeout(getUsers, 60000);
     }
