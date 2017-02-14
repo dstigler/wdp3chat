@@ -36,7 +36,6 @@ app.route('/login')
         res.sendFile(path.join(__dirname, 'views/login.html' ));
     })
     .put(function(req, res){
-        console.log('PUT: ' + req.body.username);
         var escName = escape(req.body.username)
         User.findOne({name: escName}, function(err, user) {
 
@@ -56,7 +55,6 @@ app.route('/login')
           var token = jwt.sign(userData, app.get('superSecret'), {
             expiresIn: '60m'
           });
-          console.log(token);
 
         res.cookie('auth',token);
         res.send({message: 'ok',
@@ -66,7 +64,6 @@ app.route('/login')
 
     })
     .post(function(req, res){
-        console.log('POST: ' + req.body.username);
         var escName = escape(req.body.username);
         User.findOne({'name': escName}, function(err, user) {
             if (err) throw err;
@@ -77,7 +74,6 @@ app.route('/login')
               password: req.body.password,
               admin: false
             });
-            console.log(user);
             if (user) {
                 return res.sendStatus(401);
                 //res.json({ success: false, message: 'Signup failed. User already exists.' });
@@ -140,6 +136,16 @@ apiRoutes.route('/rooms')
         //console.log(jwt.decode(req.cookies.auth));
     });
 
+apiRoutes.route('/userlist')
+    .get(function(req, res){
+        Users.find({}, function(erro, users){
+            if(err){
+                res.send('401');
+            }else{
+                res.json(users);
+            }
+        })
+    });
 apiRoutes.route('/roomlist')
     .get(function(req, res, next){
         Rooms.find({}, function(err, rooms){
@@ -192,7 +198,6 @@ apiRoutes.route('/roomlist')
 apiRoutes.route("/roomlist/messages:roomId")
     .get(function (req, res) {
         var roomId = req.params.roomId;
-        console.log("Body: "+req.params.roomId);
 
         Rooms.find({'_id': roomId}, function(err, room) {
           if (err) {
@@ -227,15 +232,9 @@ apiRoutes.route("/roomlist/messages:roomId")
         msg.save(function(err) {
           if (err) throw err;
 
-          console.log("Message saved");
           res.sendStatus(200);
         });
   });
-
-apiRoutes.route('/users')
-    .get(function(req, res){
-        res.sendFile(path.join(__dirname, 'views/users.html' ));
-    });
 
 app.use('/api', apiRoutes);
 

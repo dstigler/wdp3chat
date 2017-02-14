@@ -116,6 +116,21 @@ function getMessages() {
         setTimeout(getRooms, 10000);
     };
 
+    function getUsers(){
+        $.ajax({
+            type: "GET",
+            url: "/api/userlist"
+        }).success(function (users) {/*
+            $("#Userlist").empty();
+            $.each(users, function (key, user) {
+
+            }
+            $("#Userlist").append(a);*/
+            $("#Userlist").val(users);
+        }
+        setTimeout(getUsers, 60000);
+    }
+
 document.getElementById("btn-chat").onclick = postMessage;
 document.getElementById("btn-input").addEventListener("keypress", function(e) {
         var key = e.which || e.keyCode;
@@ -126,7 +141,7 @@ document.getElementById("btn-input").addEventListener("keypress", function(e) {
                 e.preventDefault();
                 postMessage();
             }
-            
+
         }
 
     });
