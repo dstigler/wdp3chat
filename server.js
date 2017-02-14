@@ -98,7 +98,7 @@ apiRoutes.use(function(req, res, next) {
       if (err) {
         return res.sendStatus(401);
       } else {
-        console.log((jwt.decode(token)).exp - Date.now()/1000);
+        console.log((jwt.decode(token)).exp - Date.now()/1000 + " seconds");
         req.user_data = token_data;
         next();
       }
