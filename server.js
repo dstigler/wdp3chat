@@ -53,7 +53,7 @@ app.route('/login')
               name : escName
           };
           var token = jwt.sign(userData, app.get('superSecret'), {
-            expiresIn: '1m'
+            expiresIn: '30m'
           });
 
         res.cookie('auth',token);
@@ -98,6 +98,7 @@ apiRoutes.use(function(req, res, next) {
       if (err) {
         return res.sendStatus(401);
       } else {
+        console.log((jwt.decode(token)).exp);
         req.user_data = token_data;
         next();
       }
