@@ -3,5 +3,6 @@ var Schema = mongoose.Schema;
 
 module.exports = mongoose.model('Rooms', new Schema({
     chat_name: String,
-    deleteable: Boolean
+    deleteable: Boolean,
+    user_name: String
 }));

@@ -162,7 +162,8 @@ apiRoutes.route('/roomlist')
 
                 var newRoom = new Rooms({
                   chat_name: escName,
-                  deleteable: true
+                  deleteable: true,
+                  user_name: req.body.creator
                 });
                 newRoom.save(function(err) {
                   if (err) throw err;

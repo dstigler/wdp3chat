@@ -12,7 +12,7 @@ function getRooms(){
         $(".roomList").empty();
         $.each(rooms, function (key, room) {
             console.log(room.deleteable);
-            if(room.deleteable == true){
+            if(room.deleteable == true && room.user_name == localStorage.getItem("uname")){
                 var a = '<li><a class="room">' + room.chat_name + '</a><input class="btn btn-danger btn-sm" type="submit" id="' + room._id + '" onclick="deleteRoom()" value="Delete" ></li>';
             }else{
                 var a = '<li><a class="room">' + room.chat_name + '</a></li>';
@@ -32,6 +32,7 @@ function createRoom() {
         dataType: 'json',
        data:JSON.stringify({
            "roomName":nr,
+           "creator": localStorage.getItem("uname")
        }),
 
         success: function(data) {
