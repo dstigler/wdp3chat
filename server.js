@@ -138,7 +138,7 @@ apiRoutes.route('/rooms')
 
 apiRoutes.route('/userlist')
     .get(function(req, res){
-        User.find({}, function(err, users){
+        User.find({},'name', function(err, users){
             if(err){
                 res.send('401');
             }else{
@@ -148,7 +148,7 @@ apiRoutes.route('/userlist')
     });
 apiRoutes.route('/roomlist')
     .get(function(req, res, next){
-        Rooms.find({},'name', function(err, rooms){
+        Rooms.find({}, function(err, rooms){
             if(err){
                 res.sent('401');
             }else {
