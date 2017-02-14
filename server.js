@@ -96,14 +96,14 @@ apiRoutes.use(function(req, res, next) {
   if (token) {
     jwt.verify(token, app.get('superSecret'), function(err, token_data) {
       if (err) {
-        return res.redirect('/');
+        return res.sendStatus(401);
       } else {
         req.user_data = token_data;
         next();
       }
     });
   } else {
-    return res.redirect('/');
+    return res.sendStatus(401);
   }
 });
 
