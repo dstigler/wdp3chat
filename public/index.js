@@ -127,7 +127,7 @@ function getMessages() {
                 $("#Userlist").append('<li class="usr">'+user.name+'</li>');
             }
 
-            $("#Userlist").append();
+            //$("#Userlist").append();
             //$("#Userlist").val(users);
             //console.log(users);
         });
