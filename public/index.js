@@ -9,8 +9,8 @@ $(function () {
 });
 
 $("#rooms-sortable").click(function (){
-    console.log("clicked");
-    console.log("Value: "+$(this).children(".ui-selected").attr('id'));
+    //console.log("clicked");
+    //console.log("Value: "+$(this).children(".ui-selected").attr('id'));
     if (typeof $(this).children(".ui-selected").attr('id') != 'undefined'){
         roomId = $(this).children(".ui-selected").attr('id');
     }
@@ -44,7 +44,7 @@ function getMessages() {
     }).success(function (data) {
         var messages = "";
         $.each(data.messages, function (key, message) {
-            console.log(message);
+            //console.log(message);
             if (message.msg_user_name == localStorage.getItem("uname")){
                 messages = messages + "<li class='right'><a><h4>" + message.msg_user_name + "</h4><p>" + message.msg_text + "</p></a></li>";
             } else {
@@ -60,7 +60,7 @@ function getMessages() {
         }else{
 
             $(".chat").empty();
-            console.log("messages");
+            //console.log("messages");
             messages = messages.replace(/&lt;br&gt;/g, '<br>');
             $(".chat").append(messages);
             if (newMessage){
@@ -78,10 +78,10 @@ function getMessages() {
             type: "GET",
             url: "/api/roomlist"
         }).success(function (rooms) {
-            console.log(rooms);
+            //console.log(rooms);
             var found = "nok";
             var mainId;
-            console.log("Selected RoomId: "+roomId);
+            //console.log("Selected RoomId: "+roomId);
             $("#rooms-sortable").empty();
             $.each(rooms, function (key, room) {
                 if(room.chat_name == "Mainchat"){
@@ -92,7 +92,7 @@ function getMessages() {
                     var a = '<li class="ui-selected" id="'+room._id+'"><a class="room">' + room.chat_name + '</a></li>';
                     roomId = room._id;
                     getMessages();
-                    console.log(roomId);
+                    //console.log(roomId);
                     found = "ok";
                 }else{
                     if(roomId == room._id){
@@ -106,13 +106,13 @@ function getMessages() {
                 }
                 $("#rooms-sortable").append(a);
             });
-            console.log(found);
+            //console.log(found);
             if(found == "nok"){
                 roomId = mainId;
                 $("#"+roomId).addClass("ui-selected");
             }
         });
-        console.log("Saved: "+roomId);
+        //console.log("Saved: "+roomId);
         setTimeout(getRooms, 10000);
     };
 
@@ -127,6 +127,7 @@ function getMessages() {
             }
             $("#Userlist").append(a);*/
             $("#Userlist").val(users);
+            console.log(users);
         });
         setTimeout(getUsers, 60000);
     }
