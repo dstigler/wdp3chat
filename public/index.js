@@ -3,6 +3,7 @@ var newMessage = false;
 
 $(function () {
     getRooms();
+    getUsers();
     document.getElementById("userAlias").innerHTML += localStorage.getItem("uname");
 
 
