@@ -127,7 +127,7 @@ function getMessages() {
             }
             $("#Userlist").append(a);*/
             $("#Userlist").val(users);
-        }
+        });
         setTimeout(getUsers, 60000);
     }
 
