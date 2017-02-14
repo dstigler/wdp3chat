@@ -71,6 +71,9 @@ function getMessages() {
             newMessage = false;
         }
         setTimeout(getMessages, 500);
+    })
+    .error(function(){
+        window.location.href = "/";
     });
 };
 
