@@ -271,7 +271,7 @@ apiRoutes.route('/logout')
 
 function CleanActiveUserList(){
     User.find({online: true}, function(err, users){
-        users.foreach(function(user){
+        users.forEach(function(user){
             if((Date.now() - user.lastactivity)/(60*1000) > 5){
                 console.log((Date.now() - user.lastactivity)/(60*1000));
                 user.online = false;
