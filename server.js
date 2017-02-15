@@ -104,7 +104,7 @@ apiRoutes.use(function(req, res, next) {
       if (err) {
         return res.sendStatus(401);
       } else {
-        console.log((jwt.decode(token)).exp - Date.now()/1000 + " seconds");
+        //console.log((jwt.decode(token)).exp - Date.now()/1000 + " seconds");
         req.user_data = token_data;
         next();
       }
@@ -271,13 +271,19 @@ apiRoutes.route('/logout')
 
 function CleanActiveUserList(){
     User.find({online: true}, function(err, users){
-
+        users.foreach(function(user){
+            if((Date.now() - user.lastactivity)/(60*1000) > 5){
+                console.log((Date.now() - user.lastactivity)/(60*1000));
+                user.online = false;
+                user.save();
+            }
+        });
     });
     setTimeout(CleanActiveUserList, 300000);
 }
 
 //start the server
-app.listen(port);/*, function(){
+app.listen(port);, function(){
     CleanActiveUserList();
-});*/
+});
 console.log('Magic happens at http://127.0.0.1:' + port);
