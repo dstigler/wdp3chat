@@ -146,7 +146,7 @@ apiRoutes.route('/rooms')
 
 apiRoutes.route('/userlist')
     .get(function(req, res){
-        User.find({online: true},'name lastactivity', function(err, users){
+        User.find({},'name lastactivity admin online', function(err, users){
             if(err){
                 res.send('401');
             }else{

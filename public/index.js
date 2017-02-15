@@ -127,14 +127,31 @@ function getMessages() {
         }).success(function (users) {
             $("#Userlist").empty();
             $.each(users, function (key, user) {
-                $("#Userlist").append('<li class="usr">'+user.name+'<br><span font-size:8px>'+user.lastactivity+'<span></li>');
+                var time = new Date(user.lastactivity);
+                activity = (Date.now()-time)/(1000*60);
+                console.log(user.name + ' ' + activity);
+                if((user.lastactivity !== undefined && activity < 30)){
+                    if(activity <= 5){ 
+                        
+                        $("#Userlist").append('<li class="usr">'+user.name + '<i class="fa fa-circle"></i></li>');
+                    } else if(activity > 5) {
+                        
+                        $("#Userlist").append('<li class="usr">'+user.name+'<p class="onlinetime">'+Math.ceil(activity)+' min</p></li>');
+                    }
+                } else {
+                    
+                    $("#Userlist").append('<li class="usr">'+user.name+'</li>');
+                }
+                
+                
+                
             });
 
             //$("#Userlist").append();
             //$("#Userlist").val(users);
             //console.log(users);
         });
-        setTimeout(getUsers, 60000);
+        setTimeout(getUsers, 5000);
     }
 
 document.getElementById("btn-chat").onclick = postMessage;

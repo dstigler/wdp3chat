@@ -7,7 +7,7 @@ h2 {
 
 
 .input-group {
-	width: 50%;
+	width: 85%;
 	margin-left: 5%;
 	margin-top: 50px;
 
@@ -95,4 +95,10 @@ h2 {
 
 .col-names h4 {
 	flex: 1;
+}
+
+@media screen and (max-width: 768px){
+    .input-group {
+            width: 95%;
+    }
 }
