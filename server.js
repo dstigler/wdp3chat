@@ -254,6 +254,7 @@ app.use('/api', apiRoutes);
 
 apiRoutes.route('/logout')
     .get(function(req, res){
+        var token = req.cookies.auth;
         var decoded = jwt.decode(token);
         User.findOne({name: decoded.name}, function(err, user) {
             user.lastactivity = Date.now();
