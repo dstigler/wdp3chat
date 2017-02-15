@@ -127,7 +127,7 @@ function getMessages() {
         }).success(function (users) {
             $("#Userlist").empty();
             $.each(users, function (key, user) {
-                $("#Userlist").append('<li class="usr">'+user.name+'<br>'+user.lastactivity'</li>');
+                $("#Userlist").append('<li class="usr">'+user.name+'<br><span font-size:8px>'+user.lastactivity+'<span></li>');
             });
 
             //$("#Userlist").append();
