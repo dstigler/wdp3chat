@@ -16,7 +16,7 @@ var config = require('./config');
 
 var User = require('./app/models/user');
 var Rooms = require('./app/models/room');
-var Message = require('./app/models/messages')
+var Message = require('./app/models/messages');
 
 var port = process.env.PORT || 8080;
 mongoose.connect(config.database);
@@ -53,8 +53,12 @@ app.route('/login')
               name : escName
           };
           var token = jwt.sign(userData, app.get('superSecret'), {
-            expiresIn: '30m'
+            expiresIn: '1440m'
           });
+
+        user.lastactivity = Date.now();
+        user.online = true;
+        user.save();
 
         res.cookie('auth',token);
         res.send({message: 'ok',
@@ -72,7 +76,9 @@ app.route('/login')
               name: escName,
               email: req.body.email,
               password: req.body.password,
-              admin: false
+              admin: false,
+              lastactivity: Date.now(),
+              online: false
             });
             if (user) {
                 return res.sendStatus(401);
@@ -140,7 +146,7 @@ apiRoutes.route('/rooms')
 
 apiRoutes.route('/userlist')
     .get(function(req, res){
-        User.find({},'name', function(err, users){
+        User.find({online: true},'name', function(err, users){
             if(err){
                 res.send('401');
             }else{
@@ -236,6 +242,11 @@ apiRoutes.route("/roomlist/messages:roomId")
 
           res.sendStatus(200);
         });
+        User.findOne({name: decoded.name}, function(err, user) {
+            user.lastactivity = Date.now();
+            user.online = true;
+            user.save();
+        });
   });
 
 app.use('/api', apiRoutes);
@@ -243,6 +254,12 @@ app.use('/api', apiRoutes);
 
 apiRoutes.route('/logout')
     .get(function(req, res){
+        var decoded = jwt.decode(token);
+        User.findOne({name: decoded.name}, function(err, user) {
+            user.lastactivity = Date.now();
+            user.online = false;
+            user.save();
+        });
         res.clearCookie("auth");
         res.redirect('/');
     })
