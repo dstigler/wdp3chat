@@ -146,7 +146,7 @@ apiRoutes.route('/rooms')
 
 apiRoutes.route('/userlist')
     .get(function(req, res){
-        User.find({online: true},'name', function(err, users){
+        User.find({online: true},'name lastactivity', function(err, users){
             if(err){
                 res.send('401');
             }else{
@@ -269,7 +269,15 @@ apiRoutes.route('/logout')
         res.redirect('/');
     })*/;
 
+function CleanActiveUserList(){
+    User.find({online: true}, function(err, users){
+
+    }
+    setTimeout(CleanActiveUserList, 300000);
+}
 
 //start the server
-app.listen(port);
+app.listen(port, function(){
+    CleanActiveUserList();
+});
 console.log('Magic happens at http://127.0.0.1:' + port);
