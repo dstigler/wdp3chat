@@ -272,7 +272,7 @@ apiRoutes.route('/logout')
 function CleanActiveUserList(){
     User.find({online: true}, function(err, users){
 
-    }
+    });
     setTimeout(CleanActiveUserList, 300000);
 }
 
