@@ -283,7 +283,7 @@ function CleanActiveUserList(){
 }
 
 //start the server
-app.listen(port);, function(){
+app.listen(port, function(){
     CleanActiveUserList();
 });
 console.log('Magic happens at http://127.0.0.1:' + port);
