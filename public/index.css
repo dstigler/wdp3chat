@@ -1,4 +1,12 @@
+#rooms-sortable .ui-selected, #rooms-sortable li:hover  { 
+	background-color: #333; 
+	cursor: pointer;
+}
 
+#rooms-sortable .ui-selected a, #rooms-sortable li:hover  a { 
+	color: #FFF; 
+
+}
 
 .container-full {
 

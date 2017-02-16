@@ -133,7 +133,7 @@ function getMessages() {
                 if((user.lastactivity !== undefined && activity < 30)){
                     if(activity <= 5){ 
                         
-                        $("#Userlist").append('<li class="usr">'+user.name + '<i class="fa fa-circle"></i></li>');
+                        $("#Userlist").prepend('<li class="usr">'+user.name + '<i class="fa fa-circle"></i></li>');
                     } else if(activity > 5) {
                         
                         $("#Userlist").append('<li class="usr">'+user.name+'<p class="onlinetime">'+Math.ceil(activity)+' min</p></li>');
@@ -154,7 +154,11 @@ function getMessages() {
         setTimeout(getUsers, 5000);
     }
 
-document.getElementById("btn-chat").onclick = postMessage;
+document.getElementById("btn-chat").onclick = function(){
+    document.getElementById("btn-input").style.height = 30+"px";
+    postMessage();
+}
+
 document.getElementById("btn-input").addEventListener("keypress", function(e) {
         var key = e.which || e.keyCode;
         if(key == 13){
@@ -162,7 +166,9 @@ document.getElementById("btn-input").addEventListener("keypress", function(e) {
                document.getElementById("btn-input").style.height = (document.getElementById("btn-input").offsetHeight + 20) + "px";
             } else {
                 e.preventDefault();
+                document.getElementById("btn-input").style.height = 30+"px";
                 postMessage();
+
             }
 
         }

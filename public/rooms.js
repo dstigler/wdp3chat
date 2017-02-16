@@ -66,11 +66,17 @@ function deleteRoom() {
         }
     });
 };
-document.getElementById("createRoomBtn").onclick = createRoom;
+document.getElementById("createRoomBtn").onclick = function(){
+  if (this.value !== ''){
+    createRoom;
+  }
+}
 
 document.getElementById("newRoomName").addEventListener('keypress', function(e){
     var key = e.which || e.keyCode;
     if (key == 13){
-        createRoom();
+        if (this.value !== ''){
+          createRoom;
+        }
     }
 });
