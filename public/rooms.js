@@ -68,7 +68,7 @@ function deleteRoom() {
 };
 document.getElementById("createRoomBtn").onclick = function(){
   if (this.value !== ''){
-    createRoom;
+    createRoom();
   }
 }
 
@@ -76,7 +76,7 @@ document.getElementById("newRoomName").addEventListener('keypress', function(e){
     var key = e.which || e.keyCode;
     if (key == 13){
         if (this.value !== ''){
-          createRoom;
+          createRoom();
         }
     }
 });
